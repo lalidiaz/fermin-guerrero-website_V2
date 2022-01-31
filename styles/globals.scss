@@ -1,0 +1,100 @@
+@import url('https://use.typekit.net/yjx8ces.css');
+@import './mixins';
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'acumin-pro', sans-serif;
+  background: black;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ol,
+ul {
+  list-style: none;
+  padding-inline-start: 0px;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: white;
+}
+a:visited {
+  color: white;
+}
+
+//** PAGES **//
+.main-wrapper {
+  width: 100%;
+  padding: 22px 20px 0px 20px;
+
+  .container:hover {
+    opacity: 1;
+    -webkit-animation: flash 1.5s;
+    animation: flash 1.5s;
+    font-weight: bold;
+  }
+  @-webkit-keyframes flash {
+    0% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes flash {
+    0% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .imagen {
+    width: 100%;
+    height: 100%;
+    padding-right: 0px;
+  }
+  .videoClass {
+    width: 100%;
+    height: 100%;
+    padding-right: 0px;
+  }
+
+  .text {
+    font-size: 20px;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 25px;
+
+    @include tablet {
+      font-size: 18px;
+      color: white;
+      line-height: 18px;
+      padding-top: 5px;
+    }
+    @include desktop {
+      font-size: 20px;
+      line-height: 0px;
+      padding-top: 20px;
+    }
+  }
+}
