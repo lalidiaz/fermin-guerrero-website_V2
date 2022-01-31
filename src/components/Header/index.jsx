@@ -15,7 +15,7 @@ export default function Header() {
     },
     {
       id: 3,
-      url: '/all-projects',
+      url: '/all',
       text: '&',
     },
     {

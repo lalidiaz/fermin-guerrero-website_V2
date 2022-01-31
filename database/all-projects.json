@@ -1,6 +1,7 @@
 {
   "carte": {
     "name": "Carte Blanche",
+    "slug": "carte-blanche",
     "id": 1,
     "type": "graphic",
     "year": "2013",
@@ -46,6 +47,7 @@
 
   "circ": {
     "name": "Circ",
+    "slug": "circ",
     "id": 2,
     "type": "typeface",
     "year": "2011",
@@ -97,6 +99,7 @@
 
   "dinmachine": {
     "name": "DinMachine",
+    "slug": "din-machine",
     "id": 3,
     "type": "graphic",
     "year": "2014",
@@ -249,6 +252,7 @@
   },
   "exentra": {
     "name": "Exentra",
+    "slug": "exentra",
     "id": 4,
     "type": "typeface",
     "year": "2015",
@@ -443,6 +447,7 @@
   },
   "feria": {
     "name": "Book Fair",
+    "slug": "book-fair",
     "id": 5,
     "type": "graphic",
     "year": "2018",
@@ -476,6 +481,7 @@
 
   "federation": {
     "name": "Fédération Genevoise de Coopération",
+    "slug": "federation-genevoise-de-cooperation",
     "id": 6,
     "type": "graphic",
     "year": "2012",
@@ -678,6 +684,7 @@
 
   "flag": {
     "name": "Flag Of Peace",
+    "slug": "flag-of-peace",
     "id": 7,
     "type": "graphic",
     "year": "2017",
@@ -728,6 +735,7 @@
   },
   "freedom": {
     "name": "Freedom Of Movement",
+    "slug": "freedom-of-movement",
     "id": 8,
     "type": "graphic",
     "year": "2017",
@@ -761,6 +769,7 @@
 
   "genevamotor": {
     "name": "Geneva Motor Show",
+    "slug": "geneva-motor-show",
     "id": 9,
     "type": "graphic",
     "year": "2014",
@@ -926,6 +935,7 @@
 
   "geneve": {
     "name": "Genève Typeface",
+    "slug": "geneve-Typeface",
     "id": 10,
     "type": "typeface",
     "year": 2014,
@@ -1247,6 +1257,7 @@
 
   "goes": {
     "name": "Goes Around, Comes Around",
+    "slug": "goes-around-comes-around",
     "id": 11,
     "type": "graphic",
     "year": "2014",
@@ -1280,6 +1291,7 @@
 
   "itsupto": {
     "name": "Its Up To You",
+    "slug": "its-up-to-you",
     "id": 12,
     "type": "graphic",
     "year": "2014",
@@ -1385,6 +1397,7 @@
 
   "jeude": {
     "name": "Jeu De Regards",
+    "slug": "jeu-de-regards",
     "id": 13,
     "type": "graphic",
     "year": "2012",
@@ -1424,6 +1437,7 @@
 
   "letter": {
     "name": "Letter Stamps Design",
+    "slug": "letter-stamps-design",
     "id": 14,
     "type": "typeface",
     "year": "2013",
@@ -1583,6 +1597,7 @@
 
   "makeawish": {
     "name": "Make A Whish",
+    "slug": "make-a-whish",
     "id": 15,
     "type": "graphic",
     "year": "2018",
@@ -1610,6 +1625,7 @@
 
   "manifesta": {
     "name": "Manifesta",
+    "slug": "manifesta",
     "id": 16,
     "type": "typeface",
     "year": "2012",
@@ -1714,6 +1730,7 @@
 
   "mimujer": {
     "name": "Mi Mujer",
+    "slug": "mi-mujer",
     "id": 17,
     "type": "graphic",
     "year": "2013",
@@ -1747,6 +1764,7 @@
 
   "newyear": {
     "name": "New Year, New Fight",
+    "slug": "new-year-new-fight",
     "id": 18,
     "type": "graphic",
     "year": "2015",
@@ -1785,6 +1803,7 @@
   },
   "paleo": {
     "name": "Paléo",
+    "slug": "paleo",
     "id": 19,
     "type": "graphic",
     "year": "2013",
@@ -1842,6 +1861,7 @@
 
   "point": {
     "name": "Point de Fuite",
+    "slug": "point-de-fuite",
     "id": 20,
     "type": "graphic",
     "year": "2012",
@@ -1996,6 +2016,7 @@
 
   "thelady": {
     "name": "The Lady From The Sea",
+    "slug": "the-lady-from-the-sea",
     "id": 21,
     "type": "graphic",
     "year": "2014",
@@ -2088,6 +2109,7 @@
   },
   "postenebras": {
     "name": "Post Tenebras Rock",
+    "slug": "post-tenebras-rock",
     "id": 22,
     "type": "graphic",
     "year": "2012",
@@ -2131,6 +2153,7 @@
 
   "thesaurus": {
     "name": "Thesaurus",
+    "slug": "thesaurus",
     "id": 23,
     "type": "typeface",
     "year": "2017",
@@ -2291,6 +2314,7 @@
 
   "tijuana": {
     "name": "Tijuana Panthers",
+    "slug": "tijuana-panthers",
     "id": 24,
     "type": "graphic",
     "year": "2014",
@@ -2324,6 +2348,7 @@
 
   "timeout": {
     "name": "Time Out",
+    "slug": "time-out",
     "id": 25,
     "type": "graphic",
     "year": "2013",
@@ -2356,6 +2381,7 @@
   },
   "tomorrow": {
     "name": "Tomorrow",
+    "slug": "tomorrow",
     "id": 26,
     "type": "graphic",
     "year": "2013",
@@ -2395,6 +2421,7 @@
 
   "heroes": {
     "name": "Typography Heroes",
+    "slug": "typography-heroes",
     "id": 27,
     "type": "graphic",
     "year": "2013",
@@ -2587,6 +2614,7 @@
 
   "viga": {
     "name": "Viga",
+    "slug": "viga",
     "id": 28,
     "type": "typeface",
     "year": "2011",
@@ -2644,6 +2672,7 @@
 
   "weltformat": {
     "name": "Welformat 11",
+    "slug": "welformat",
     "id": 29,
     "type": "graphic",
     "year": "2011",
@@ -2683,19 +2712,20 @@
 
   "brick": {
     "name": "Brick",
+    "slug": "brick",
     "id": 30,
     "type": "typeface",
     "year": "2019",
     "tags": null,
     "credits": "Get Brick at <a target='_blank' href='https://www.colophon-foundry.org/typefaces/brick/'><u>Colophon Foundry</u></a>.",
     "mp4": false,
-    "image": "/CoverPhotos/Galleries/BrickTypefamilyLandscape.jpg",
-    "imageSlag": "/Brick/1.jpg",
+    "image": "https://res.cloudinary.com/lali/image/upload/v1643611507/BrickTypefamilyLandscape_rfaucu.jpg",
+    "imageSlag": "https://res.cloudinary.com/lali/image/upload/v1643611443/1_rzpahr.jpg",
     "description": "<i>Brick</i>’s foundations lie in the signage of three prominent pubs in London’s East End, The Jolly Butchers (Brick Lane–now closed), The Royal Oak (Columbia Road), and The Prince Albert (Acton Street). Referencing their Art Deco traits, with a trace of Art Nouveau heritage, Brick is my re-interpretation and continuation of the vernaculars elegant gestures, brought into the 21st century. I first discovered the vernacular of Brick Lane street during one of my visits to London, in 2015, while studying Typeface Design in Reading.<br /> It wasn’t until several years later that the collective forms and development of the design began to materialise. Brick was initially released in 2019, in three weights, and was further extended in 2020 becoming a five weights (ExtraLight, Light, Regular, Medium & Black) type family, across two optical sizes (Text & Display) and it is available to license exclusively through <a href='https://www.colophon-foundry.org/typefaces/brick/' rel='noreferrer' target='_blank' className='linkInText'><u>Colophon Foundry</u></a>, in both Standard (‘STD’) and Professional (‘PRO’) versions. The latter encapsulates the prominent Truman brewery’s unique personality through an exhaustive series of OpenType features and stylistic alternates available within the PRO variant. If you want to know more about Brick's development, don't miss <a href='https://medium.com/@Colophon/brick-a-new-font-brewing-e2a982e39c8f' rel='noreferrer' target='_blank' className='linkInText'><u>the article</u></a> I wrote with Colophon, where you can learn a lot more about the project.",
     "sources": [
       {
         "type": "img",
-        "img": "/Brick/2.jpg",
+        "img": "https://res.cloudinary.com/lali/image/upload/v1643611443/2_je48st.jpg",
         "rows": 4,
         "cols": 4
       },
@@ -2800,6 +2830,7 @@
 
   "architecture": {
     "name": "Architecture +",
+    "slug": "architecture+",
     "id": 31,
     "type": "graphic",
     "year": "2020",
@@ -2819,7 +2850,7 @@
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610341/1_dhg6eg.mp4",
-        "poster": "/Architecture/Poster/1.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613553/1_mkju2j.png",
         "rows": 2,
         "cols": 2
       },
@@ -2832,7 +2863,7 @@
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610344/2_s5xynp.mp4",
-        "poster": "/Architecture/Poster/2.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613553/2_tvxugq.png",
         "rows": 2,
         "cols": 2
       },
@@ -2846,7 +2877,7 @@
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610348/4_td1uvz.mp4",
-        "poster": "/Architecture/Poster/3.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613555/3_gqzbzx.png",
         "rows": 2,
         "cols": 2
       },
@@ -2861,7 +2892,7 @@
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610346/6_xxsppb.mp4",
-        "poster": "/Architecture/Poster/4.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613555/4_t0jdev.png",
         "rows": 2,
         "cols": 2
       },
@@ -2875,21 +2906,21 @@
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610380/9_adinpu.mp4",
-        "poster": "/Architecture/Poster/7.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613596/7_wqia0g.png",
         "rows": 2,
         "cols": 2
       },
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610388/10_e5jzpb.mp4",
-        "poster": "/Architecture/Poster/6.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613594/6_p2u0ow.png",
         "rows": 2,
         "cols": 2
       },
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610368/11_qyp6ky.mp4",
-        "poster": "/Architecture/Poster/5.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613597/5_decjho.png",
         "rows": 2,
         "cols": 2
       },
@@ -2903,7 +2934,7 @@
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610513/1_kbz8sc.mp4",
-        "poster": "/Architecture/Poster/10.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613559/10_y9hvcq.png",
         "rows": 2,
         "cols": 2
       },
@@ -2916,7 +2947,7 @@
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610517/2_fnat9c.mp4",
-        "poster": "/Architecture/Poster/11.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613565/11_xow1mx.png",
         "rows": 2,
         "cols": 2
       },
@@ -2929,7 +2960,7 @@
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610520/4_ibnmna.mp4",
-        "poster": "/Architecture/Poster/8.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613561/8_lerd91.png",
         "rows": 2,
         "cols": 2
       },
@@ -2942,7 +2973,7 @@
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610521/6_i7od6k.mp4",
-        "poster": "/Architecture/Poster/9.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613562/9_rvhuhk.png",
         "rows": 2,
         "cols": 2
       },
@@ -2955,21 +2986,21 @@
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610580/8_h26hwr.mp4",
-        "poster": "/Architecture/Poster/12.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613608/12_dyidls.png",
         "rows": 2,
         "cols": 2
       },
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610558/9_nskzuu.mp4",
-        "poster": "/Architecture/Poster/14.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613589/14_qbwo4u.png",
         "rows": 2,
         "cols": 2
       },
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610567/10_cjsddz.mp4",
-        "poster": "/Architecture/Poster/13.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613594/13_xwu49g.png",
         "rows": 2,
         "cols": 2
       },
@@ -2982,7 +3013,7 @@
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610716/1_nrviqh.mp4",
-        "poster": "/Architecture/Poster/15.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613561/15_eewtra.png",
         "rows": 2,
         "cols": 2
       },
@@ -3007,21 +3038,21 @@
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610769/Ali_b9blmv.mp4",
-        "poster": "/Architecture/Poster/16.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613584/16_q9jffu.png",
         "rows": 2,
         "cols": 2
       },
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610787/Comp_ktq16x.mp4",
-        "poster": "/Architecture/Poster/17.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613598/17_etqbno.png",
         "rows": 2,
         "cols": 2
       },
       {
         "type": "video",
         "url": "https://res.cloudinary.com/lali/video/upload/v1643610822/Mina_dszpux.mp4",
-        "poster": "/Architecture/Poster/18.png",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1643613607/18_irnrbj.png",
         "rows": 2,
         "cols": 2
       },
@@ -3059,6 +3090,7 @@
   },
   "beyond": {
     "name": "Beyond The Box",
+    "slug": "beyond-the-box",
     "id": 32,
     "type": "graphic",
     "year": "2011",

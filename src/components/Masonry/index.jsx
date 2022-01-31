@@ -15,7 +15,6 @@ const useStyles = makeStyles({
 });
 
 export default function Masonry({ data, video }) {
-  console.log('data', data);
   const classes = useStyles();
 
   return (
@@ -24,7 +23,7 @@ export default function Masonry({ data, video }) {
         <Link
           key={project.id}
           href={`/graphic-design/[slug]`}
-          as={`/graphic-design/${project.name}`}
+          as={`/graphic-design/${project.slug}`}
         >
           <a>
             <div className='container'>
