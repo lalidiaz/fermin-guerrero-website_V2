@@ -1,55 +1,48 @@
 import Head from 'next/head';
-import { useState, useRouter } from 'react';
 import { getPaths, getProject, getProjectsData } from '@/utils/helpers';
-import { ImageGallery } from '@/components/index';
-import Grid from '@mui/material/Grid';
+import {
+  ImageGallery,
+  CoverImg,
+  Credits,
+  Tags,
+  Description,
+} from '@/components/index';
 
 export default function Graphic({ data, projects, path }) {
   return (
-    <>
-      <div className='container'>
-        {data.map((element) => {
-          return (
-            <>
-              <Head>
-                <title>{element.name}</title>
-                <meta name='description' content={element.description} />
-              </Head>
+    <div className='container'>
+      {data.map((element) => (
+        <>
+          <Head>
+            <title>{element.name}</title>
+            <meta name='description' content={element.description} />
+          </Head>
 
-              {/* <CoverImage element={element} /> */}
+          <div key={element.id}>
+            <CoverImg element={element} />
+            <div className='grid-container'>
+              <div>
+                <p className='name'>{element.name}</p>
+              </div>
+              <div className='year-and-tags'>
+                <p>{element.year}</p>
 
-              <Grid container>
-                <div className='grid-container'>
-                  <Grid item xs={12} lg={2}>
-                    <div className='name'>{element.name}</div>
-                    {/* <SocialMedia element={element} /> */}
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    lg={4}
-                    // className={styles.tagYearContainer}
-                  >
-                    {/* <div>
-                  <p>{element.year}</p>
+                <div>
                   <Credits element={element} />
+                  <Tags element={element} />
                 </div>
-                <Tags element={element} /> */}
-                  </Grid>
-                  {/* <DescriptionProject element={element} /> */}
-                </div>
-              </Grid>
-              <ImageGallery element={data} />
-              {/* <NavigationProject
-            element={element}
-            navigationProjects={navigationProjects}
-          /> */}
-            </>
-          );
-        })}
-      </div>
-    </>
+              </div>
+
+              <div className='description'>
+                <Description element={element.description} />
+              </div>
+            </div>
+
+            <ImageGallery element={element} />
+          </div>
+        </>
+      ))}
+    </div>
   );
 }
 

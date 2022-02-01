@@ -1,5 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageListItem, ImageList } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+
+const stylesImgList = makeStyles({
+  imageList: {
+    width: '100%',
+    height: '100%',
+    ['@media (max-width:480px)']: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+  },
+});
 
 function srcset(image, size, rows = 1, cols = 1) {
   return `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format 1x,
@@ -7,10 +19,24 @@ function srcset(image, size, rows = 1, cols = 1) {
 }
 
 export default function ImageGallery({ element }) {
-  console.log(
-    'element',
-    element.map((item) => item.sources)
-  );
+  const classes = stylesImgList();
+  console.log('element', element);
+  // console.log(
+  //   'element map',
+  //   element.map((item) => item.sources)
+  // );
+
+  // const iterate = (obj) => {
+  //   Object.keys(obj).forEach((key) => {
+  //     console.log(`key: ${key}, value: ${obj[key]}`);
+
+  //     if (typeof obj[key] === 'object' && obj[key] !== null) {
+  //       iterate(obj[key]);
+  //     }
+  //   });
+  // };
+
+  // console.log('iterate func', iterate(element));
 
   return (
     <ImageList
@@ -18,18 +44,17 @@ export default function ImageGallery({ element }) {
       variant='quilted'
       cols={4}
       rowHeight='auto'
-      // className={classes.imageList}
+      className={classes.imageList}
     >
       {Object.values(element.sources).map((source) => {
-        console.log('source', source);
         return (
           <ImageListItem
             key={element.id}
-            // cols={cols}
-            // rows={rows}
-            // className={styles.imageListItem}
+            cols={source.cols}
+            rows={source.rows}
+            className='image-listItem'
           >
-            {/* {type === 'img' ? (
+            {source.type === 'img' ? (
               <img
                 style={{
                   width: '100%',
@@ -37,12 +62,11 @@ export default function ImageGallery({ element }) {
                   objectFit: 'cover',
                   objectPosition: 'center',
                 }}
-                src={img}
+                src={source.img}
                 alt='graphic-design'
-                srcSet={srcset(img, 121, rows, cols)}
+                srcSet={srcset(source.img, 121, source.rows, source.cols)}
               />
             ) : (
-              // <LazyLoad>
               <video
                 autoPlay
                 muted
@@ -51,13 +75,15 @@ export default function ImageGallery({ element }) {
                 webkit-playsinline
                 controls
                 controlsList='nofullscreen'
-                // className={styles.video}
-                poster={poster}
+                className='video'
+                poster={source.poster}
               >
-                <source src={img} srcSet={srcset(img, 121, rows, cols)} />
+                <source
+                  src={source.url}
+                  srcSet={srcset(source.url, 121, source.rows, source.cols)}
+                />
               </video>
-              // </LazyLoad>
-            )} */}
+            )}
           </ImageListItem>
         );
       })}

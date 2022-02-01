@@ -3097,7 +3097,7 @@
     "tags": ["Poster"],
     "credits": null,
     "mp4": false,
-    "image": "/CoverPhotos/Galleries/GalleryBeyond.jpg",
+    "image": "https://res.cloudinary.com/lali/image/upload/v1643691815/GalleryBeyond_krzrzm.jpg",
     "imageSlag": "https://res.cloudinary.com/lali/image/upload/v1643610969/1_ccqkaw.jpg",
     "description": "Identity, flyer and Poster design for an art exhibition under the theme Supergraphics. School project.",
     "sources": [

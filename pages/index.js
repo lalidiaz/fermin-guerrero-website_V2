@@ -23,7 +23,7 @@ export default function Home({ data }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main>
+      <main className='main-wrapper'>
         <Image
           layout='fill'
           style={{
