@@ -20,23 +20,6 @@ function srcset(image, size, rows = 1, cols = 1) {
 
 export default function ImageGallery({ element }) {
   const classes = stylesImgList();
-  console.log('element', element);
-  // console.log(
-  //   'element map',
-  //   element.map((item) => item.sources)
-  // );
-
-  // const iterate = (obj) => {
-  //   Object.keys(obj).forEach((key) => {
-  //     console.log(`key: ${key}, value: ${obj[key]}`);
-
-  //     if (typeof obj[key] === 'object' && obj[key] !== null) {
-  //       iterate(obj[key]);
-  //     }
-  //   });
-  // };
-
-  // console.log('iterate func', iterate(element));
 
   return (
     <ImageList
@@ -48,12 +31,7 @@ export default function ImageGallery({ element }) {
     >
       {Object.values(element.sources).map((source) => {
         return (
-          <ImageListItem
-            key={element.id}
-            cols={source.cols}
-            rows={source.rows}
-            className='image-listItem'
-          >
+          <ImageListItem key={element.id} cols={source.cols} rows={source.rows}>
             {source.type === 'img' ? (
               <img
                 style={{

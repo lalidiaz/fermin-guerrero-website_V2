@@ -5,20 +5,20 @@ import Link from 'next/link';
 import { makeStyles } from '@mui/styles';
 import Image from 'next/image';
 
-const useStyles = makeStyles({
-  label: {
-    ['@media (max-width:480px)']: {
-      display: 'flex',
-      flexDirection: 'column',
-    },
-  },
-});
+// const useStyles = makeStyles({
+//   label: {
+//     ['@media (max-width:480px)']: {
+//       display: 'flex',
+//       flexDirection: 'column',
+//     },
+//   },
+// });
 
 export default function Masonry({ data, video }) {
-  const classes = useStyles();
+  // const classes = useStyles();
 
   return (
-    <ImageList variant='masonry' cols={3} gap={13} className={classes.label}>
+    <ImageList variant='masonry' cols={3} gap={13}>
       {data.map((project) => (
         <Link
           key={project.id}
@@ -26,7 +26,7 @@ export default function Masonry({ data, video }) {
           as={`/graphic-design/${project.slug}`}
         >
           <a>
-            <div className='container'>
+            <div className='container-masonry'>
               <ImageListItem key={project.id}>
                 {project.id == 31 ? (
                   <video
@@ -37,16 +37,15 @@ export default function Masonry({ data, video }) {
                     loop
                     width='100%'
                     height='auto'
-                    className={classes.videoClass}
+                    className='video-masonry{'
                   >
                     <source src={video} type='video/mp4' />
                   </video>
                 ) : (
-                  <img src={project.image} alt={project.name} />
+                  <img src={project.image} alt={project.name} className="img-masonry"/>
                 )}
-                <div className='text'>
-                  <p>{project.name}</p>
-                </div>
+
+                <p className='text'>{project.name}</p>
               </ImageListItem>
             </div>
           </a>

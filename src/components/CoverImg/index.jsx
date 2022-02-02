@@ -10,18 +10,18 @@ export default function CoverImg({ element }) {
           playsinline
           webkit-playsinline
           controlsList='nofullscreen'
+          className='video-main-image'
         >
           <source src={element.mp4Slug} type='video/mp4' />
         </video>
       ) : (
-        <div>
-          <img
-            alt='graphic-design'
-            src={element.imageSlag}
-            width='800px'
-            height='534px'
-          />
-        </div>
+        <img
+          alt='graphic-design'
+          src={element.imageSlag}
+          className='graphic-design-img'
+          // width='800px'
+          // height='534px'
+        />
       )}
     </div>
   );

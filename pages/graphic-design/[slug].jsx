@@ -38,7 +38,9 @@ export default function Graphic({ data, projects, path }) {
               </div>
             </div>
 
-            <ImageGallery element={element} />
+            <div className='img-gallery-wrapper'>
+              <ImageGallery element={element} />
+            </div>
           </div>
         </>
       ))}

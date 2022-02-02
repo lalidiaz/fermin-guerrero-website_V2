@@ -10,7 +10,9 @@ export default function allProjects({ data, video }) {
         <meta name='description' content="Fermin Guerrero's projects." />
       </Head>
       <div className='main-wrapper'>
-        <Masonry data={data} video={video} />
+        <div className='masonry-wrap'>
+          <Masonry data={data} video={video} />
+        </div>
       </div>
     </>
   );

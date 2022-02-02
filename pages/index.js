@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useState } from 'react';
 import { getLandingData } from '@/utils/helpers';
 import Image from 'next/image';
+import { Footer } from '@/components/index';
 
 export default function Home({ data }) {
   const [img, setImg] = useState(0);
@@ -33,6 +34,8 @@ export default function Home({ data }) {
             width: '100%',
             height: '100%',
             top: '0',
+            left: '0',
+            right: '0',
           }}
           alt='graphic-design-image'
           src='https://res.cloudinary.com/lali/image/upload/v1643546446/BeyondTheBox_dpyev1.jpg'
@@ -40,6 +43,7 @@ export default function Home({ data }) {
         <div
           style={{
             top: '0',
+            left: '0',
             width: '100%',
             height: '100%',
             backgroundPosition: 'center',
@@ -51,7 +55,7 @@ export default function Home({ data }) {
         />
       </main>
 
-      <footer> Footer</footer>
+      <Footer component='home' />
     </div>
   );
 }

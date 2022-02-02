@@ -1,0 +1,115 @@
+{
+  "yearbook": {
+    "id": 1,
+    "title": "Yearbook of Type III",
+    "image": "https://res.cloudinary.com/lali/image/upload/v1643734826/ybt3_owa9xd.jpg",
+    "description": "Yearbook of Type III.",
+    "description2": "Project: Thesaurus.",
+    "year": "2018"
+  },
+  "contemporay": {
+    "id": 2,
+    "title": "Contemporary Typefaces Booklet (Slanted #30)",
+    "image": "https://res.cloudinary.com/lali/image/upload/v1643734826/slanted30_ondn1m.jpg",
+    "description": "Contemporary Typefaces Booklet (Slanted #30).",
+    "description2": "Project: Thesaurus.",
+    "year": "2017"
+  },
+  "novum17": {
+    "id": 3,
+    "title": "Novum magazine",
+    "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/novum2017_pprei0.jpg",
+    "description": "Novum magazine.",
+    "description2": "Project: Thesaurus.",
+    "year": ""
+  },
+  "typodarium17": {
+    "id": 4,
+    "title": "Typodarium 2017",
+    "image": "https://res.cloudinary.com/lali/image/upload/v1643734828/typodarium2017_xp0qdl.jpg",
+    "description": "Typodarium 2017.",
+    "description2": "Project: Exentra.",
+    "year": ""
+  },
+  "typodarium16": {
+    "id": 5,
+    "title": "Typodarium 2016",
+    "image": "https://res.cloudinary.com/lali/image/upload/v1643734826/typodarium2016_ntjdse.jpg",
+    "description": "Typodarium 2017.",
+    "description2": "Proyect: Viga.",
+    "year": "2016"
+  },
+  "etapes": {
+    "id": 6,
+    "title": "Étapes magazine (special graduate projects)",
+    "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/etapes2015_epzabw.jpg",
+    "description": "Étapes magazine (special graduate projects).",
+    "description2": "Project: Exentra.",
+    "year": "2015"
+  },
+  "apresAvant": {
+    "id": 7,
+    "title": "AprèsAvant magazine #2",
+    "image": "https://res.cloudinary.com/lali/image/upload/v1643734824/AA_zmapha.jpg",
+    "description": "AprèsAvant magazine #2.",
+    "description2": "Project: Viga.",
+    "year": "2014"
+  },
+  "idn": {
+    "id": 8,
+    "title": "IdN magazine Vol.21 #1",
+    "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/idn_xaxdkb.jpg",
+    "description": "IdN magazine Vol.21 #1.",
+    "description2": "Project: Various.",
+    "year": ""
+  },
+  "eco": {
+    "id": 9,
+    "title": "Eco Style in Furniture Design (book)",
+    "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/dopress_aftos2.jpg",
+    "description": "Eco Style in Furniture Design (book).",
+    "description2": "Project: Incaso.",
+    "year": "2013"
+  },
+  "plus81": {
+    "id": 10,
+    "title": "Plus81 magazine (World’s Best Poster Design)",
+    "image": "https://res.cloudinary.com/lali/image/upload/v1643734832/plus81_e6excf.jpg",
+    "description": "Plus81 magazine (World’s Best Poster Design).",
+    "description2": "Project: Various.",
+    "year": ""
+  },
+  "form": {
+    "id": 11,
+    "title": "Form magazine #247",
+    "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/form2_aco9ki.jpg",
+    "description": "Form magazine #247.",
+    "description2": "Project: Carte Blanche Poster.",
+    "year": ""
+  },
+  "typodarium": {
+    "id": 12,
+    "title": "Typodarium",
+    "image": "https://res.cloudinary.com/lali/image/upload/v1643734826/typodarium_pa4hmx.jpg",
+    "description": "Typodarium.",
+    "description2": "Project: Viga.",
+    "year": ""
+  },
+  "novum": {
+    "id": 13,
+    "title": " Novum magazine",
+    "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/novum_egedmo.jpg",
+    "description": "Novum magazine.",
+    "description2": "Project: various.",
+    "year": "2012"
+  },
+
+  "form243": {
+    "id": 14,
+    "title": "Form magazine #243",
+    "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/form_flidv3.jpg",
+    "description": "Form magazine #243.",
+    "description2": "Project: Manifesta.",
+    "year": ""
+  }
+}

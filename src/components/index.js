@@ -5,3 +5,5 @@ export { default as CoverImg } from './CoverImg';
 export { default as Credits } from './Credits';
 export { default as Tags } from './Tags';
 export { default as Description } from './Description';
+export { default as Footer } from './Footer';
+export { default as About } from './About';

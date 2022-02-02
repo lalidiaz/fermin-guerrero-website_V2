@@ -13,7 +13,9 @@ export default function graphicDesign({ data, video }) {
         />
       </Head>
       <div className='main-wrapper'>
-        <Masonry data={data} video={video} />
+        <div className='masonry-wrap'>
+          <Masonry data={data} video={video} />
+        </div>
       </div>
     </>
   );

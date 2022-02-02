@@ -2,16 +2,7 @@ import Head from 'next/head';
 import { Masonry } from '@/components/index';
 import { getProjectsData } from '@/utils/helpers';
 
-// const useStyles = makeStyles({
-//   root: {
-//     width: '100%',
-//     height: '100%',
-//   },
-// })
-
 export default function TypefaceDesign({ data }) {
-  // const classes = useStyles()
-
   return (
     <>
       <Head>
@@ -19,7 +10,9 @@ export default function TypefaceDesign({ data }) {
         <meta name='description' content="Fermin Guerrero's typefaces" />
       </Head>
       <div className='main-wrapper'>
-        <Masonry data={data} />
+        <div className='masonry-wrap'>
+          <Masonry data={data} />
+        </div>
       </div>
     </>
   );
