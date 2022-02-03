@@ -7,3 +7,7 @@ export { default as Tags } from './Tags';
 export { default as Description } from './Description';
 export { default as Footer } from './Footer';
 export { default as About } from './About';
+export { default as Time } from './Time';
+export { default as Contact } from './Contact';
+export { default as Awards } from './Awards';
+export { default as Exhibitions } from './Exhibitions';

@@ -221,3 +221,16 @@ footer {
     grid-row: 3;
   }
 }
+
+// HOVERIMAGE
+.container-media {
+  height: 100px;
+
+  .media-img {
+    width: 290px;
+    height: auto;
+    object-fit: contain;
+    cursor: pointer;
+    pointer-events: none;
+  }
+}

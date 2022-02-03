@@ -1,5 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRef, useEffect, useState } from 'react';
+import {
+  About,
+  Contact,
+  Awards,
+  Exhibitions,
+  Footer,
+} from '@/components/index';
+import Item from '@/components/HoverImage/Item';
 import Head from 'next/head';
 import {
   getArticlesData,
@@ -131,73 +139,44 @@ export default function Info({
           </div>
 
           <section className='sectionInfo' id='about' ref={aboutRef}>
-            {/* <About /> */}
+            <About />
           </section>
           <section className='sectionInfo' id='contact' ref={contactRef}>
-            {/* <Contact /> */}
+            <Contact />
           </section>
 
           <section className='sectionInfo' id='press' ref={pressRef}>
             <div className='boxPress'>
               <div className='pageWrapper'>
                 <div className='projectList'>
-                  <Grid item xs={12} container>
-                    <Grid container direction='row'>
-                      <Grid item lg={2} />
-                      <Grid item lg={2} />
-                      <Grid item xs={3} lg={3}>
-                        <Box
-                          style={{
-                            color: 'white',
-                            marginBottom: '50px',
-                            paddingTop: '50px',
-                          }}
-                        >
-                          Print (selected):
-                        </Box>
-                      </Grid>
-                      <Grid item xs={6} lg={4} />
-                      <Grid item xs={1} lg={1} />
-                    </Grid>
-                  </Grid>
+                  <div>
+                    <p>Print (selected):</p>
+                  </div>
 
-                  {press.map((item, index) => (
-                    <div key={item.id}>
-                      {/* <Item
+                  <ul>
+                    {press.map((item, index) => (
+                      <Item
+                        key={item.id}
                         description={item.description}
                         description2={item.description2}
                         year={item.year}
                         index={index}
                         press={press}
-                      /> */}
-                    </div>
-                  ))}
+                      />
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>
-            <Grid item xs={12} container>
-              <Grid container direction='row'>
-                <Grid item lg={2} />
-                <Grid item lg={2} />
-                <Grid item xs={3} lg={3}>
-                  <Box
-                    style={{
-                      color: 'white',
-                      marginBottom: '35px',
-                    }}
-                  >
-                    Online (selected):
-                  </Box>
-                </Grid>
-                <Grid item xs={6} lg={4} />
-                <Grid item xs={1} lg={1} />
-              </Grid>
-            </Grid>
+            <div>
+              <p> Online (selected):</p>
+            </div>
+
             {/* <OnlinePress pressOnlineData={pressOnlineData} /> */}
           </section>
 
           <section className='sectionInfo' id='awards' ref={awardsRef}>
-            {/* <Awards awardsData={awardsData} /> */}
+            <Awards awardsData={awardsData} />
           </section>
           <section className='sectionInfo' id='articles' ref={articlesRef}>
             <div className='boxPress'>
@@ -211,7 +190,7 @@ export default function Info({
                         target='_blank'
                         rel='noreferrer'
                       >
-                        {/* <Item
+                        <Item
                           linkDescription={item.linkDescription}
                           url={item.url}
                           description={item.description}
@@ -219,7 +198,7 @@ export default function Info({
                           year={item.year}
                           index={index}
                           articles={articles}
-                        /> */}
+                        />
                       </a>
                     </div>
                   ))}
@@ -232,11 +211,13 @@ export default function Info({
             id='exhibitions'
             ref={exhibitionsRef}
           >
-            {/* <Exhibitions exhibitions={exhibitions} /> */}
+            <Exhibitions exhibitions={exhibitions} />
           </section>
           <div className='bottomSpacer' />
         </div>
-        <div className='footerDiv'>{/* <Footer /> */}</div>
+        <div className='footerDiv'>
+          <Footer />{' '}
+        </div>
       </div>
     </>
   );
