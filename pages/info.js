@@ -6,6 +6,7 @@ import {
   Awards,
   Exhibitions,
   Footer,
+  HoverComponent,
 } from '@/components/index';
 import Item from '@/components/HoverImage/Item';
 import Head from 'next/head';
@@ -15,9 +16,6 @@ import {
   getPressData,
   getAwardsData,
 } from '@/utils/helpers';
-
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 
 const getDimensions = (ele) => {
   const { height } = ele.getBoundingClientRect();
@@ -121,7 +119,7 @@ export default function Info({
           /> */}
         </div>
         <div className='content-info'>
-          <div className='sticky' ref={sidenavRef}>
+          <aside className='sticky' id='aside' ref={sidenavRef}>
             {sectionRefs.map((item) => (
               <button
                 key={item.section}
@@ -136,87 +134,68 @@ export default function Info({
                 {item.name}
               </button>
             ))}
-          </div>
+          </aside>
 
-          <section className='sectionInfo' id='about' ref={aboutRef}>
-            <About />
-          </section>
-          <section className='sectionInfo' id='contact' ref={contactRef}>
-            <Contact />
-          </section>
+          <div className='sections-wrapper'>
+            <section id='about' ref={aboutRef}>
+              <About />
+            </section>
+            <section className='sectionInfo' id='contact' ref={contactRef}>
+              <Contact />
+            </section>
 
-          <section className='sectionInfo' id='press' ref={pressRef}>
-            <div className='boxPress'>
-              <div className='pageWrapper'>
-                <div className='projectList'>
-                  <div>
-                    <p>Print (selected):</p>
-                  </div>
+            <section className='sectionInfo' id='press' ref={pressRef}>
+              <HoverComponent data={press} title='Print (selected):' />
+              {/* <div>
+                <p> Online (selected):</p>
+              </div> */}
 
-                  <ul>
-                    {press.map((item, index) => (
-                      <Item
-                        key={item.id}
-                        description={item.description}
-                        description2={item.description2}
-                        year={item.year}
-                        index={index}
-                        press={press}
-                      />
+              {/* <OnlinePress pressOnlineData={pressOnlineData} /> */}
+            </section>
+
+            <section className='sectionInfo' id='awards' ref={awardsRef}>
+              <Awards awardsData={awardsData} />
+            </section>
+            <section className='sectionInfo' id='articles' ref={articlesRef}>
+              <div className='boxPress'>
+                <div className='pageWrapper' style={{ paddingTop: '50px' }}>
+                  <div className='projectList'>
+                    {articles.map((item, index) => (
+                      <div key={item.id}>
+                        <a
+                          className='linkArticle'
+                          href={item.url}
+                          target='_blank'
+                          rel='noreferrer'
+                        >
+                          <Item
+                            linkDescription={item.linkDescription}
+                            url={item.url}
+                            description={item.description}
+                            description2={item.description2}
+                            year={item.year}
+                            index={index}
+                            articles={articles}
+                          />
+                        </a>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div>
-              <p> Online (selected):</p>
-            </div>
-
-            {/* <OnlinePress pressOnlineData={pressOnlineData} /> */}
-          </section>
-
-          <section className='sectionInfo' id='awards' ref={awardsRef}>
-            <Awards awardsData={awardsData} />
-          </section>
-          <section className='sectionInfo' id='articles' ref={articlesRef}>
-            <div className='boxPress'>
-              <div className='pageWrapper' style={{ paddingTop: '50px' }}>
-                <div className='projectList'>
-                  {articles.map((item, index) => (
-                    <div key={item.id}>
-                      <a
-                        className='linkArticle'
-                        href={item.url}
-                        target='_blank'
-                        rel='noreferrer'
-                      >
-                        <Item
-                          linkDescription={item.linkDescription}
-                          url={item.url}
-                          description={item.description}
-                          description2={item.description2}
-                          year={item.year}
-                          index={index}
-                          articles={articles}
-                        />
-                      </a>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
-          <section
-            className='sectionInfo'
-            id='exhibitions'
-            ref={exhibitionsRef}
-          >
-            <Exhibitions exhibitions={exhibitions} />
-          </section>
-          <div className='bottomSpacer' />
+            </section>
+            <section
+              className='sectionInfo'
+              id='exhibitions'
+              ref={exhibitionsRef}
+            >
+              <Exhibitions exhibitions={exhibitions} />
+            </section>
+            {/* <div className='bottomSpacer' /> */}
+          </div>
         </div>
         <div className='footerDiv'>
-          <Footer />{' '}
+          <Footer />
         </div>
       </div>
     </>
