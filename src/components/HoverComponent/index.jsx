@@ -1,52 +1,46 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from 'react';
 
-export default function HoverComponent({ data, title }) {
+export default function HoverComponent({
+  data,
+  year,
+  description,
+  descriptionTwo,
+  index,
+  link,
+  url,
+}) {
   const [activeIndex, setActiveIndex] = useState(-1);
 
-  console.log('activeIndex', activeIndex);
-  console.log('data', data.image);
   return (
     <div className='hover-component-grid'>
-      <p className='hover-component-grid-p'>{title}</p>
-
       <ul className='hover-component-content'>
-        {data.map((item, index) => (
-          <section className='hover-component-section' id='research' key={item}>
-            <p className='hover-component-year'>{item.year}</p>
+        <section className='hover-component-section' id='research'>
+          <p className='hover-component-year'>{year}</p>
 
-            {/* <div
-              className='hover-component-section-link-description'
-              onMouseEnter={() => setActiveIndex(index)}
-              onMouseLeave={() => setActiveIndex(-1)}
-            >
-              {item.linkDescription && (
-                <p>
-                  <u>{item.linkDescription}</u>
-                </p>
-              )}
-            </div> */}
-
-            <div
-              onMouseEnter={() => setActiveIndex(index)}
-              onMouseLeave={() => setActiveIndex(-1)}
-            >
-              <p className='hover-component-section-description'>
-                {item.description}
-              </p>
-              <p className='hover-component-section-description-two'>
-                {item.description2}
-              </p>
-            </div>
-            <div className='hover-component-section-media'>
+          <div
+            onMouseEnter={() => setActiveIndex(index)}
+            onMouseLeave={() => setActiveIndex(-1)}
+            className='hover-component-section-description'
+          >
+            {link && (
+              <a href={url} target='_blank' rel='noreferrer'>
+                <u>{link}</u>
+              </a>
+            )}
+            <p>{description}</p>
+            <p>{descriptionTwo}</p>
+          </div>
+          <div className='hover-component-section-media'>
+            {activeIndex && data[activeIndex]?.image && (
               <img
-                src={data[index].image}
+                src={data[activeIndex]?.image}
                 alt='article-image'
                 className='media-img'
               />
-            </div>
-          </section>
-        ))}
+            )}
+          </div>
+        </section>
       </ul>
     </div>
   );

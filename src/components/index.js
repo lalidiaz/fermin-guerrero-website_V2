@@ -9,6 +9,4 @@ export { default as Footer } from './Footer';
 export { default as About } from './About';
 export { default as Time } from './Time';
 export { default as Contact } from './Contact';
-export { default as Awards } from './Awards';
-export { default as Exhibitions } from './Exhibitions';
 export { default as HoverComponent } from './HoverComponent';

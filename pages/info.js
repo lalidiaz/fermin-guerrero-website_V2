@@ -1,14 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRef, useEffect, useState } from 'react';
-import {
-  About,
-  Contact,
-  Awards,
-  Exhibitions,
-  Footer,
-  HoverComponent,
-} from '@/components/index';
-import Item from '@/components/HoverImage/Item';
+import { About, Contact, Footer, HoverComponent } from '@/components/index';
 import Head from 'next/head';
 import {
   getArticlesData,
@@ -39,11 +31,17 @@ const scrollTo = (ele) => {
 export default function Info({
   articlesData,
   pressData,
-  exhibitions,
+  exhibitionsData,
   awardsData,
 }) {
-  const articles = Object.values(articlesData).map((element) => element);
-  const press = Object.values(pressData).map((element) => element);
+  const getObjects = (data) => {
+    return Object.values(data).map((element) => element);
+  };
+
+  const articles = getObjects(articlesData);
+  const press = getObjects(pressData);
+  const exhibitions = getObjects(exhibitionsData);
+  const awards = getObjects(awardsData);
 
   const [visibleSection, setVisibleSection] = useState();
 
@@ -145,7 +143,20 @@ export default function Info({
             </section>
 
             <section className='sectionInfo' id='press' ref={pressRef}>
-              <HoverComponent data={press} title='Print (selected):' />
+              <p className='hover-title'>Print (selected):</p>
+              {press.map((item, index) => {
+                const { description, descriptionTwo, year } = item;
+                return (
+                  <HoverComponent
+                    data={press}
+                    year={year}
+                    description={description}
+                    descriptionTwo={descriptionTwo}
+                    key={item}
+                    index={index}
+                  />
+                );
+              })}
               {/* <div>
                 <p> Online (selected):</p>
               </div> */}
@@ -154,44 +165,56 @@ export default function Info({
             </section>
 
             <section className='sectionInfo' id='awards' ref={awardsRef}>
-              <Awards awardsData={awardsData} />
+              {awards.map((item, index) => (
+                <div className='awards-container' key={index}>
+                  <p className='awards-year'>{item.year}</p>
+                  <div className='awards-title'>
+                    <p>{item.title}</p>
+                  </div>
+
+                  <p className='awards-prize'>{item.prize}</p>
+                </div>
+              ))}
             </section>
             <section className='sectionInfo' id='articles' ref={articlesRef}>
-              <div className='boxPress'>
-                <div className='pageWrapper' style={{ paddingTop: '50px' }}>
-                  <div className='projectList'>
-                    {articles.map((item, index) => (
-                      <div key={item.id}>
-                        <a
-                          className='linkArticle'
-                          href={item.url}
-                          target='_blank'
-                          rel='noreferrer'
-                        >
-                          <Item
-                            linkDescription={item.linkDescription}
-                            url={item.url}
-                            description={item.description}
-                            description2={item.description2}
-                            year={item.year}
-                            index={index}
-                            articles={articles}
-                          />
-                        </a>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              {articles.map((item, index) => {
+                const {
+                  linkDescription,
+                  url,
+                  year,
+                  description,
+                  description2,
+                } = item;
+                return (
+                  <HoverComponent
+                    link={linkDescription}
+                    url={url}
+                    data={articles}
+                    year={year}
+                    description={description}
+                    descriptionTwo={description2}
+                    key={item}
+                    index={index}
+                  />
+                );
+              })}
             </section>
             <section
               className='sectionInfo'
               id='exhibitions'
               ref={exhibitionsRef}
             >
-              <Exhibitions exhibitions={exhibitions} />
+              {exhibitions.map((item, index) => (
+                <div className='exhibitions-container' key={index}>
+                  <p className='exhibitions-year'>{item.year}</p>
+                  <div className='exhibitions-title'>
+                    <p>{item.title}</p>
+                  </div>
+
+                  <p className='exhibitions-country'>{item.country}</p>
+                </div>
+              ))}
             </section>
-            {/* <div className='bottomSpacer' /> */}
           </div>
         </div>
         <div className='footerDiv'>
@@ -205,7 +228,7 @@ export default function Info({
 export async function getStaticProps() {
   const articlesData = await getArticlesData();
   const pressData = await getPressData();
-  const exhibitions = await getExhibitionsData();
+  const exhibitionsData = await getExhibitionsData();
   const awardsData = await getAwardsData();
   // const p = await getOnlinePressData()
 
@@ -213,7 +236,7 @@ export async function getStaticProps() {
     props: {
       articlesData,
       pressData,
-      exhibitions,
+      exhibitionsData,
       awardsData,
       // pressOnlineData,
     },

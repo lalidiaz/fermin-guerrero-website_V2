@@ -5,7 +5,8 @@
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734826/ybt3_owa9xd.jpg",
     "description": "Yearbook of Type III.",
     "description2": "Project: Thesaurus.",
-    "year": "2018"
+    "year": "2018",
+    "online": false
   },
   "contemporay": {
     "id": 2,
@@ -13,7 +14,8 @@
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734826/slanted30_ondn1m.jpg",
     "description": "Contemporary Typefaces Booklet (Slanted #30).",
     "description2": "Project: Thesaurus.",
-    "year": "2017"
+    "year": "2017",
+    "online": false
   },
   "novum17": {
     "id": 3,
@@ -21,7 +23,8 @@
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/novum2017_pprei0.jpg",
     "description": "Novum magazine.",
     "description2": "Project: Thesaurus.",
-    "year": ""
+    "year": "",
+    "online": false
   },
   "typodarium17": {
     "id": 4,
@@ -29,7 +32,8 @@
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734828/typodarium2017_xp0qdl.jpg",
     "description": "Typodarium 2017.",
     "description2": "Project: Exentra.",
-    "year": ""
+    "year": "",
+    "online": false
   },
   "typodarium16": {
     "id": 5,
@@ -37,7 +41,8 @@
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734826/typodarium2016_ntjdse.jpg",
     "description": "Typodarium 2017.",
     "description2": "Proyect: Viga.",
-    "year": "2016"
+    "year": "2016",
+    "online": false
   },
   "etapes": {
     "id": 6,
@@ -45,7 +50,8 @@
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/etapes2015_epzabw.jpg",
     "description": "Étapes magazine (special graduate projects).",
     "description2": "Project: Exentra.",
-    "year": "2015"
+    "year": "2015",
+    "online": false
   },
   "apresAvant": {
     "id": 7,
@@ -53,7 +59,8 @@
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734824/AA_zmapha.jpg",
     "description": "AprèsAvant magazine #2.",
     "description2": "Project: Viga.",
-    "year": "2014"
+    "year": "2014",
+    "online": false
   },
   "idn": {
     "id": 8,
@@ -61,7 +68,8 @@
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/idn_xaxdkb.jpg",
     "description": "IdN magazine Vol.21 #1.",
     "description2": "Project: Various.",
-    "year": ""
+    "year": "",
+    "online": false
   },
   "eco": {
     "id": 9,
@@ -69,7 +77,8 @@
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/dopress_aftos2.jpg",
     "description": "Eco Style in Furniture Design (book).",
     "description2": "Project: Incaso.",
-    "year": "2013"
+    "year": "2013",
+    "online": false
   },
   "plus81": {
     "id": 10,
@@ -77,7 +86,8 @@
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734832/plus81_e6excf.jpg",
     "description": "Plus81 magazine (World’s Best Poster Design).",
     "description2": "Project: Various.",
-    "year": ""
+    "year": "",
+    "online": false
   },
   "form": {
     "id": 11,
@@ -85,7 +95,8 @@
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/form2_aco9ki.jpg",
     "description": "Form magazine #247.",
     "description2": "Project: Carte Blanche Poster.",
-    "year": ""
+    "year": "",
+    "online": false
   },
   "typodarium": {
     "id": 12,
@@ -93,7 +104,8 @@
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734826/typodarium_pa4hmx.jpg",
     "description": "Typodarium.",
     "description2": "Project: Viga.",
-    "year": ""
+    "year": "",
+    "online": false
   },
   "novum": {
     "id": 13,
@@ -101,7 +113,8 @@
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/novum_egedmo.jpg",
     "description": "Novum magazine.",
     "description2": "Project: various.",
-    "year": "2012"
+    "year": "2012",
+    "online": false
   },
 
   "form243": {
@@ -110,6 +123,7 @@
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/form_flidv3.jpg",
     "description": "Form magazine #243.",
     "description2": "Project: Manifesta.",
-    "year": ""
+    "year": "",
+    "online": false
   }
 }

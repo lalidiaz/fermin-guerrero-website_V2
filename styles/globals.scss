@@ -216,7 +216,6 @@ footer {
     font-size: 20px;
 
     .sticky {
-      border: 3px solid rgb(85, 85, 85);
       position: sticky;
       position: -webkit-sticky;
       top: 0;
@@ -266,32 +265,32 @@ footer {
 
   .email {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(8, 1fr);
 
     .email-p {
       grid-column: 1/3;
     }
     .email-content {
-      grid-column: 3/6;
+      grid-column: 3/8;
       padding-left: 3px;
 
       .time {
         display: flex;
         align-items: center;
-        grid-column: 7/12;
+        grid-column: 8/12;
       }
     }
   }
 
   .follow {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(8, 1fr);
 
     .follow-p {
       grid-column: 1/3;
     }
     .follow-content {
-      grid-column: 3/6;
+      grid-column: 3/8;
       padding-left: 3px;
     }
   }
@@ -299,39 +298,78 @@ footer {
 
 // HOVER COMPONENT
 .hover-component-grid {
-  border: 3px solid red;
-
-  .hover-component-grid-p {
-    font-weight: bold;
-  }
-
   .hover-component-content {
-    // display: grid;
-    // grid-template-columns: repeat(7, 1fr);
     .hover-component-section {
       display: grid;
-      grid-template-columns: repeat(7, 1fr);
+      grid-template-columns: repeat(8, 1fr);
+      padding-bottom: 100px;
+
       .hover-component-year {
         grid-column: 1/2;
       }
-      // .hover-component-section-content {
-      //   grid-column: 2/5;
-      //   border: 3px solid orange;
-      // }
 
       .hover-component-section-description {
-        border: 4px solid blue;
-        grid-column: 2/5;
+        grid-column: 3/7;
+        cursor: pointer;
       }
-      .hover-component-section-description-two {
-        
-      }
+
       .hover-component-section-media {
         .media-img {
-          width: 200px;
-          grid-column: 5/7;
+          width: 290px;
+          height: auto;
+          object-fit: contain;
+          cursor: pointer;
+          pointer-events: none;
+          grid-column: 7;
+          position: absolute;
         }
       }
     }
+  }
+}
+
+.articles-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  padding-bottom: 50px;
+
+  .articles-year {
+    grid-column: 1/2;
+  }
+  .articles-description {
+    grid-column: 3/8;
+    cursor: pointer;
+  }
+}
+
+.exhibitions-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  padding-bottom: 50px;
+
+  .exhibitions-year {
+    grid-column: 1/3;
+  }
+  .exhibitions-title {
+    grid-column: 3/8;
+  }
+  .exhibitions-country {
+    grid-column: 8;
+  }
+}
+
+.awards-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  padding-bottom: 50px;
+
+  .awards-year {
+    grid-column: 1/3;
+  }
+  .awards-title {
+    grid-column: 3/8;
+  }
+  .awards-prize {
+    grid-column: 8;
   }
 }
