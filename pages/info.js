@@ -38,8 +38,9 @@ export default function Info({
     return Object.values(data).map((element) => element);
   };
 
+  const pressPapers = pressData.papers;
+  const pressOnline = pressData.online;
   const articles = getObjects(articlesData);
-  const press = getObjects(pressData);
   const exhibitions = getObjects(exhibitionsData);
   const awards = getObjects(awardsData);
 
@@ -144,11 +145,11 @@ export default function Info({
 
             <section className='sectionInfo' id='press' ref={pressRef}>
               <p className='hover-title'>Print (selected):</p>
-              {press.map((item, index) => {
+              {pressPapers.map((item, index) => {
                 const { description, descriptionTwo, year } = item;
                 return (
                   <HoverComponent
-                    data={press}
+                    data={pressPapers}
                     year={year}
                     description={description}
                     descriptionTwo={descriptionTwo}
@@ -157,11 +158,23 @@ export default function Info({
                   />
                 );
               })}
-              {/* <div>
-                <p> Online (selected):</p>
-              </div> */}
+            </section>
 
-              {/* <OnlinePress pressOnlineData={pressOnlineData} /> */}
+            <section className='sectionInfo' id='press' ref={pressRef}>
+              <p className='hover-title'>Print (selected):</p>
+              {pressOnline.map((item, index) => {
+                const { url, year, title } = item;
+                return (
+                  <HoverComponent
+                    data={pressOnline}
+                    year={year}
+                    url={url}
+                    key={item}
+                    titlePressOnline={title}
+                    index={index}
+                  />
+                );
+              })}
             </section>
 
             <section className='sectionInfo' id='awards' ref={awardsRef}>

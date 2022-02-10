@@ -9,6 +9,7 @@ export default function HoverComponent({
   index,
   link,
   url,
+  titlePressOnline,
 }) {
   const [activeIndex, setActiveIndex] = useState(-1);
 
@@ -23,6 +24,11 @@ export default function HoverComponent({
             onMouseLeave={() => setActiveIndex(-1)}
             className='hover-component-section-description'
           >
+            {titlePressOnline && (
+              <a href={url} target='_blank' rel='noreferrer'>
+                <u>{titlePressOnline}</u>
+              </a>
+            )}
             {link && (
               <a href={url} target='_blank' rel='noreferrer'>
                 <u>{link}</u>

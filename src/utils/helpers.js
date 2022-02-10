@@ -89,8 +89,20 @@ export function getArticlesData() {
 
 // get Press
 export function getPressData() {
+  const papers = [];
+  const online = [];
   const parseData = parse('press.json');
-  return parseData;
+  Object.values(parseData).forEach((element) => {
+    if (element.online) {
+      online.push(element);
+    } else {
+      papers.push(element);
+    }
+  });
+  return {
+    papers,
+    online,
+  };
 }
 
 // get Exhibitions
@@ -102,11 +114,5 @@ export function getExhibitionsData() {
 //get awards
 export function getAwardsData() {
   const parseData = parse('awards.json');
-  return parseData;
-}
-
-//get Online press
-export function getOnlinePressData() {
-  const parseData = parse('pressOnline.json');
   return parseData;
 }
