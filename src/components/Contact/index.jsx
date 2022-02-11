@@ -17,7 +17,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id='contact' className='contact-component'>
+    <section className='contact-component'>
       <div className='email'>
         <p className='email-p'>Email</p>
         <div className='email-content'>

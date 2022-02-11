@@ -40,6 +40,7 @@ export default function Info({
 
   const pressPapers = pressData.papers;
   const pressOnline = pressData.online;
+  console.log('pressOnline', pressOnline);
   const articles = getObjects(articlesData);
   const exhibitions = getObjects(exhibitionsData);
   const awards = getObjects(awardsData);
@@ -57,10 +58,10 @@ export default function Info({
   const sectionRefs = [
     { section: 'about', ref: aboutRef, name: 'About' },
     { section: 'contact', ref: contactRef, name: 'Contact' },
+    { section: 'press', ref: pressRef, name: 'Press' },
     { section: 'awards', ref: awardsRef, name: 'Awards & Distinctions' },
     { section: 'articles', ref: articlesRef, name: 'Research & Articles' },
     { section: 'exhibitions', ref: exhibitionsRef, name: 'Exhibitions' },
-    { section: 'press', ref: pressRef, name: 'Press' },
   ];
 
   useEffect(() => {
@@ -118,25 +119,27 @@ export default function Info({
           /> */}
         </div>
         <div className='content-info'>
-          <aside className='sticky' id='aside' ref={sidenavRef}>
-            {sectionRefs.map((item) => (
-              <button
-                key={item.section}
-                type='button'
-                className={`header_link ${
-                  visibleSection === item.section && 'selected'
-                }`}
-                onClick={() => {
-                  scrollTo(item.ref.current);
-                }}
-              >
-                {item.name}
-              </button>
-            ))}
-          </aside>
+          <div className='navigation'>
+            <aside className='sticky' id='aside' ref={sidenavRef}>
+              {sectionRefs.map((item) => (
+                <button
+                  key={item.section}
+                  type='button'
+                  className={`header_link ${
+                    visibleSection === item.section && 'selected'
+                  }`}
+                  onClick={() => {
+                    scrollTo(item.ref.current);
+                  }}
+                >
+                  {item.name}
+                </button>
+              ))}
+            </aside>
+          </div>
 
           <div className='sections-wrapper'>
-            <section id='about' ref={aboutRef}>
+            <section className='sectionInfo' id='about' ref={aboutRef}>
               <About />
             </section>
             <section className='sectionInfo' id='contact' ref={contactRef}>
@@ -158,21 +161,19 @@ export default function Info({
                   />
                 );
               })}
-            </section>
 
-            <section className='sectionInfo' id='press' ref={pressRef}>
-              <p className='hover-title'>Print (selected):</p>
-              {pressOnline.map((item, index) => {
-                const { url, year, title } = item;
+              <p className='press-title'>Print Online (selected):</p>
+              {pressOnline.map((item) => {
+                const { url, year, title, id } = item;
                 return (
-                  <HoverComponent
-                    data={pressOnline}
-                    year={year}
-                    url={url}
-                    key={item}
-                    titlePressOnline={title}
-                    index={index}
-                  />
+                  <div className='press-container' key={id}>
+                    <p className='press-year'>{year}</p>
+                    <div className='press-title'>
+                      <a href={url} rel='noreferrer' target='_blank'>
+                        <u>{title}</u>
+                      </a>
+                    </div>
+                  </div>
                 );
               })}
             </section>

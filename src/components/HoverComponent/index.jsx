@@ -15,39 +15,37 @@ export default function HoverComponent({
 
   return (
     <div className='hover-component-grid'>
-      <ul className='hover-component-content'>
-        <section className='hover-component-section' id='research'>
-          <p className='hover-component-year'>{year}</p>
+      <section className='hover-component-section' id='research'>
+        <p className='hover-component-year'>{year}</p>
 
-          <div
-            onMouseEnter={() => setActiveIndex(index)}
-            onMouseLeave={() => setActiveIndex(-1)}
-            className='hover-component-section-description'
-          >
-            {titlePressOnline && (
-              <a href={url} target='_blank' rel='noreferrer'>
-                <u>{titlePressOnline}</u>
-              </a>
-            )}
-            {link && (
-              <a href={url} target='_blank' rel='noreferrer'>
-                <u>{link}</u>
-              </a>
-            )}
-            <p>{description}</p>
-            <p>{descriptionTwo}</p>
-          </div>
-          <div className='hover-component-section-media'>
-            {activeIndex && data[activeIndex]?.image && (
-              <img
-                src={data[activeIndex]?.image}
-                alt='article-image'
-                className='media-img'
-              />
-            )}
-          </div>
-        </section>
-      </ul>
+        <div
+          onMouseEnter={() => setActiveIndex(index)}
+          onMouseLeave={() => setActiveIndex(-1)}
+          className='hover-component-section-description'
+        >
+          {titlePressOnline && (
+            <a href={url} target='_blank' rel='noreferrer'>
+              <u>{titlePressOnline}</u>
+            </a>
+          )}
+          {link && (
+            <a href={url} target='_blank' rel='noreferrer'>
+              <u>{link}</u>
+            </a>
+          )}
+          <p>{description}</p>
+          <p>{descriptionTwo}</p>
+        </div>
+        <div className='hover-component-section-media'>
+          {activeIndex && data[activeIndex]?.image && (
+            <img
+              src={data[activeIndex]?.image}
+              alt='article-image'
+              className='media-img'
+            />
+          )}
+        </div>
+      </section>
     </div>
   );
 }

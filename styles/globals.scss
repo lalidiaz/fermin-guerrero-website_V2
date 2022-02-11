@@ -153,42 +153,50 @@ p {
 }
 
 // Footer
-
 footer {
   display: grid;
-  grid-template-columns: 2;
+  grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 3;
-  padding-bottom: 10px;
+  // padding-bottom: 10px;
   border-top: 1px solid white;
   padding-top: 5px;
   font-size: 16px;
+  padding: 10px 20px;
 
   .copyright {
-    grid-column: 1;
+    grid-column: 1/3;
     grid-row: 1;
     color: white;
   }
 
-  .twitter {
-    text-align: right;
-    grid-column: 2;
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-column: 6/13;
     grid-row: 1;
-  }
-  .instagram {
-    text-align: right;
-    grid-column: 2;
-    grid-row: 2;
-  }
-  .linkedin {
-    text-align: right;
-    grid-column: 2;
-    grid-row: 3;
+
+    .twitter {
+      text-align: right;
+      grid-column: 6;
+      grid-row: 1;
+    }
+    .linkedin {
+      text-align: right;
+      grid-column: 5;
+      grid-row: 1;
+    }
+    .instagram {
+      text-align: right;
+      grid-column: 4;
+      grid-row: 1;
+    }
   }
 }
 
 // HOVERIMAGE
 .container-media {
   height: 100px;
+  padding-left: 20px;
 
   .media-img {
     width: 290px;
@@ -215,48 +223,55 @@ footer {
     padding: 0px 20px;
     font-size: 20px;
 
-    .sticky {
-      position: sticky;
-      position: -webkit-sticky;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      z-index: 10;
+    .navigation {
       grid-column: 1/5;
+      height: 100%;
 
-      .header_link {
-        border: none;
-        background: transparent;
-        color: white;
-        text-align: left;
-        padding-top: 20px;
-        font-size: 20px;
-        cursor: pointer;
-      }
-      .selected {
-        font-style: normal;
-        font-weight: bold;
-        color: white;
+      .sticky {
+        padding-top: 50px;
+        position: sticky;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        z-index: 10;
+
+        .header_link {
+          border: none;
+          background: transparent;
+          color: white;
+          text-align: left;
+          padding-top: 10px;
+          font-size: 20px;
+          cursor: pointer;
+        }
+        .selected {
+          font-style: normal;
+          font-weight: bold;
+          color: white;
+        }
       }
     }
     .sections-wrapper {
       grid-column: 5/12;
       padding-left: 3px;
 
-      .sectionInfo {
-        padding: 100px 0px 0px;
-      }
-      #about {
-      }
-      #contact {
+      #about,
+      #contact,
+      #press,
+      #awards,
+      #articles {
+        padding-top: 50px;
       }
     }
   }
+}
+
+.hover-title {
+  padding-bottom: 20px;
 }
 
 //CONTACT
@@ -298,31 +313,29 @@ footer {
 
 // HOVER COMPONENT
 .hover-component-grid {
-  .hover-component-content {
-    .hover-component-section {
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      padding-bottom: 100px;
+  .hover-component-section {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    padding-bottom: 50px;
 
-      .hover-component-year {
-        grid-column: 1/2;
-      }
+    .hover-component-year {
+      grid-column: 1/2;
+    }
 
-      .hover-component-section-description {
-        grid-column: 3/7;
+    .hover-component-section-description {
+      grid-column: 3/8;
+      cursor: pointer;
+    }
+
+    .hover-component-section-media {
+      .media-img {
+        width: 240px;
+        height: auto;
+        object-fit: contain;
         cursor: pointer;
-      }
-
-      .hover-component-section-media {
-        .media-img {
-          width: 290px;
-          height: auto;
-          object-fit: contain;
-          cursor: pointer;
-          pointer-events: none;
-          grid-column: 7;
-          position: absolute;
-        }
+        pointer-events: none;
+        grid-column: 7;
+        position: absolute;
       }
     }
   }
@@ -330,8 +343,7 @@ footer {
 
 .articles-container {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  padding-bottom: 50px;
+  grid-template-columns: repeat(10, 1fr);
 
   .articles-year {
     grid-column: 1/2;
@@ -342,9 +354,12 @@ footer {
   }
 }
 
+#exhibitions {
+  padding-top: 100px;
+}
 .exhibitions-container {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(10, 1fr);
   padding-bottom: 50px;
 
   .exhibitions-year {
@@ -354,14 +369,14 @@ footer {
     grid-column: 3/8;
   }
   .exhibitions-country {
-    grid-column: 8;
+    grid-column: 9/11;
   }
 }
 
 .awards-container {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  padding-bottom: 50px;
+  grid-template-columns: repeat(10, 1fr);
+  padding-bottom: 20px;
 
   .awards-year {
     grid-column: 1/3;
@@ -370,6 +385,21 @@ footer {
     grid-column: 3/8;
   }
   .awards-prize {
-    grid-column: 8;
+    grid-column: 9/11;
+  }
+}
+
+.press-title {
+  padding-bottom: 20px;
+}
+.press-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  padding-bottom: 20px;
+  .press-year {
+    grid-column: 1/3;
+  }
+  .press-title {
+    grid-column: 3/8;
   }
 }

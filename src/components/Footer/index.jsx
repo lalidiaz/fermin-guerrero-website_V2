@@ -1,4 +1,24 @@
 export default function Footer({ component }) {
+  const links = [
+    {
+      id: 1,
+      name: 'Twitter',
+      href: 'https://twitter.com/fermin_guerrero',
+      className: 'twitter',
+    },
+    {
+      id: 2,
+      name: 'Instagram',
+      href: 'https://www.instagram.com/ferminguerrero_design/',
+      className: 'instagram',
+    },
+    {
+      id: 3,
+      name: 'Linkedin',
+      href: 'https://www.linkedin.com/in/fermin-guerrero-616237173/',
+      className: 'linkedin',
+    },
+  ];
   return (
     // <footer className={component === 'home' ? 'footerHome' : 'footerComponent'}>
     <footer>
@@ -6,35 +26,14 @@ export default function Footer({ component }) {
         ©2021 <span>&#8212; </span> Fermin Guerrero
       </div>
 
-      <div className='twitter'>
-        <a
-          className='social'
-          rel='noreferrer'
-          href='https://twitter.com/fermin_guerrero'
-          target='_blank'
-        >
-          <u>Twitter</u>
-        </a>
-      </div>
-      <div className='instagram'>
-        <a
-          className='social'
-          rel='noreferrer'
-          href='https://www.instagram.com/ferminguerrero_design/'
-          target='_blank'
-        >
-          <u>Instagram</u>
-        </a>
-      </div>
-      <div className='linkedin'>
-        <a
-          className='social'
-          rel='noreferrer'
-          href='https://www.linkedin.com/in/fermin-guerrero-616237173/'
-          target='_blank'
-        >
-          <u>Linkedin</u>
-        </a>
+      <div className='footer-links'>
+        {links.map((link) => (
+          <div className={link.className} key={link.id}>
+            <a rel='noreferrer' href={link.href} target='_blank'>
+              <u>{link.name}</u>
+            </a>
+          </div>
+        ))}
       </div>
     </footer>
   );
