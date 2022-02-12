@@ -1,20 +1,29 @@
-// 320px — 480px: Mobile devices.
-// 481px — 768px: iPads, Tablets.
-// 769px — 1024px: Small screens, laptops.
-
-@mixin phone {
-  @media (max-width: 599px) {
-    @content;
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (min-width: 320px) and (max-width: 480px) {
+      @content;
+    }
   }
-}
-@mixin tablet {
-  @media (min-width: 600px) {
-    @content;
+  @if $breakpoint == tablet {
+    @media (min-width: 481px) and (max-width: 768px) {
+      @content;
+    }
   }
-}
+  @if $breakpoint == smallscreen {
+    @media (min-width: 481px) and (max-width: 1024px) {
+      @content;
+    }
+  }
 
-@mixin desktop {
-  @media (min-width: 1200px) {
-    @content;
+  @if $breakpoint == bigscreen {
+    @media (min-width: 1201px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == extrabigscreen {
+    @media (min-width: 2000px) {
+      @content;
+    }
   }
 }

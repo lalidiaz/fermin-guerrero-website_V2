@@ -1,7 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
-import { useRef, useEffect, useState } from 'react';
-import { About, Contact, Footer, HoverComponent } from '@/components/index';
 import Head from 'next/head';
+import { useRef, useEffect, useState } from 'react';
+import {
+  About,
+  Contact,
+  Footer,
+  Press,
+  Awards,
+  Articles,
+  Exhibitions,
+  PressOnline,
+  InfoMobile,
+} from '@/components/index';
 import {
   getArticlesData,
   getExhibitionsData,
@@ -34,19 +44,7 @@ export default function Info({
   exhibitionsData,
   awardsData,
 }) {
-  const getObjects = (data) => {
-    return Object.values(data).map((element) => element);
-  };
-
-  const pressPapers = pressData.papers;
-  const pressOnline = pressData.online;
-  console.log('pressOnline', pressOnline);
-  const articles = getObjects(articlesData);
-  const exhibitions = getObjects(exhibitionsData);
-  const awards = getObjects(awardsData);
-
   const [visibleSection, setVisibleSection] = useState();
-
   const sidenavRef = useRef(null);
   const aboutRef = useRef(null);
   const contactRef = useRef(null);
@@ -55,6 +53,16 @@ export default function Info({
   const exhibitionsRef = useRef(null);
   const pressRef = useRef(null);
 
+  const getObjects = (data) => {
+    return Object.values(data).map((element) => element);
+  };
+
+  const articles = getObjects(articlesData);
+  const exhibitions = getObjects(exhibitionsData);
+  const awards = getObjects(awardsData);
+  const pressPapers = pressData.papers;
+  const pressOnline = pressData.online;
+
   const sectionRefs = [
     { section: 'about', ref: aboutRef, name: 'About' },
     { section: 'contact', ref: contactRef, name: 'Contact' },
@@ -62,6 +70,34 @@ export default function Info({
     { section: 'awards', ref: awardsRef, name: 'Awards & Distinctions' },
     { section: 'articles', ref: articlesRef, name: 'Research & Articles' },
     { section: 'exhibitions', ref: exhibitionsRef, name: 'Exhibitions' },
+  ];
+
+  const sectionsInfo = [
+    { component: <About />, id: 'about', ref: aboutRef },
+    { component: <Contact />, id: 'contact', ref: contactRef },
+    {
+      component: [
+        <Press data={pressPapers} title='Print (selected):' />,
+        <PressOnline data={pressOnline} title='Print Online (selected):' />,
+      ],
+      id: 'press',
+      ref: pressRef,
+    },
+    {
+      component: <Awards data={awards} />,
+      id: 'awards',
+      ref: awardsRef,
+    },
+    {
+      component: <Articles data={articles} />,
+      id: 'articles',
+      ref: articlesRef,
+    },
+    {
+      component: <Exhibitions data={exhibitions} />,
+      id: 'articles',
+      ref: exhibitionsRef,
+    },
   ];
 
   useEffect(() => {
@@ -109,16 +145,17 @@ export default function Info({
           alt='image-info-graphic-designer'
         />
 
-        <div className='mobileAbout'>
-          {/* <MobileSectionsMenu
-            press={press}
+        <div className='mobile-info'>
+          <InfoMobile
+            press={pressPapers}
+            pressOnline={pressOnline}
             articles={articles}
             exhibitions={exhibitions}
-            awardsData={awardsData}
-            pressOnlineData={pressOnlineData}
-          /> */}
+            awards={awards}
+            pressOnline={pressOnline}
+          />
         </div>
-        <div className='content-info'>
+        <div className='content-info-desktop'>
           <div className='navigation'>
             <aside className='sticky' id='aside' ref={sidenavRef}>
               {sectionRefs.map((item) => (
@@ -139,96 +176,12 @@ export default function Info({
           </div>
 
           <div className='sections-wrapper'>
-            <section className='sectionInfo' id='about' ref={aboutRef}>
-              <About />
-            </section>
-            <section className='sectionInfo' id='contact' ref={contactRef}>
-              <Contact />
-            </section>
-
-            <section className='sectionInfo' id='press' ref={pressRef}>
-              <p className='hover-title'>Print (selected):</p>
-              {pressPapers.map((item, index) => {
-                const { description, descriptionTwo, year } = item;
-                return (
-                  <HoverComponent
-                    data={pressPapers}
-                    year={year}
-                    description={description}
-                    descriptionTwo={descriptionTwo}
-                    key={item}
-                    index={index}
-                  />
-                );
-              })}
-
-              <p className='press-title'>Print Online (selected):</p>
-              {pressOnline.map((item) => {
-                const { url, year, title, id } = item;
-                return (
-                  <div className='press-container' key={id}>
-                    <p className='press-year'>{year}</p>
-                    <div className='press-title'>
-                      <a href={url} rel='noreferrer' target='_blank'>
-                        <u>{title}</u>
-                      </a>
-                    </div>
-                  </div>
-                );
-              })}
-            </section>
-
-            <section className='sectionInfo' id='awards' ref={awardsRef}>
-              {awards.map((item, index) => (
-                <div className='awards-container' key={index}>
-                  <p className='awards-year'>{item.year}</p>
-                  <div className='awards-title'>
-                    <p>{item.title}</p>
-                  </div>
-
-                  <p className='awards-prize'>{item.prize}</p>
-                </div>
-              ))}
-            </section>
-            <section className='sectionInfo' id='articles' ref={articlesRef}>
-              {articles.map((item, index) => {
-                const {
-                  linkDescription,
-                  url,
-                  year,
-                  description,
-                  description2,
-                } = item;
-                return (
-                  <HoverComponent
-                    link={linkDescription}
-                    url={url}
-                    data={articles}
-                    year={year}
-                    description={description}
-                    descriptionTwo={description2}
-                    key={item}
-                    index={index}
-                  />
-                );
-              })}
-            </section>
-            <section
-              className='sectionInfo'
-              id='exhibitions'
-              ref={exhibitionsRef}
-            >
-              {exhibitions.map((item, index) => (
-                <div className='exhibitions-container' key={index}>
-                  <p className='exhibitions-year'>{item.year}</p>
-                  <div className='exhibitions-title'>
-                    <p>{item.title}</p>
-                  </div>
-
-                  <p className='exhibitions-country'>{item.country}</p>
-                </div>
-              ))}
-            </section>
+            {sectionsInfo.map((item) => (
+              <section className='sectionInfo' id={item.id} ref={item.ref}>
+                {item.id !== 'press' && item.component}
+                {item.id === 'press' && item.component.map((comp) => comp)}
+              </section>
+            ))}
           </div>
         </div>
         <div className='footerDiv'>
@@ -244,7 +197,6 @@ export async function getStaticProps() {
   const pressData = await getPressData();
   const exhibitionsData = await getExhibitionsData();
   const awardsData = await getAwardsData();
-  // const p = await getOnlinePressData()
 
   return {
     props: {
@@ -252,7 +204,6 @@ export async function getStaticProps() {
       pressData,
       exhibitionsData,
       awardsData,
-      // pressOnlineData,
     },
   };
 }
