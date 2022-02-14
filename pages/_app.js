@@ -1,5 +1,5 @@
 import '../styles/globals.scss';
-import { Header } from '@/components/index';
+import { Header, MobileMenu } from '@/components/index';
 import { AnimatePresence } from 'framer-motion';
 
 function MyApp({ Component, pageProps }) {
@@ -11,7 +11,12 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
-      <Header />
+      <div className='desktop'>
+        <Header />
+      </div>
+      <div className='mobile'>
+        <MobileMenu />
+      </div>
       <Component {...pageProps} />
     </AnimatePresence>
   );

@@ -1,34 +1,8 @@
 import Link from '../ActiveLink';
 import styles from './header.module.scss';
+import { links } from '@/utils/links';
 
 export default function Header() {
-  const links = [
-    {
-      id: 1,
-      url: '/',
-      text: 'Fermin Guerrero',
-    },
-    {
-      id: 2,
-      url: '/graphic-design',
-      text: 'Graphic Design',
-    },
-    {
-      id: 3,
-      url: '/all',
-      text: '&',
-    },
-    {
-      id: 4,
-      url: '/typeface-design',
-      text: 'Typeface Design',
-    },
-    {
-      id: 5,
-      url: '/info',
-      text: 'Info',
-    },
-  ];
   return (
     <header className={styles.headerWrapper}>
       {links.map((link) => {

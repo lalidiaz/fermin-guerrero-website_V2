@@ -17,3 +17,4 @@ export { default as PressOnline } from './PressOnline';
 export { default as Articles } from './Articles';
 export { default as Accordion } from './Accordion';
 export { default as Awards } from './Awards';
+export { default as MobileMenu } from './MobileMenu';
