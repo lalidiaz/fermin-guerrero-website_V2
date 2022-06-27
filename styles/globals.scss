@@ -1,5 +1,5 @@
-@import url('https://use.typekit.net/yjx8ces.css');
-@import './mixins';
+@import url("https://use.typekit.net/yjx8ces.css");
+@import "./mixins";
 
 * {
   box-sizing: border-box;
@@ -12,7 +12,7 @@ div#__next,
 div#__next > div {
   padding: 0;
   margin: 0;
-  font-family: 'acumin-pro', sans-serif;
+  font-family: "acumin-pro", sans-serif;
   background: black;
   color: white;
 }
@@ -53,6 +53,10 @@ p {
   width: 100%;
 
   .masonry-wrap {
+    padding: 38px 20px;
+  }
+
+  .masonry-wrap-typeface {
     padding: 38px 20px;
   }
 }
@@ -138,21 +142,13 @@ p {
   outline-style: none;
 }
 
-.container-masonry {
-  .video-masonry {
-  }
-
-  .img-masonry {
-  }
-
+.masonry-item {
+  padding: 30px 0px;
   .text {
     font-size: 20px;
     padding-top: 20px;
     padding-bottom: 25px;
   }
-}
-
-.MuiImageList-root {
 }
 
 // Footer

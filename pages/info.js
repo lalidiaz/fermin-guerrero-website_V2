@@ -1,23 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import Head from 'next/head';
-import { useRef, useEffect, useState } from 'react';
-import {
-  About,
-  Contact,
-  Footer,
-  Press,
-  Awards,
-  Articles,
-  Exhibitions,
-  PressOnline,
-  InfoMobile,
-} from '@/components/index';
-import {
-  getArticlesData,
-  getExhibitionsData,
-  getPressData,
-  getAwardsData,
-} from '@/utils/helpers';
+import Head from "next/head";
+import { useRef, useEffect, useState } from "react";
+import { About, Contact, Footer, Press, Awards, Articles, Exhibitions, PressOnline, InfoMobile } from "@/components/index";
+import { getArticlesData, getExhibitionsData, getPressData, getAwardsData } from "@/utils/helpers";
 
 const getDimensions = (ele) => {
   const { height } = ele.getBoundingClientRect();
@@ -33,17 +18,12 @@ const getDimensions = (ele) => {
 
 const scrollTo = (ele) => {
   ele.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start',
+    behavior: "smooth",
+    block: "start",
   });
 };
 
-export default function Info({
-  articlesData,
-  pressData,
-  exhibitionsData,
-  awardsData,
-}) {
+export default function Info({ articlesData, pressData, exhibitionsData, awardsData }) {
   const [visibleSection, setVisibleSection] = useState();
   const sidenavRef = useRef(null);
   const aboutRef = useRef(null);
@@ -64,38 +44,35 @@ export default function Info({
   const pressOnline = pressData.online;
 
   const sectionRefs = [
-    { section: 'about', ref: aboutRef, name: 'About' },
-    { section: 'contact', ref: contactRef, name: 'Contact' },
-    { section: 'press', ref: pressRef, name: 'Press' },
-    { section: 'awards', ref: awardsRef, name: 'Awards & Distinctions' },
-    { section: 'articles', ref: articlesRef, name: 'Research & Articles' },
-    { section: 'exhibitions', ref: exhibitionsRef, name: 'Exhibitions' },
+    { section: "about", ref: aboutRef, name: "About" },
+    { section: "contact", ref: contactRef, name: "Contact" },
+    { section: "press", ref: pressRef, name: "Press" },
+    { section: "awards", ref: awardsRef, name: "Awards & Distinctions" },
+    { section: "articles", ref: articlesRef, name: "Research & Articles" },
+    { section: "exhibitions", ref: exhibitionsRef, name: "Exhibitions" },
   ];
 
   const sectionsInfo = [
-    { component: <About />, id: 'about', ref: aboutRef },
-    { component: <Contact />, id: 'contact', ref: contactRef },
+    { component: <About />, id: "about", ref: aboutRef },
+    { component: <Contact />, id: "contact", ref: contactRef },
     {
-      component: [
-        <Press data={pressPapers} title='Print (selected):' />,
-        <PressOnline data={pressOnline} title='Print Online (selected):' />,
-      ],
-      id: 'press',
+      component: [<Press data={pressPapers} title='Print (selected):' />, <PressOnline data={pressOnline} title='Print Online (selected):' />],
+      id: "press",
       ref: pressRef,
     },
     {
       component: <Awards data={awards} />,
-      id: 'awards',
+      id: "awards",
       ref: awardsRef,
     },
     {
       component: <Articles data={articles} />,
-      id: 'articles',
+      id: "articles",
       ref: articlesRef,
     },
     {
       component: <Exhibitions data={exhibitions} />,
-      id: 'articles',
+      id: "articles",
       ref: exhibitionsRef,
     },
   ];
@@ -121,9 +98,9 @@ export default function Info({
     };
 
     handleScroll();
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visibleSection]);
@@ -132,28 +109,14 @@ export default function Info({
     <>
       <Head>
         <title>Info</title>
-        <meta
-          name='description'
-          content="Fermin Guerrero's graphic designer and typefase designer information, contact, press, articles."
-        />
+        <meta name='description' content="Fermin Guerrero's graphic designer and typefase designer information, contact, press, articles." />
       </Head>
 
       <div className='wrapper-info'>
-        <img
-          className='image'
-          src='https://res.cloudinary.com/lali/image/upload/v1643735965/aboutmepicture_e0nbsk.jpg'
-          alt='image-info-graphic-designer'
-        />
+        <img className='image' src='https://res.cloudinary.com/lali/image/upload/v1643735965/aboutmepicture_e0nbsk.jpg' alt='image-info-graphic-designer' />
 
         <div className='mobile-info'>
-          <InfoMobile
-            press={pressPapers}
-            pressOnline={pressOnline}
-            articles={articles}
-            exhibitions={exhibitions}
-            awards={awards}
-            pressOnline={pressOnline}
-          />
+          <InfoMobile press={pressPapers} pressOnline={pressOnline} articles={articles} exhibitions={exhibitions} awards={awards} pressOnline={pressOnline} />
         </div>
         <div className='content-info-desktop'>
           <div className='navigation'>
@@ -162,9 +125,7 @@ export default function Info({
                 <button
                   key={item.section}
                   type='button'
-                  className={`header_link ${
-                    visibleSection === item.section && 'selected'
-                  }`}
+                  className={`header_link ${visibleSection === item.section && "selected"}`}
                   onClick={() => {
                     scrollTo(item.ref.current);
                   }}
@@ -176,10 +137,10 @@ export default function Info({
           </div>
 
           <div className='sections-wrapper'>
-            {sectionsInfo.map((item) => (
-              <section className='sectionInfo' id={item.id} ref={item.ref}>
-                {item.id !== 'press' && item.component}
-                {item.id === 'press' && item.component.map((comp) => comp)}
+            {sectionsInfo.map((item, index) => (
+              <section className='sectionInfo' id={item.id} ref={item.ref} key={index}>
+                {item.id !== "press" && item.component}
+                {item.id === "press" && item.component.map((comp) => comp)}
               </section>
             ))}
           </div>

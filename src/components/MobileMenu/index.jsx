@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { links, social } from '@/utils/links';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import Hamburger from 'hamburger-react';
+import { useState } from "react";
+import { links, social } from "@/utils/links";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import Hamburger from "hamburger-react";
 
 export default function MobileMenu() {
   const [isOpen, setOpen] = useState(false);
@@ -12,7 +12,7 @@ export default function MobileMenu() {
       top: 0,
     },
     closed: {
-      top: '-60vh',
+      top: "-60vh",
     },
   };
 
@@ -22,19 +22,13 @@ export default function MobileMenu() {
 
   return (
     <div className='mobile-wrapper'>
-      <div className={isOpen ? 'burger-container' : 'burger-container-close'}>
+      <div className={isOpen ? "burger-container" : "burger-container-close"}>
         <Hamburger toggled={isOpen} toggle={setOpen} size={21} color='white' />
         <Link href='/'>
           <a onClick={() => handleClickHome()}>Fermin Guerrero</a>
         </Link>
       </div>
-      <motion.div
-        initial={false}
-        animate={isOpen ? 'opened' : 'closed'}
-        variants={menuVariants}
-        transition={{ default: { duration: 1 } }}
-        className='menu'
-      >
+      <motion.div initial={false} animate={isOpen ? "opened" : "closed"} variants={menuVariants} transition={{ default: { duration: 1 } }} className='menu'>
         <div className='navigation'>
           <ul className='ul'>
             {links.map((link) => {
@@ -56,7 +50,7 @@ export default function MobileMenu() {
             const { id, url, text } = media;
             return (
               <span key={id}>
-                <a href={url} target='_blank'>
+                <a href={url} target='_blank' rel='noreferrer'>
                   {text}
                 </a>
               </span>

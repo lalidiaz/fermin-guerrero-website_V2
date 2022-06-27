@@ -1,6 +1,6 @@
-import Head from 'next/head';
-import { Masonry } from '@/components/index';
-import { getProjectsData } from '@/utils/helpers';
+import Head from "next/head";
+import { Masonry } from "@/components/index";
+import { getProjectsData } from "@/utils/helpers";
 
 export default function TypefaceDesign({ data }) {
   return (
@@ -10,7 +10,7 @@ export default function TypefaceDesign({ data }) {
         <meta name='description' content="Fermin Guerrero's typefaces" />
       </Head>
       <div className='main-wrapper'>
-        <div className='masonry-wrap'>
+        <div className='masonry-wrap-typeface'>
           <Masonry data={data} />
         </div>
       </div>
@@ -20,7 +20,7 @@ export default function TypefaceDesign({ data }) {
 
 export async function getStaticProps() {
   const projects = await getProjectsData();
-  const data = projects.filter((element) => element.type === 'typeface');
+  const data = projects.filter((element) => element.type === "typeface");
   return {
     props: {
       data,
