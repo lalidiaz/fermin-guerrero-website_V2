@@ -24,6 +24,7 @@ export default function MobileMenu() {
     <div className='mobile-wrapper'>
       <div className={isOpen ? "burger-container" : "burger-container-close"}>
         <Hamburger toggled={isOpen} toggle={setOpen} size={21} color='white' />
+
         <Link href='/'>
           <a onClick={() => handleClickHome()}>Fermin Guerrero</a>
         </Link>
@@ -32,14 +33,16 @@ export default function MobileMenu() {
         <div className='navigation'>
           <ul className='ul'>
             {links.map((link) => {
-              const { id, url, text } = link;
+              const { id, url, text, mobile } = link;
               return (
-                <li className='li' key={id}>
-                  <Link href={url}>
-                    <a onClick={() => handleClickHome()} className='a'>
-                      {text}
-                    </a>
-                  </Link>
+                <li className={`li ${!mobile && "li-mobile-no-border"}`} key={id}>
+                  {mobile && (
+                    <Link href={url} passHref>
+                      <a onClick={() => handleClickHome()} className='a'>
+                        {text}
+                      </a>
+                    </Link>
+                  )}
                 </li>
               );
             })}

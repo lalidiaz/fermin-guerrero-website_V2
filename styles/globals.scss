@@ -93,6 +93,10 @@ p {
   padding: 0px 20px;
   font-weight: lighter;
 
+  @include respond(phone) {
+    grid-template-columns: 1fr;
+  }
+
   .name {
     font-weight: bold;
   }
@@ -500,8 +504,9 @@ footer {
           margin-right: 20px;
           padding-top: 10px;
           padding-bottom: 10px;
-          .a {
-          }
+        }
+        .li-mobile-no-border {
+          border-top: none;
         }
       }
     }
