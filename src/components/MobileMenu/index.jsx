@@ -29,8 +29,8 @@ export default function MobileMenu() {
           <a onClick={() => handleClickHome()}>Fermin Guerrero</a>
         </Link>
       </div>
-      <motion.div initial={false} animate={isOpen ? "opened" : "closed"} variants={menuVariants} transition={{ default: { duration: 1 } }} className='menu'>
-        <div className='navigation'>
+      <motion.div initial={false} animate={isOpen ? "opened" : "closed"} variants={menuVariants} transition={{ default: { duration: 1 } }} className='menu-mobile'>
+        <div className='navigation-mobile'>
           <ul className='ul'>
             {linksMobile.map((link) => {
               const { id, url, text } = link;
