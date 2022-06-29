@@ -33,6 +33,8 @@ export default function Info({ articlesData, pressData, exhibitionsData, awardsD
   const exhibitionsRef = useRef(null);
   const pressRef = useRef(null);
 
+  console.log("pressData ---->", pressData);
+
   const getObjects = (data) => {
     return Object.values(data).map((element) => element);
   };

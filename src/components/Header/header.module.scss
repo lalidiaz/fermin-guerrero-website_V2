@@ -1,4 +1,4 @@
-@import '@/styles/mixins.scss';
+@import "@/styles/mixins.scss";
 
 .headerWrapper {
   width: 100%;
@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   padding: 3px 20px 5px 20px;
-  mix-blend-mode: difference;
+  // mix-blend-mode: difference;
   position: fixed;
   top: 0;
   z-index: 1;
@@ -16,18 +16,7 @@
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 1;
   font-weight: bold;
-
-  @include respond(phone) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    position: absolute;
-    background-color: black;
-    z-index: 999;
-    top: 0;
-    height: 400px;
-  }
+  color: white;
 }
 
 .linkHeader:nth-child(1) {

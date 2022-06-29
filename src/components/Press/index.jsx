@@ -1,4 +1,4 @@
-import { HoverComponent } from '@/components/index';
+import { HoverComponent } from "@/components/index";
 
 export default function Press({ data, title }) {
   return (
@@ -6,16 +6,8 @@ export default function Press({ data, title }) {
       <p className='hover-title'>{title}</p>
       {data.map((item, index) => {
         const { description, descriptionTwo, year } = item;
-        return (
-          <HoverComponent
-            data={data}
-            year={year}
-            description={description}
-            descriptionTwo={descriptionTwo}
-            key={item}
-            index={index}
-          />
-        );
+
+        return <HoverComponent data={data} year={year} description={description} descriptionTwo={descriptionTwo} key={item} index={index} />;
       })}
     </>
   );

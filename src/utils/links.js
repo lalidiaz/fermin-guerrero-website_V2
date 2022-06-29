@@ -3,31 +3,49 @@ export const links = [
     id: 1,
     url: "/",
     text: "Fermin Guerrero",
-    mobile: false,
   },
   {
     id: 2,
     url: "/graphic-design",
     text: "Graphic Design",
-    mobile: true,
   },
   {
     id: 3,
     url: "/all",
     text: "&",
-    mobile: true,
   },
   {
     id: 4,
     url: "/typeface-design",
     text: "Typeface Design",
-    mobile: true,
   },
   {
     id: 5,
     url: "/info",
     text: "Info",
-    mobile: true,
+  },
+];
+
+export const linksMobile = [
+  {
+    id: 7,
+    url: "/graphic-design",
+    text: "Graphic Design",
+  },
+  {
+    id: 8,
+    url: "/all",
+    text: "&",
+  },
+  {
+    id: 9,
+    url: "/typeface-design",
+    text: "Typeface Design",
+  },
+  {
+    id: 10,
+    url: "/info",
+    text: "Info",
   },
 ];
 

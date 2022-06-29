@@ -1,16 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from 'react';
+import { useState } from "react";
 
-export default function HoverComponent({
-  data,
-  year,
-  description,
-  descriptionTwo,
-  index,
-  link,
-  url,
-  titlePressOnline,
-}) {
+export default function HoverComponent({ data, year, description, descriptionTwo, index, link, url, titlePressOnline }) {
   const [activeIndex, setActiveIndex] = useState(-1);
 
   return (
@@ -18,11 +9,7 @@ export default function HoverComponent({
       <section className='hover-component-section' id='research'>
         <p className='hover-component-year'>{year}</p>
 
-        <div
-          onMouseEnter={() => setActiveIndex(index)}
-          onMouseLeave={() => setActiveIndex(-1)}
-          className='hover-component-section-description'
-        >
+        <div onMouseEnter={() => setActiveIndex(index)} onMouseLeave={() => setActiveIndex(-1)} className='hover-component-section-description'>
           {titlePressOnline && (
             <a href={url} target='_blank' rel='noreferrer'>
               <u>{titlePressOnline}</u>
@@ -36,15 +23,7 @@ export default function HoverComponent({
           <p>{description}</p>
           <p>{descriptionTwo}</p>
         </div>
-        <div className='hover-component-section-media'>
-          {activeIndex && data[activeIndex]?.image && (
-            <img
-              src={data[activeIndex]?.image}
-              alt='article-image'
-              className='media-img'
-            />
-          )}
-        </div>
+        <div className='hover-component-section-media'>{data[activeIndex] && data[activeIndex].image ? <img src={data[activeIndex].image} alt='article-image' className='media-img' /> : null}</div>
       </section>
     </div>
   );
