@@ -1,15 +1,9 @@
-import { useState } from 'react';
+import Clock from "react-live-clock";
 
 export default function Time() {
-  let time = new Date().toLocaleTimeString();
-  const [Ctime, setCtime] = useState(time);
-
-  const updateTime = () => {
-    time = new Date().toLocaleTimeString();
-    setCtime(time);
-  };
-
-  setInterval(updateTime, 1000);
-
-  return <div>{time}</div>;
+  return (
+    <div>
+      <Clock format={"HH:mm:ss"} ticking={true} timezone={"Asia/Dubai"} />
+    </div>
+  );
 }

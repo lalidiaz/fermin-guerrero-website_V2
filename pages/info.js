@@ -56,7 +56,7 @@ export default function Info({ articlesData, pressData, exhibitionsData, awardsD
     { component: <About />, id: "about", ref: aboutRef },
     { component: <Contact />, id: "contact", ref: contactRef },
     {
-      component: [<Press data={pressPapers} title='Print (selected):' key={press[2].id} />, <PressOnline data={pressOnline} title='Print Online (selected):' key={pressOnline[4].id} />],
+      component: [<Press data={pressPapers} title='Print (selected):' key={pressPapers[2].id} />, <PressOnline data={pressOnline} title='Print Online (selected):' key={pressOnline[4].id} />],
       id: "press",
       ref: pressRef,
     },
