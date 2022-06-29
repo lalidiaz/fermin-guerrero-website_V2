@@ -116,7 +116,7 @@ export default function Info({ articlesData, pressData, exhibitionsData, awardsD
         <img className='image' src='https://res.cloudinary.com/lali/image/upload/v1643735965/aboutmepicture_e0nbsk.jpg' alt='image-info-graphic-designer' />
 
         <div className='mobile-info'>
-          <InfoMobile press={pressPapers} pressOnline={pressOnline} articles={articles} exhibitions={exhibitions} awards={awards} pressOnline={pressOnline} />
+          <InfoMobile press={pressPapers} pressOnline={pressOnline} articles={articles} exhibitions={exhibitions} awards={awards} />
         </div>
         <div className='content-info-desktop'>
           <div className='navigation'>
