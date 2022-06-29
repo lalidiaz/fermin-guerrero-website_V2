@@ -3150,5 +3150,70 @@
         "cols": 4
       }
     ]
+  },
+  "alManakhSpaces": {
+    "name": "Al Manakh Spaces",
+    "slug": "al-manakh-spaces",
+    "id": 33,
+    "type": "graphic",
+    "year": "2021",
+    "tags": ["Visual-Identity", "Animation", "Poster", "Editorial"],
+    "credits": null,
+    "mp4": false,
+    "image": "https://res.cloudinary.com/lali/image/upload/v1656483900/Cover_xwagcp.jpg",
+    "imageSlag": "https://res.cloudinary.com/lali/image/upload/v1656483900/Cover_xwagcp.jpg",
+    "description": "Visual Identity for Sharjah Architecture Triennial's project called Al Manakh Space: Urban Garden, which aims to develop the open area of SAT's Headquarters into an experimental urban garden that offers a critical site to cultivate sustainable living in Sharjah City's dense urban context. ",
+    "sources": [
+      {
+        "type": "img",
+        "img": "https://res.cloudinary.com/lali/image/upload/v1656484210/7_wn1iiq.jpg",
+        "rows": 2,
+        "cols": 2
+      },
+      {
+        "type": "video",
+        "url": "https://res.cloudinary.com/lali/video/upload/v1656484825/8_aqjc0a.mp4",
+        "poster": "https://res.cloudinary.com/lali/image/upload/v1656483900/Cover_xwagcp.jpg",
+        "rows": 2,
+        "cols": 2
+      },
+      {
+        "type": "img",
+        "img": "https://res.cloudinary.com/lali/image/upload/v1656484210/3_ht7eob.jpg",
+        "rows": 2,
+        "cols": 4
+      },
+
+      {
+        "type": "img",
+        "img": "https://res.cloudinary.com/lali/image/upload/v1656484211/4_u02liv.jpg",
+        "rows": 1,
+        "cols": 1
+      },
+      {
+        "type": "img",
+        "img": "https://res.cloudinary.com/lali/image/upload/v1656484212/2_dauumw.jpg",
+        "rows": 1,
+        "cols": 2
+      },
+      {
+        "type": "img",
+        "img": "https://res.cloudinary.com/lali/image/upload/v1656484212/6_hjoerq.jpg",
+        "rows": 1,
+        "cols": 1
+      },
+      {
+        "type": "img",
+        "img": "https://res.cloudinary.com/lali/image/upload/v1656484212/9_losrti.jpg",
+        "rows": 2,
+        "cols": 2
+      },
+      {
+        "type": "img",
+        "img": "https://res.cloudinary.com/lali/image/upload/v1656484214/5_r9or4x.jpg",
+        "rows": 2,
+        "cols": 2
+      }
+    ]
   }
 }
