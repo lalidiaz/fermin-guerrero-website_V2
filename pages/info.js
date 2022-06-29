@@ -33,8 +33,6 @@ export default function Info({ articlesData, pressData, exhibitionsData, awardsD
   const exhibitionsRef = useRef(null);
   const pressRef = useRef(null);
 
-  console.log("pressData ---->", pressData);
-
   const getObjects = (data) => {
     return Object.values(data).map((element) => element);
   };
@@ -58,7 +56,7 @@ export default function Info({ articlesData, pressData, exhibitionsData, awardsD
     { component: <About />, id: "about", ref: aboutRef },
     { component: <Contact />, id: "contact", ref: contactRef },
     {
-      component: [<Press data={pressPapers} title='Print (selected):' />, <PressOnline data={pressOnline} title='Print Online (selected):' />],
+      component: [<Press data={pressPapers} title='Print (selected):' key={press[2].id} />, <PressOnline data={pressOnline} title='Print Online (selected):' key={pressOnline[4].id} />],
       id: "press",
       ref: pressRef,
     },
