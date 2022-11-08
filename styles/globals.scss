@@ -1,5 +1,11 @@
 @import url("https://use.typekit.net/yjx8ces.css");
 @import "./mixins";
+@import "./Home.module.scss";
+@import "./Footer.module.scss";
+@import "./MobileMenu.module.scss";
+@import "./Masonry.module.scss";
+@import "./CoverImg.module.scss";
+@import "./Info.module.scss";
 
 * {
   box-sizing: border-box;
@@ -43,72 +49,7 @@ p {
   }
 }
 
-.hero {
-  height: 100%;
-  width: 100%;
-}
-
-.main-wrapper {
-  height: 100%;
-  width: 100%;
-  position: relative;
-
-  .img-desktop {
-    display: block;
-
-    @include respond(phone) {
-      display: none;
-    }
-  }
-
-  .mobile-carousel-container {
-    display: none;
-
-    @include respond(phone) {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    .mobile-image {
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
-  }
-
-  .masonry-wrap {
-    padding: 38px 20px;
-  }
-
-  .masonry-wrap-typeface {
-    padding: 38px 20px;
-  }
-}
-
 .container {
-  &:hover {
-    opacity: 1;
-    -webkit-animation: flash 1.5s;
-    animation: flash 1.5s;
-    font-weight: bold;
-  }
-  @-webkit-keyframes flash {
-    0% {
-      opacity: 0.4;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  @keyframes flash {
-    0% {
-      opacity: 0.4;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
 }
 .grid-container {
   display: grid;
@@ -148,40 +89,12 @@ p {
   padding: 0px 20px;
 }
 
-.main-image {
-  padding: 38px 20px 0px;
-  .video-main-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    object-position: center;
-    outline-style: none;
-  }
-
-  .graphic-design-img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    object-position: center;
-    outline-style: none;
-  }
-}
-
 .video {
   width: 100%;
   height: auto;
   object-fit: cover;
   object-position: center;
   outline-style: none;
-}
-
-.masonry-item {
-  padding: 30px 0px;
-  .text {
-    font-size: 20px;
-    padding-top: 20px;
-    padding-bottom: 25px;
-  }
 }
 
 // Footer
@@ -202,48 +115,6 @@ footer {
     grid-column: 1/3;
     grid-row: 1;
     color: white;
-  }
-
-  .footer-links {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-column: 6/13;
-    grid-row: 1;
-
-    @include respond(phone) {
-      grid-template-columns: 1fr;
-    }
-
-    .twitter {
-      text-align: right;
-      grid-column: 6;
-      grid-row: 1;
-
-      @include respond(phone) {
-        grid-column: 2;
-        grid-row: 1;
-      }
-    }
-    .linkedin {
-      text-align: right;
-      grid-column: 5;
-      grid-row: 1;
-
-      @include respond(phone) {
-        grid-column: 2;
-        grid-row: 2;
-      }
-    }
-    .instagram {
-      text-align: right;
-      grid-column: 4;
-      grid-row: 1;
-
-      @include respond(phone) {
-        grid-column: 2;
-        grid-row: 3;
-      }
-    }
   }
 }
 
@@ -502,98 +373,6 @@ footer {
 }
 
 //MOBILE MENU
-.mobile-wrapper {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-
-  .burger-container {
-    display: flex;
-    flex-direction: row-reverse;
-    font-size: 20px;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    padding: 10px;
-    width: 100%;
-    height: auto;
-    padding: 37px 8px 0px 20px;
-    z-index: 101;
-  }
-
-  .burger-container-close {
-    display: flex;
-    flex-direction: row-reverse;
-    font-size: 20px;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-
-    position: fixed;
-    padding: 37px 8px 0px 20px;
-    height: auto;
-    mix-blend-mode: difference;
-    color: white;
-
-    z-index: 101;
-  }
-
-  .menu-mobile {
-    background-color: black;
-    color: white;
-    font-size: 20px;
-    height: 60vh;
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    z-index: 100;
-
-    .navigation-mobile {
-      display: flex;
-      flex-direction: column;
-      top: 15%;
-    }
-  }
-
-  .ul {
-    padding-top: 25px;
-    .li-mobile {
-      display: none;
-
-      @include respond(phone) {
-        display: block;
-        border-top: 1px solid white;
-        margin-left: 20px;
-        margin-right: 20px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-      }
-    }
-  }
-}
-.social-media {
-  padding-bottom: 10px;
-  a {
-    padding-left: 20px;
-    text-decoration: underline;
-  }
-  a:selected {
-    color: white;
-  }
-}
-
-.mobile {
-  display: none;
-  @include respond(phone) {
-    display: block;
-  }
-}
 
 .desktop {
   display: block;

@@ -66,3 +66,24 @@ export const social = [
     text: "Linkedin",
   },
 ];
+
+export const footerlinks = [
+  {
+    id: 1,
+    name: "Twitter",
+    href: "https://twitter.com/fermin_guerrero",
+    className: "twitter",
+  },
+  {
+    id: 2,
+    name: "Instagram",
+    href: "https://www.instagram.com/ferminguerrero_design/",
+    className: "instagram",
+  },
+  {
+    id: 3,
+    name: "Linkedin",
+    href: "https://www.linkedin.com/in/fermin-guerrero-616237173/",
+    className: "linkedin",
+  },
+];
