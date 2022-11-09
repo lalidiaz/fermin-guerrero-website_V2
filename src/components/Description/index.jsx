@@ -1,4 +1,4 @@
-export default function Description({ element }) {
+const Description = ({ element }) => {
   return (
     <p
       dangerouslySetInnerHTML={{
@@ -6,4 +6,5 @@ export default function Description({ element }) {
       }}
     ></p>
   );
-}
+};
+export default Description;

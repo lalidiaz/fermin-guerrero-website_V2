@@ -1,10 +1,10 @@
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
-export default function ActiveLink({ children, href }) {
+const ActiveLink = ({ children, href }) => {
   const router = useRouter();
   const style = {
-    color: router.pathname === href ? 'white' : 'white',
-    fontWeight: router.pathname === href ? '700' : 'lighter',
+    color: router.pathname === href ? "white" : "white",
+    fontWeight: router.pathname === href ? "700" : "lighter",
   };
 
   const handleClick = (e) => {
@@ -17,4 +17,6 @@ export default function ActiveLink({ children, href }) {
       {children}
     </a>
   );
-}
+};
+
+export default ActiveLink;

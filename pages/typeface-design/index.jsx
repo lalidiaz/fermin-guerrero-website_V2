@@ -4,9 +4,8 @@ import { getProjectsData } from "@/utils/helpers";
 import { useState, useEffect, useRef } from "react";
 import { Loading } from "@/components/index";
 
-
 const TypefaceDesign = ({ data }) => {
-  const [timer, setTimer] = useState(2);
+  const [timer, setTimer] = useState(1);
   const [preloader, setPreloader] = useState(true);
   const id = useRef(null);
 

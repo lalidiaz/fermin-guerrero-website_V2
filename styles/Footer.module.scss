@@ -4,10 +4,24 @@ footer {
   left: 0;
   right: 0;
   background-color: black;
+
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 3;
+  border-top: 1px solid white;
+  padding-top: 5px;
+  font-size: 16px;
+  padding: 10px 20px;
   @include respond(phone) {
     position: inherit;
+    grid-template-columns: repeat(2, 1fr);
   }
 
+  .copyright {
+    grid-column: 1/3;
+    grid-row: 1;
+    color: white;
+  }
   .name {
     font-size: 0.8em;
   }

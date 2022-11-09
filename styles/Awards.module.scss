@@ -1,0 +1,19 @@
+.awards-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  padding-bottom: 20px;
+
+  @include respond(phone) {
+    display: flex;
+    flex-direction: column;
+  }
+  .awards-year {
+    grid-column: 1/3;
+  }
+  .awards-title {
+    grid-column: 3/8;
+  }
+  .awards-prize {
+    grid-column: 9/11;
+  }
+}

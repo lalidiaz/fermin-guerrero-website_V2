@@ -5,8 +5,9 @@ const About = () => {
       <p>
         Online platform for Fermin Guerrero's visual communication practice focusing on Graphic
         Design/Art Direction and Typeface Design.
-        <br />
-        <br />
+      </p>
+
+      <p>
         Fermin was born in Uruguay in 1983. In 2010, after he finished his bachelor in Industrial
         Design at{" "}
         <a
@@ -28,8 +29,9 @@ const About = () => {
           <u>University of Reading</u>
         </a>
         –UK, receiving his MA with <i>Distinction</i> in September 2015.
-        <br />
-        <br />
+      </p>
+
+      <p>
         For over 10 years, Fermin has worked for renown international clients on a wide range of
         projects across different platforms and disciplines. His work has received many prestigious
         prizes and awards and has been regularly highlighted by the most relevant international
@@ -41,7 +43,9 @@ const About = () => {
         <a href="https://www.sharjaharchitecture.org/" rel="noreferrer" target="_blank">
           <u>Sharjah Architecture Triennial</u>
         </a>
-        <br />
+      </p>
+
+      <p>
         In October 2022, Fermin launched his own type design studio called{" "}
         <a href="https://fuertetype.com/" rel="noreferrer" target="_blank">
           <u> Fuerte</u>

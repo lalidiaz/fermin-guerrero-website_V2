@@ -1,0 +1,23 @@
+#exhibitions {
+  padding-top: 100px;
+}
+.exhibitions-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  padding-bottom: 50px;
+
+  @include respond(phone) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .exhibitions-year {
+    grid-column: 1/3;
+  }
+  .exhibitions-title {
+    grid-column: 3/8;
+  }
+  .exhibitions-country {
+    grid-column: 9/11;
+  }
+}

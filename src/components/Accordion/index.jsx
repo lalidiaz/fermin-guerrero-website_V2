@@ -1,40 +1,29 @@
-import { useState, useRef } from 'react';
-import { HiOutlineChevronDown } from 'react-icons/hi';
-import styles from './styles.module.scss';
+import { useState, useRef } from "react";
+import { HiOutlineChevronDown } from "react-icons/hi";
+import styles from "./styles.module.scss";
 
-export default function Accordion(props) {
-  const [setActive, setActiveState] = useState('');
-  const [setHeight, setHeightState] = useState('0px');
-  const [setRotate, setRotateState] = useState('accordion__icon');
+const Accordion = (props) => {
+  const [setActive, setActiveState] = useState("");
+  const [setHeight, setHeightState] = useState("0px");
+  const [setRotate, setRotateState] = useState("accordion__icon");
 
   const content = useRef(null);
 
   function toggleAccordion() {
-    setActiveState(setActive === '' ? 'active' : '');
+    setActiveState(setActive === "" ? "active" : "");
 
-    setHeightState(
-      setActive === 'active' ? '0px' : `${content.current.scrollHeight}px`
-    );
+    setHeightState(setActive === "active" ? "0px" : `${content.current.scrollHeight}px`);
     setRotateState(
-      setActive === 'active'
-        ? `${styles.accordionIcon}`
-        : `${styles.accordionIconRotate}`
+      setActive === "active" ? `${styles.accordionIcon}` : `${styles.accordionIconRotate}`
     );
   }
 
   return (
     <>
       <div className={styles.accordionSection}>
-        <button
-          className={`${styles.accordion} ${setActive}`}
-          onClick={toggleAccordion}
-        >
+        <button className={`${styles.accordion} ${setActive}`} onClick={toggleAccordion}>
           <p className={styles.accordionTitle}>{props.title}</p>
-          <HiOutlineChevronDown
-            className={`${setRotate}`}
-            width={30}
-            color='white'
-          />
+          <HiOutlineChevronDown className={`${setRotate}`} width={30} color="white" />
         </button>
         <div
           ref={content}
@@ -46,4 +35,5 @@ export default function Accordion(props) {
       </div>
     </>
   );
-}
+};
+export default Accordion;

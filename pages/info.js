@@ -134,16 +134,18 @@ const Info = ({ articlesData, pressData, exhibitionsData, awardsData }) => {
       </Head>
 
       <motion.div className="wrapper-info" initial="exit" animate="enter" exit="exit">
-        <motion.img
-          variants={masonryAnimation}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          transition={{ duration: 0.6 }}
-          className="image"
-          src="https://res.cloudinary.com/lali/image/upload/v1643735965/aboutmepicture_e0nbsk.jpg"
-          alt="image-info-graphic-designer"
-        />
+        <div className="wrapper-info-upper">
+          <motion.img
+            variants={masonryAnimation}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ duration: 0.6 }}
+            className="wrapper-info-upper-image"
+            src="https://res.cloudinary.com/lali/image/upload/v1643735965/aboutmepicture_e0nbsk.jpg"
+            alt="image-info-graphic-designer"
+          />
+        </div>
 
         <div className="mobile-info">
           <InfoMobile
