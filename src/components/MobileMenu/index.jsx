@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Hamburger from "hamburger-react";
 
-export default function MobileMenu() {
+const MobileMenu = () => {
   const [isOpen, setOpen] = useState(false);
 
   const menuVariants = {
@@ -21,24 +21,30 @@ export default function MobileMenu() {
   };
 
   return (
-    <div className='mobile-wrapper'>
+    <div className="mobile-wrapper">
       <div className={isOpen ? "burger-container" : "burger-container-close"}>
-        <Hamburger toggled={isOpen} toggle={setOpen} size={21} color='white' />
+        <Hamburger toggled={isOpen} toggle={setOpen} size={21} color="white" />
 
-        <Link href='/'>
+        <Link href="/">
           <a onClick={() => handleClickHome()}>Fermin Guerrero</a>
         </Link>
       </div>
-      <motion.div initial={false} animate={isOpen ? "opened" : "closed"} variants={menuVariants} transition={{ default: { duration: 1 } }} className='menu-mobile'>
-        <div className='navigation-mobile'>
-          <ul className='ul'>
+      <motion.div
+        initial={false}
+        animate={isOpen ? "opened" : "closed"}
+        variants={menuVariants}
+        transition={{ default: { duration: 1 } }}
+        className="menu-mobile"
+      >
+        <div className="navigation-mobile">
+          <ul className="ul">
             {linksMobile.map((link) => {
               const { id, url, text } = link;
 
               return (
-                <li className='li-mobile' key={id}>
+                <li className="li-mobile" key={id}>
                   <Link href={url} passHref>
-                    <a onClick={() => handleClickHome()} className='a'>
+                    <a onClick={() => handleClickHome()} className="a">
                       {text}
                     </a>
                   </Link>
@@ -47,12 +53,12 @@ export default function MobileMenu() {
             })}
           </ul>
         </div>
-        <div className='social-media'>
+        <div className="social-media">
           {social.map((media) => {
             const { id, url, text } = media;
             return (
               <span key={id}>
-                <a href={url} target='_blank' rel='noreferrer'>
+                <a href={url} target="_blank" rel="noreferrer">
                   {text}
                 </a>
               </span>
@@ -62,4 +68,6 @@ export default function MobileMenu() {
       </motion.div>
     </div>
   );
-}
+};
+
+export default MobileMenu;

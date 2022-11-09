@@ -1,16 +1,16 @@
 import Link from "../ActiveLink";
-import styles from "./header.module.scss";
+
 import { links } from "@/utils/links";
 
-export default function Header() {
+const Header = () => {
   return (
-    <header className={styles.headerWrapper}>
+    <header className="header-wrapper">
       {links.map((link) => {
         const { id, url, text } = link;
 
         return (
-          <div key={id} className={styles.linkHeader}>
-            <Link href={url} activeClassName='active' passHref>
+          <div key={id} className="link-header">
+            <Link href={url} activeClassName="active" passHref>
               {text}
             </Link>
           </div>
@@ -18,4 +18,5 @@ export default function Header() {
       })}
     </header>
   );
-}
+};
+export default Header;

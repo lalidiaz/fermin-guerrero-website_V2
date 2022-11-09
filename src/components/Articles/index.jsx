@@ -1,6 +1,6 @@
-import { HoverComponent } from '@/components/index';
+import { HoverComponent } from "@/components/index";
 
-export default function Articles({ data }) {
+const Articles = ({ data }) => {
   return (
     <>
       {data.map((item, index) => {
@@ -20,4 +20,6 @@ export default function Articles({ data }) {
       })}
     </>
   );
-}
+};
+
+export default Articles;

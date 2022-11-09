@@ -1,26 +1,24 @@
-import { Masonry } from '@/components/index';
-import { getPathTags, getProjectsData } from '@/utils/helpers';
-import Head from 'next/head';
+import { Masonry } from "@/components/index";
+import { getPathTags, getProjectsData } from "@/utils/helpers";
+import Head from "next/head";
 
-export default function Tag({ data, path, video }) {
-  const tag = data.filter(
-    (project) => project.tags && project.tags.includes(path)
-  );
+const Tag = ({ data, path, video }) => {
+  const tag = data.filter((project) => project.tags && project.tags.includes(path));
 
   return (
     <>
       <Head>
         <title>{path}</title>
-        <meta name='description' content='tag graphic typeface design' />
+        <meta name="description" content="tag graphic typeface design" />
       </Head>
-      <div className='main-wrapper'>
-        <div className='masonry-wrap'>
+      <div className="main-wrapper">
+        <div className="masonry-wrap">
           <Masonry data={tag} extractVideo={video} />
         </div>
       </div>
     </>
   );
-}
+};
 
 export async function getStaticPaths() {
   const paths = await getPathTags();
@@ -43,3 +41,5 @@ export async function getStaticProps({ params }) {
     },
   };
 }
+
+export default Tag;

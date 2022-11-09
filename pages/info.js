@@ -1,8 +1,23 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import { useRef, useEffect, useState } from "react";
-import { About, Contact, Footer, Press, Awards, Articles, Exhibitions, PressOnline, InfoMobile } from "@/components/index";
 import { getArticlesData, getExhibitionsData, getPressData, getAwardsData } from "@/utils/helpers";
+import { masonryAnimation } from "@/utils/animations";
+import { motion } from "framer-motion";
+import { useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
+import {
+  About,
+  Contact,
+  Footer,
+  Press,
+  Awards,
+  Articles,
+  Exhibitions,
+  PressOnline,
+  InfoMobile,
+} from "@/components/index";
 
 const getDimensions = (ele) => {
   const { height } = ele.getBoundingClientRect();
@@ -23,7 +38,7 @@ const scrollTo = (ele) => {
   });
 };
 
-export default function Info({ articlesData, pressData, exhibitionsData, awardsData }) {
+const Info = ({ articlesData, pressData, exhibitionsData, awardsData }) => {
   const [visibleSection, setVisibleSection] = useState();
   const sidenavRef = useRef(null);
   const aboutRef = useRef(null);
@@ -56,7 +71,10 @@ export default function Info({ articlesData, pressData, exhibitionsData, awardsD
     { component: <About />, id: "about", ref: aboutRef },
     { component: <Contact />, id: "contact", ref: contactRef },
     {
-      component: [<Press data={pressPapers} title='Print (selected):' key={pressPapers[2].id} />, <PressOnline data={pressOnline} title='Print Online (selected):' key={pressOnline[4].id} />],
+      component: [
+        <Press data={pressPapers} title="Print (selected):" key={pressPapers[2].id} />,
+        <PressOnline data={pressOnline} title="Print Online (selected):" key={pressOnline[4].id} />,
+      ],
       id: "press",
       ref: pressRef,
     },
@@ -109,22 +127,42 @@ export default function Info({ articlesData, pressData, exhibitionsData, awardsD
     <>
       <Head>
         <title>Info</title>
-        <meta name='description' content="Fermin Guerrero's graphic designer and typefase designer information, contact, press, articles." />
+        <meta
+          name="description"
+          content="Fermin Guerrero's graphic designer and typeface designer information, contact, press, articles."
+        />
       </Head>
 
-      <div className='wrapper-info'>
-        <img className='image' src='https://res.cloudinary.com/lali/image/upload/v1643735965/aboutmepicture_e0nbsk.jpg' alt='image-info-graphic-designer' />
-
-        <div className='mobile-info'>
-          <InfoMobile press={pressPapers} pressOnline={pressOnline} articles={articles} exhibitions={exhibitions} awards={awards} />
+      <motion.div className="wrapper-info" initial="exit" animate="enter" exit="exit">
+        <div className="wrapper-info-upper">
+          <motion.img
+            variants={masonryAnimation}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ duration: 0.6 }}
+            className="wrapper-info-upper-image"
+            src="https://res.cloudinary.com/lali/image/upload/v1643735965/aboutmepicture_e0nbsk.jpg"
+            alt="image-info-graphic-designer"
+          />
         </div>
-        <div className='content-info-desktop'>
-          <div className='navigation'>
-            <aside className='sticky' id='aside' ref={sidenavRef}>
+
+        <div className="mobile-info">
+          <InfoMobile
+            press={pressPapers}
+            pressOnline={pressOnline}
+            articles={articles}
+            exhibitions={exhibitions}
+            awards={awards}
+          />
+        </div>
+        <div className="content-info-desktop">
+          <div className="navigation">
+            <aside className="sticky" id="aside" ref={sidenavRef}>
               {sectionRefs.map((item) => (
                 <button
                   key={item.section}
-                  type='button'
+                  type="button"
                   className={`header_link ${visibleSection === item.section && "selected"}`}
                   onClick={() => {
                     scrollTo(item.ref.current);
@@ -136,22 +174,22 @@ export default function Info({ articlesData, pressData, exhibitionsData, awardsD
             </aside>
           </div>
 
-          <div className='sections-wrapper'>
+          <div className="sections-wrapper">
             {sectionsInfo.map((item, index) => (
-              <section className='sectionInfo' id={item.id} ref={item.ref} key={index}>
+              <section className="sectionInfo" id={item.id} ref={item.ref} key={index}>
                 {item.id !== "press" && item.component}
                 {item.id === "press" && item.component.map((comp) => comp)}
               </section>
             ))}
           </div>
         </div>
-        <div className='footerDiv'>
+        <div className="footerDiv">
           <Footer />
         </div>
-      </div>
+      </motion.div>
     </>
   );
-}
+};
 
 export async function getStaticProps() {
   const articlesData = await getArticlesData();
@@ -168,3 +206,4 @@ export async function getStaticProps() {
     },
   };
 }
+export default Info;

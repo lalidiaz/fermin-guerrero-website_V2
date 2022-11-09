@@ -1,9 +1,9 @@
-export default function Credits({ element }) {
+const Credits = ({ element }) => {
   return (
     <>
       {element.credits && (
         <p
-          className='middle-text'
+          className="middle-text"
           dangerouslySetInnerHTML={{
             __html: element.credits,
           }}
@@ -11,4 +11,5 @@ export default function Credits({ element }) {
       )}
     </>
   );
-}
+};
+export default Credits;

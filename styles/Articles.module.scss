@@ -1,0 +1,12 @@
+.articles-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+
+  .articles-year {
+    grid-column: 1/2;
+  }
+  .articles-description {
+    grid-column: 3/8;
+    cursor: pointer;
+  }
+}

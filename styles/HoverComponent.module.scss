@@ -1,0 +1,59 @@
+.container-media {
+  height: 100px;
+  padding-left: 20px;
+
+  .media-img {
+    width: 290px;
+    height: auto;
+    object-fit: contain;
+    cursor: pointer;
+    pointer-events: none;
+
+    @include respond(phone) {
+      display: none;
+    }
+  }
+}
+
+.hover-title {
+  padding-bottom: 20px;
+}
+
+.hover-component-grid {
+  .hover-component-section {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    padding-bottom: 50px;
+
+    @include respond(phone) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hover-component-year {
+      grid-column: 1/2;
+    }
+
+    .hover-component-section-description {
+      grid-column: 3/8;
+      cursor: pointer;
+    }
+
+    .hover-component-section-media {
+      .media-img {
+        width: 240px;
+        height: auto;
+        object-fit: contain;
+        cursor: pointer;
+        pointer-events: none;
+        grid-column: 7;
+        position: absolute;
+        display: block;
+
+        @include respond(phone) {
+          display: none;
+        }
+      }
+    }
+  }
+}
