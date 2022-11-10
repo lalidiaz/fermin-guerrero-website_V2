@@ -72,8 +72,8 @@ const Info = ({ articlesData, pressData, exhibitionsData, awardsData }) => {
     { component: <Contact />, id: "contact", ref: contactRef },
     {
       component: [
-        <Press data={pressPapers} title="Print (selected):" key={pressPapers[2].id} />,
-        <PressOnline data={pressOnline} title="Print Online (selected):" key={pressOnline[4].id} />,
+        <Press data={pressPapers} title="Print (Selected):" key={pressPapers[2].id} />,
+        <PressOnline data={pressOnline} title="Print Online (Selected):" key={pressOnline[4].id} />,
       ],
       id: "press",
       ref: pressRef,
