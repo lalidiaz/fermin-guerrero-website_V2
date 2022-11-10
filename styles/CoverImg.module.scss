@@ -3,6 +3,13 @@
   background-color: black;
   min-height: 900px;
 
+  @include respond(tablet) {
+    min-height: 0px;
+  }
+  @include respond(phone) {
+    min-height: 100px;
+  }
+
   .video-main-image {
     width: 100%;
     height: auto;
