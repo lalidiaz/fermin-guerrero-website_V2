@@ -1,15 +1,16 @@
+import {CreditText} from '@/styles/Credits';
+
 const Credits = ({ element }) => {
   return (
-    <>
+    <CreditText>
       {element.credits && (
         <p
-          className="middle-text"
           dangerouslySetInnerHTML={{
             __html: element.credits,
           }}
         ></p>
       )}
-    </>
+    </CreditText>
   );
 };
 export default Credits;

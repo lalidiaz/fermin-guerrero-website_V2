@@ -1,30 +1,40 @@
 import { FiClock } from "react-icons/fi";
 import { Time } from "@/components/index";
 import { contactLinks } from "@/utils/links";
+import {
+  Container,
+  EmailContainer,
+  EmailTitle,
+  EmailContent,
+  TimeDisplay,
+  Follow,
+  FollowText,
+  FollowContent,
+} from "../../styles/Contact";
 
 const Contact = () => {
   return (
-    <section className="contact-component">
-      <div className="email">
-        <p className="email-p">Email</p>
-        <div className="email-content">
+    <Container>
+      <EmailContainer>
+        <EmailTitle>Email</EmailTitle>
+        <EmailContent>
           <a target="_blank" rel="noreferrer" href="mailto:contact@ferminguerrero.com">
             contact@ferminguerrero.com
           </a>
           <div>
             <p>Dubai, UAE.</p>
           </div>
-          <div className="time">
+          <TimeDisplay>
             <FiClock color="white" size={23} style={{ paddingRight: "5px" }} />
             <Time />
-          </div>
-        </div>
-      </div>
+          </TimeDisplay>
+        </EmailContent>
+      </EmailContainer>
 
-      <div className="follow">
-        <p className="follow-p">Follow</p>
+      <Follow>
+        <FollowText>Follow</FollowText>
 
-        <ul className="follow-content">
+        <FollowContent>
           {contactLinks.map(({ id, name, link }) => (
             <li key={id}>
               <a rel="noreferrer" href={link} target="_blank">
@@ -32,9 +42,9 @@ const Contact = () => {
               </a>
             </li>
           ))}
-        </ul>
-      </div>
-    </section>
+        </FollowContent>
+      </Follow>
+    </Container>
   );
 };
 export default Contact;

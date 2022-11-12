@@ -3,15 +3,12 @@ import Head from "next/head";
 import { useRef } from "react";
 import { useState } from "react";
 import { getLandingData } from "@/utils/helpers";
-import { Footer } from "@/components/index";
-
-// Import Swiper React components
+import { MainWrapper, UpperImg, MainImg, MobileCarousel, MobileCarouselImg } from "@/styles/Layout";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination } from "swiper";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/autoplay";
+import { HeroContainer } from "@/styles/Home";
 
 SwiperCore.use([Autoplay, Pagination]);
 
@@ -27,33 +24,31 @@ const Home = ({ data }) => {
   }
 
   return (
-    <div className="hero" id="#home">
+    <HeroContainer id="#home">
       <Head>
-        <title>Fermin Guerrero</title>
+        <title>Fermín Guerrero</title>
         <meta
           name="description"
-          content="Fermin Guerrero graphic designer and typeface designer web/portfolio."
+          content="Fermín Guerrero graphic designer and typeface designer web/portfolio."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="main-wrapper">
-        <div
-          className="main-img-background"
+      <MainWrapper>
+        <MainImg
           style={{
             backgroundImage: `url(${"https://res.cloudinary.com/lali/image/upload/v1643546446/BeyondTheBox_dpyev1.jpg"})`,
           }}
         >
-          <div
-            className="top-img-background"
+          <UpperImg
             onMouseMove={handleMouseMove}
             style={{
               backgroundImage: `url(${desktop[img]})`,
             }}
-          ></div>
-        </div>
+          />
+        </MainImg>
 
-        <div className="mobile-carousel-container">
+        <MobileCarousel>
           <Swiper
             spaceBetween={10}
             slidesPerView={1}
@@ -66,16 +61,14 @@ const Home = ({ data }) => {
             {mobile.map((img, index) => (
               <div key={index}>
                 <SwiperSlide>
-                  <img src={img} alt={`graphic-design-img-${index}`} className="mobile-image" />{" "}
+                  <MobileCarouselImg src={img} alt={`graphic-design-img-${index}`} />
                 </SwiperSlide>
               </div>
             ))}
           </Swiper>
-        </div>
-      </main>
-
-      <Footer />
-    </div>
+        </MobileCarousel>
+      </MainWrapper>
+    </HeroContainer>
   );
 };
 

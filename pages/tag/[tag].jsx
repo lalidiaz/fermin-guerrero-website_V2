@@ -1,6 +1,7 @@
 import { Masonry } from "@/components/index";
 import { getPathTags, getProjectsData } from "@/utils/helpers";
 import Head from "next/head";
+import { MainWrapper, MasonryWrapper } from "@/styles/Layout";
 
 const Tag = ({ data, path, video }) => {
   const tag = data.filter((project) => project.tags && project.tags.includes(path));
@@ -11,11 +12,11 @@ const Tag = ({ data, path, video }) => {
         <title>{path}</title>
         <meta name="description" content="tag graphic typeface design" />
       </Head>
-      <div className="main-wrapper">
-        <div className="masonry-wrap">
+      <MainWrapper>
+        <MasonryWrapper>
           <Masonry data={tag} extractVideo={video} />
-        </div>
-      </div>
+        </MasonryWrapper>
+      </MainWrapper>
     </>
   );
 };

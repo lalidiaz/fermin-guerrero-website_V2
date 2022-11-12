@@ -1,20 +1,21 @@
 import Link from "next/link";
+import { TagName, TagLink } from "../../styles/Tags";
 
 const Tags = ({ element }) => {
   return (
-    <div className="tag-name">
+    <TagName>
       {element.tags &&
         element.tags.map((tag) => {
           const transformName = tag.replace("-", " ");
           return (
             <Link href={`/tag/${tag}`} passHref key={element.id}>
-              <a className="tag-link">
+              <TagLink>
                 <u>{transformName}</u>
-              </a>
+              </TagLink>
             </Link>
           );
         })}
-    </div>
+    </TagName>
   );
 };
 

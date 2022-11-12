@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
+import { GridContainer, GridName, YearTags, GridDesc, GridImg } from "@/styles/Layout";
 import {
   ImageGallery,
   CoverImg,
@@ -37,7 +38,7 @@ const GraphicProject = ({ data }) => {
   }, [imageAnimation, imageInView]);
 
   return (
-    <div className="container">
+    <>
       {data.map((element, i) => (
         <>
           <Head>
@@ -47,37 +48,41 @@ const GraphicProject = ({ data }) => {
 
           <motion.div key={element.id + i} initial="exit" animate="enter" exit="exit">
             <CoverImg element={element} />
-            <div className="grid-container" ref={textRef}>
+            <GridContainer ref={textRef}>
               <AnimateContent delay={0.4} animate={textAnimation}>
-                <p className="name">{element.name}</p>
+                <GridName>{element.name}</GridName>
               </AnimateContent>
 
-              <div className="year-and-tags">
+              <YearTags>
                 <AnimateContent delay={0.5} animate={textAnimation}>
                   <p>{element.year}</p>
                 </AnimateContent>
-                <AnimateContent delay={0.6} animate={textAnimation}>
-                  <Credits element={element} />
-                  <Tags element={element} />
-                </AnimateContent>
-              </div>
+                <div>
+                  <AnimateContent delay={0.6} animate={textAnimation}>
+                    <Credits element={element} />
+                  </AnimateContent>
+                  <AnimateContent delay={0.7} animate={textAnimation}>
+                    <Tags element={element} />
+                  </AnimateContent>
+                </div>
+              </YearTags>
 
               <AnimateContent delay={0.5} animate={textAnimation}>
-                <div className="description">
+                <GridDesc>
                   <Description element={element.description} />
-                </div>
+                </GridDesc>
               </AnimateContent>
-            </div>
+            </GridContainer>
 
-            <div className="img-gallery-wrapper" ref={imageRef}>
+            <GridImg ref={imageRef}>
               <AnimateContent delay={0.4} animate={imageAnimation}>
                 <ImageGallery element={element} />
               </AnimateContent>
-            </div>
+            </GridImg>
           </motion.div>
         </>
       ))}
-    </div>
+    </>
   );
 };
 

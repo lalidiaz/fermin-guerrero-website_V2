@@ -1,9 +1,11 @@
 import { HoverComponent } from "@/components/index";
+import { Title, PressContainer } from "@/styles/Press";
 
 const Press = ({ data, title }) => {
   return (
-    <>
-      <p className="hover-title">{title}</p>
+    <PressContainer>
+      <Title>{title}</Title>
+
       {data.map((item, index) => {
         const { description, descriptionTwo, year } = item;
 
@@ -18,7 +20,7 @@ const Press = ({ data, title }) => {
           />
         );
       })}
-    </>
+    </PressContainer>
   );
 };
 export default Press;
