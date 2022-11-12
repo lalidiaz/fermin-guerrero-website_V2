@@ -1,17 +1,27 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { device } from "../styles/device";
 
 export const MasonryItem = styled(motion.a)`
   display: block;
   margin: 0px 0px 8px 0px;
+  padding: 0px 0px 20px 0px;
 
   &:hover {
     font-weight: bold;
   }
+
+  @media ${device.laptop} {
+    padding: 0px 0px 20px 0px;
+
+    &:hover {
+      font-weight: bold;
+    }
+  }
 `;
 
 export const MasonryVideo = styled.video`
-  min-height: 400px;
+  min-height: 300px;
   background-color: black;
   width: 100%;
 

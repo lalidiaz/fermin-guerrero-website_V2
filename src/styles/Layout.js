@@ -46,7 +46,7 @@ export const GridDesc = styled.div`
 export const GridImg = styled.div`
   padding: 20px 20px 40px 20px;
   @media ${device.laptop} {
-    padding: 0px 20px;
+    padding: 20px 20px 60px 0px;
   }
 `;
 

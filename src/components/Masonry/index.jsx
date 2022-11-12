@@ -6,13 +6,19 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material";
 import { masonryAnimation } from "@/utils/animations";
 import { MasonryItem, MasonryVideo, MasonryImg, MasonryText } from "@/styles/Masonry";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 const Masonry = ({ data, video }) => {
   const theme = useTheme();
   const isNotMobile = useMediaQuery(theme.breakpoints.up("sm"));
 
+  const size = useWindowSize();
+  const isMobile = size.width <= 480;
+
+  console.log("!isMobile", !isMobile);
+
   return (
-    <ImageList variant="masonry" cols={isNotMobile ? 3 : 1} gap={13}>
+    <ImageList variant="masonry" cols={isNotMobile || !isMobile ? 3 : 1} gap={13}>
       {data.map((project, i) => {
         return (
           <Link passHref key={project.id} href={`/graphic-design/${project.slug}`}>
