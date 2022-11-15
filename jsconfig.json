@@ -3,9 +3,10 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["src/components/*"],
-      "@/styles/*": ["/styles/*"],
+      "@/styles/*": ["src/styles/*"],
       "@/database/*": ["/database/*"],
-      "@/utils/*": ["/src/utils/*"]
+      "@/utils/*": ["/src/utils/*"],
+      "@/hooks/*": ["/src/hooks/*"]
     }
   }
 }

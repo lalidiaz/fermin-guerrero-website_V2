@@ -1,6 +1,6 @@
 {
   "yearbook": {
-    "id": 1,
+    "id": 801,
     "title": "Yearbook of Type III",
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734826/ybt3_owa9xd.jpg",
     "description": "Yearbook of Type III.",
@@ -9,7 +9,7 @@
     "online": false
   },
   "contemporay": {
-    "id": 2,
+    "id": 802,
     "title": "Contemporary Typefaces Booklet (Slanted #30)",
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734826/slanted30_ondn1m.jpg",
     "description": "Contemporary Typefaces Booklet (Slanted #30).",
@@ -18,7 +18,7 @@
     "online": false
   },
   "novum17": {
-    "id": 3,
+    "id": 803,
     "title": "Novum magazine",
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/novum2017_pprei0.jpg",
     "description": "Novum magazine.",
@@ -27,7 +27,7 @@
     "online": false
   },
   "typodarium17": {
-    "id": 4,
+    "id": 804,
     "title": "Typodarium 2017",
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734828/typodarium2017_xp0qdl.jpg",
     "description": "Typodarium 2017.",
@@ -36,7 +36,7 @@
     "online": false
   },
   "typodarium16": {
-    "id": 5,
+    "id": 805,
     "title": "Typodarium 2016",
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734826/typodarium2016_ntjdse.jpg",
     "description": "Typodarium 2017.",
@@ -45,7 +45,7 @@
     "online": false
   },
   "etapes": {
-    "id": 6,
+    "id": 806,
     "title": "Étapes magazine (special graduate projects)",
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/etapes2015_epzabw.jpg",
     "description": "Étapes magazine (special graduate projects).",
@@ -54,7 +54,7 @@
     "online": false
   },
   "apresAvant": {
-    "id": 7,
+    "id": 807,
     "title": "AprèsAvant magazine #2",
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734824/AA_zmapha.jpg",
     "description": "AprèsAvant magazine #2.",
@@ -63,7 +63,7 @@
     "online": false
   },
   "idn": {
-    "id": 8,
+    "id": 808,
     "title": "IdN magazine Vol.21 #1",
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/idn_xaxdkb.jpg",
     "description": "IdN magazine Vol.21 #1.",
@@ -72,7 +72,7 @@
     "online": false
   },
   "eco": {
-    "id": 9,
+    "id": 809,
     "title": "Eco Style in Furniture Design (book)",
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/dopress_aftos2.jpg",
     "description": "Eco Style in Furniture Design (book).",
@@ -81,7 +81,7 @@
     "online": false
   },
   "plus81": {
-    "id": 10,
+    "id": 810,
     "title": "Plus81 magazine (World’s Best Poster Design)",
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734832/plus81_e6excf.jpg",
     "description": "Plus81 magazine (World’s Best Poster Design).",
@@ -90,7 +90,7 @@
     "online": false
   },
   "form": {
-    "id": 11,
+    "id": 811,
     "title": "Form magazine #247",
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/form2_aco9ki.jpg",
     "description": "Form magazine #247.",
@@ -99,7 +99,7 @@
     "online": false
   },
   "typodarium": {
-    "id": 12,
+    "id": 812,
     "title": "Typodarium",
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734826/typodarium_pa4hmx.jpg",
     "description": "Typodarium.",
@@ -108,7 +108,7 @@
     "online": false
   },
   "novum": {
-    "id": 13,
+    "id": 813,
     "title": " Novum magazine",
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/novum_egedmo.jpg",
     "description": "Novum magazine.",
@@ -118,7 +118,7 @@
   },
 
   "form243": {
-    "id": 14,
+    "id": 814,
     "title": "Form magazine #243",
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734825/form_flidv3.jpg",
     "description": "Form magazine #243.",
@@ -128,91 +128,91 @@
   },
 
   "slantedOne": {
-    "id": 15,
+    "id": 815,
     "title": "Slanted magazine.",
     "url": "https://www.slanted.de/brick-typeface/",
     "year": "2020",
     "online": true
   },
   "people": {
-    "id": 16,
+    "id": 816,
     "title": "People of Print.",
     "url": "http://www.peopleofprint.com/solo-artist/fermin-guerrero/?utm_source=ReviveOldPost&utm_medium=social&utm_campaign=ReviveOldPost",
     "year": "2017",
     "online": true
   },
   "aiga": {
-    "id": 17,
+    "id": 817,
     "title": "AIGA Eye on Design.",
     "url": "http://eyeondesign.aiga.org/what-would-the-city-of-geneva-look-like-as-a-typeface/",
     "year": "",
     "online": true
   },
   "slantedTwo": {
-    "id": 18,
+    "id": 818,
     "title": "Slanted magazine.",
     "url": "https://www.slanted.de/beitrag/thesaurus/",
     "year": "",
     "online": true
   },
   "typeroom": {
-    "id": 19,
+    "id": 819,
     "title": "Typeroom.",
     "url": "https://www.typeroom.eu/article/thesaurus-inspired-genevas-estiennes-typographic-heritage",
     "year": "",
     "online": true
   },
   "ilove": {
-    "id": 20,
+    "id": 900,
     "title": "I Love Typography (ILT).",
     "url": "https://ilovetypography.com/2017/01/30/thesaurus-fonts/",
     "year": "",
     "online": true
   },
   "communication": {
-    "id": 21,
+    "id": 901,
     "title": "Communication Arts.",
     "url": "https://www.commarts.com/fresh/ferm-n-guerrero",
     "year": "2016",
     "online": true
   },
   "slantedThree": {
-    "id": 22,
+    "id": 902,
     "title": "Slanted magazine.",
     "url": "https://www.facebook.com/slanted.blog.magazine/posts/10152829556936568",
     "year": "2015",
     "online": true
   },
   "itsnice": {
-    "id": 23,
+    "id": 903,
     "title": "It’s Nice That.",
     "url": "https://www.itsnicethat.com/articles/fermin-guerrero-geneve",
     "year": "2014",
     "online": true
   },
   "idn-online": {
-    "id": 31,
+    "id": 904,
     "title": "IdN magazine.",
     "url": "https://www.idnworld.com/creators/FerminGuerrero",
     "year": "2013",
     "online": true
   },
   "etapes-online": {
-    "id": 30,
+    "id": 905,
     "title": "Étapes magazine.",
     "url": "https://etapes.com/manifesta-s-inspire-de-max-kisman/",
     "year": "2012",
     "online": true
   },
   "typo": {
-    "id": 26,
+    "id": 906,
     "title": "TYPO magazine.",
     "url": "http://www.typo.cz/en/font-of-the-week/?polozka=1400",
     "year": "",
     "online": true
   },
   "typoPosters": {
-    "id": 27,
+    "id": 907,
     "title": "TypographicPosters",
     "url": "https://www.typographicposters.com/fermin-guerrero",
     "year": "",

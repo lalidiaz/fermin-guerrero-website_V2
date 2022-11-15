@@ -3,20 +3,27 @@ import Head from "next/head";
 import { useRef, useEffect, useState } from "react";
 import { getArticlesData, getExhibitionsData, getPressData, getAwardsData } from "@/utils/helpers";
 import { masonryAnimation } from "@/utils/animations";
-import { motion } from "framer-motion";
-import { useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-
+import {
+  Wrapper,
+  Upper,
+  UpperImg,
+  AboutDesktop,
+  Nav,
+  Aside,
+  AsideLink,
+  SectionsWrapper,
+  SectionInfo,
+  AboutMobileStyles,
+} from "@/styles/About";
 import {
   About,
   Contact,
-  Footer,
   Press,
   Awards,
   Articles,
   Exhibitions,
   PressOnline,
-  InfoMobile,
+  AboutMobile,
 } from "@/components/index";
 
 const getDimensions = (ele) => {
@@ -126,67 +133,64 @@ const Info = ({ articlesData, pressData, exhibitionsData, awardsData }) => {
   return (
     <>
       <Head>
-        <title>Info</title>
+        <title>About</title>
         <meta
           name="description"
-          content="Fermin Guerrero's graphic designer and typeface designer information, contact, press, articles."
+          content="Fermín Guerrero's graphic designer and typeface designer information, contact, press, articles."
         />
       </Head>
 
-      <motion.div className="wrapper-info" initial="exit" animate="enter" exit="exit">
-        <div className="wrapper-info-upper">
-          <motion.img
+      <Wrapper initial="exit" animate="enter" exit="exit">
+        <Upper>
+          <UpperImg
             variants={masonryAnimation}
             initial="initial"
             animate="animate"
             exit="exit"
             transition={{ duration: 0.6 }}
-            className="wrapper-info-upper-image"
             src="https://res.cloudinary.com/lali/image/upload/v1643735965/aboutmepicture_e0nbsk.jpg"
             alt="image-info-graphic-designer"
           />
-        </div>
+        </Upper>
 
-        <div className="mobile-info">
-          <InfoMobile
+        <AboutMobileStyles>
+          <AboutMobile
             press={pressPapers}
             pressOnline={pressOnline}
             articles={articles}
             exhibitions={exhibitions}
             awards={awards}
           />
-        </div>
-        <div className="content-info-desktop">
-          <div className="navigation">
-            <aside className="sticky" id="aside" ref={sidenavRef}>
+        </AboutMobileStyles>
+        <AboutDesktop>
+          <Nav>
+            <Aside id="aside" ref={sidenavRef}>
               {sectionRefs.map((item) => (
-                <button
+                <AsideLink
                   key={item.section}
                   type="button"
-                  className={`header_link ${visibleSection === item.section && "selected"}`}
+                  item={item.section}
+                  visibleSection={visibleSection}
                   onClick={() => {
                     scrollTo(item.ref.current);
                   }}
                 >
                   {item.name}
-                </button>
+                </AsideLink>
               ))}
-            </aside>
-          </div>
+            </Aside>
+          </Nav>
 
-          <div className="sections-wrapper">
+          <SectionsWrapper>
             {sectionsInfo.map((item, index) => (
-              <section className="sectionInfo" id={item.id} ref={item.ref} key={index}>
+              <SectionInfo id={item.id} ref={item.ref} key={index}>
                 {item.id !== "press" && item.component}
                 {item.id === "press" && item.component.map((comp) => comp)}
-              </section>
+              </SectionInfo>
             ))}
-          </div>
-        </div>
-        <div className="footerDiv">
-          <Footer />
-        </div>
-      </motion.div>
+          </SectionsWrapper>
+        </AboutDesktop>
+      </Wrapper>
     </>
   );
 };

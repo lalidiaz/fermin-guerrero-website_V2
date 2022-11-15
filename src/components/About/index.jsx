@@ -1,14 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 const About = () => {
   return (
-    <section className="about">
+    <>
       <p>
-        Online platform for Fermin Guerrero's visual communication practice focusing on Graphic
+        Online platform for Fermín Guerrero's visual communication practice focusing on Graphic
         Design/Art Direction and Typeface Design.
       </p>
 
       <p>
-        Fermin was born in Uruguay in 1983. In 2010, after he finished his bachelor in Industrial
+      Fermín was born in Uruguay in 1983. In 2010, after he finished his bachelor in Industrial
         Design at{" "}
         <a
           href="https://www.fadu.edu.uy/eucd/"
@@ -32,7 +32,7 @@ const About = () => {
       </p>
 
       <p>
-        For over 10 years, Fermin has worked for renown international clients on a wide range of
+        For over 10 years, Fermín has worked for renown international clients on a wide range of
         projects across different platforms and disciplines. His work has received many prestigious
         prizes and awards and has been regularly highlighted by the most relevant international
         design press. From 2015 to 2018, Guerrero taught a variety of Graphic Design and Typography
@@ -46,13 +46,13 @@ const About = () => {
       </p>
 
       <p>
-        In October 2022, Fermin launched his own type design studio called{" "}
+        In October 2022, Fermín launched his own type design studio called{" "}
         <a href="https://fuertetype.com/" rel="noreferrer" target="_blank">
           <u> Fuerte</u>
         </a>
         , in order to distribute his own typefaces.
       </p>
-    </section>
+    </>
   );
 };
 

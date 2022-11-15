@@ -1,15 +1,16 @@
+import { Container, Year, Title, Country } from "@/styles/Exhibitions";
+
 const Exhibitions = ({ data }) => {
   return (
     <>
       {data.map((item, index) => (
-        <div className="exhibitions-container" key={index}>
-          <p className="exhibitions-year">{item.year}</p>
-          <div className="exhibitions-title">
+        <Container key={index}>
+          <Year>{item.year}</Year>
+          <Title>
             <p>{item.title}</p>
-          </div>
-
-          <p className="exhibitions-country">{item.country}</p>
-        </div>
+          </Title>
+          <Country>{item.country}</Country>
+        </Container>
       ))}
     </>
   );

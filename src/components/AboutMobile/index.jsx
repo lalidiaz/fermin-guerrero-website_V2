@@ -9,9 +9,10 @@ import {
   Awards,
 } from "@/components/index";
 
-const InfoMobile = ({ press, articles, exhibitions, awards, pressOnline }) => {
+
+const AboutMobile = ({ press, articles, exhibitions, awards, pressOnline }) => {
   return (
-    <div className="info-mobile-wrapper">
+    <>
       <Accordion title="About" content={<About />} />
       <Accordion title="Contact" content={<Contact />} />
       <Accordion
@@ -29,8 +30,8 @@ const InfoMobile = ({ press, articles, exhibitions, awards, pressOnline }) => {
       <Accordion title="Awards & Distinctions" content={<Awards data={awards} />} />
       <Accordion title="Research & Articles" content={<Articles data={articles} />} />
       <Accordion title="Exhibitions" content={<Exhibitions data={exhibitions} />} />
-    </div>
+    </>
   );
 };
 
-export default InfoMobile;
+export default AboutMobile;

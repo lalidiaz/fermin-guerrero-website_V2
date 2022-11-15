@@ -1,21 +1,19 @@
 import { useRouter } from "next/router";
+import { ActiveLinkStyles } from "../../styles/ActiveLink";
 
-const ActiveLink = ({ children, href }) => {
+const ActiveLink = ({ children, href, closeMenu }) => {
   const router = useRouter();
-  const style = {
-    color: router.pathname === href ? "white" : "white",
-    fontWeight: router.pathname === href ? "700" : "lighter",
-  };
 
   const handleClick = (e) => {
     e.preventDefault();
     router.push(href);
+    closeMenu();
   };
 
   return (
-    <a href={href} onClick={handleClick} style={style}>
+    <ActiveLinkStyles pathname={router.pathname} href={href} onClick={handleClick}>
       {children}
-    </a>
+    </ActiveLinkStyles>
   );
 };
 

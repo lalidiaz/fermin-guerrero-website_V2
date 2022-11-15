@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
+import { GridContainer, GridName, YearTags, GridDesc, GridImg } from "@/styles/Layout";
 
 const Type = ({ data }) => {
   const textAnimation = useAnimation();
@@ -40,27 +41,27 @@ const Type = ({ data }) => {
 
           <motion.div key={element.id} initial="exit" animate="enter" exit="exit">
             <CoverImg element={element} />
-            <div className="grid-container" ref={textRef}>
+            <GridContainer ref={textRef}>
               <AnimateContent delay={0.4} animate={textAnimation}>
-                <p className="name">{element.name}</p>
+                <GridName>{element.name}</GridName>
               </AnimateContent>
-              <div className="year-and-tags">
+              <YearTags>
                 <AnimateContent delay={0.5} animate={textAnimation}>
                   <p>{element.year}</p>
 
                   <Credits element={element} />
                 </AnimateContent>
-              </div>
+              </YearTags>
 
               <AnimateContent delay={0.6} animate={textAnimation}>
-                <div className="description">{element.description}</div>
+                <GridDesc>{element.description}</GridDesc>
               </AnimateContent>
-            </div>
-            <div ref={imageRef} className="img-gallery-wrapper">
+            </GridContainer>
+            <GridImg ref={imageRef}>
               <AnimateContent delay={0.4} animate={imageAnimation}>
                 <ImageGallery element={element} />
               </AnimateContent>
-            </div>
+            </GridImg>
           </motion.div>
         </>
       ))}
