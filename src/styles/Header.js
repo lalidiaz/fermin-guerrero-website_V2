@@ -21,6 +21,7 @@ export const BurgerContainer = styled.div`
 
   @media ${device.laptop} {
     display: none;
+    padding: 0px;
   }
 `;
 
@@ -85,6 +86,7 @@ export const Li = styled.li`
     border-bottom: none;
     &:nth-child(1) {
       grid-column: 1/5;
+      margin-left: 0px;
     }
     &:nth-child(2) {
       grid-column: 5/7;

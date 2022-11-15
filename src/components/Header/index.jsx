@@ -26,6 +26,7 @@ const Header = () => {
   };
 
   const handleClickHome = () => {
+    console.log("handleClickHome");
     setOpen(false);
   };
 
@@ -44,29 +45,29 @@ const Header = () => {
           <NavigationMobile>
             <Ul>
               <Li>
-                <ActiveLink href="/">
-                  <a onClick={() => handleClickHome()}>Fermín Guerrero</a>
+                <ActiveLink href="/" passHref closeMenu={handleClickHome}>
+                  Fermín Guerrero
                 </ActiveLink>
               </Li>
               <Li>
-                <ActiveLink href="/graphic-design">
-                  <a onClick={() => handleClickHome()}>Graphic Design</a>
+                <ActiveLink href="/graphic-design" passHref closeMenu={handleClickHome}>
+                  Graphic Design
                 </ActiveLink>
               </Li>
               <Li>
-                <ActiveLink href="/all">
-                  <a onClick={() => handleClickHome()}>&</a>
+                <ActiveLink href="/all" passHref closeMenu={handleClickHome}>
+                  &
                 </ActiveLink>
               </Li>
               <Li>
-                <ActiveLink href="/typeface-design">
-                  <a onClick={() => handleClickHome()}>Typeface Design</a>
+                <ActiveLink href="/typeface-design" passHref closeMenu={handleClickHome}>
+                  Typeface Design
                 </ActiveLink>
               </Li>
               <Li>
-                <Link href="/about">
-                  <a onClick={() => handleClickHome()}>About</a>
-                </Link>
+                <ActiveLink href="/about" passHref closeMenu={handleClickHome}>
+                  About
+                </ActiveLink>
               </Li>
             </Ul>
           </NavigationMobile>

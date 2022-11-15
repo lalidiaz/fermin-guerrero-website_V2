@@ -1,6 +1,6 @@
 {
   "brick": {
-    "id": 1,
+    "id": 1001,
     "title": "Brick",
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734493/Brick_kxefou.png",
     "linkDescription": "Brick: A New Font Brewing.",
@@ -11,7 +11,7 @@
 
   "thesaurus": {
     "title": "Thesaurus",
-    "id": 2,
+    "id": 1002,
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734520/Thesaurus_vqzmvb.png",
     "linkDescription": "Thesaurus's development.",
     "description2": "Published at I Love Typography.",
@@ -20,7 +20,7 @@
   },
   "monograms": {
     "title": "Monograms",
-    "id": 3,
+    "id": 1003,
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734537/Monograms_khpvvb.png",
     "linkDescription": "A study of the development of monograms: from Ancient Greek coins to contemporary logos.",
     "description2": "MATD’s dissertation.",
@@ -29,7 +29,7 @@
   },
   "reflection": {
     "title": "Reflection on Practice",
-    "id": 4,
+    "id": 1004,
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734554/ReflectiononPractice_dty6w5.png",
     "linkDescription": "Reflection on Practice: An inside look at the creation process of Exentra.",
     "description2": "MATD’s R.O.P. (reflection on practice).",
@@ -38,7 +38,7 @@
   },
   "geneve": {
     "title": "Geneve",
-    "id": 5,
+    "id": 1005,
     "image": "https://res.cloudinary.com/lali/image/upload/v1643734569/Geneve_wkjqtm.png",
     "linkDescription": "If Geneva was a typeface.",
     "description2": "Bachelor thesis at HEAD.",

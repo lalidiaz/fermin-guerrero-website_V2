@@ -7,13 +7,13 @@ import {
   Wrapper,
   Upper,
   UpperImg,
-  AboutMobile,
   AboutDesktop,
   Nav,
   Aside,
   AsideLink,
   SectionsWrapper,
   SectionInfo,
+  AboutMobileStyles,
 } from "@/styles/About";
 import {
   About,
@@ -153,7 +153,7 @@ const Info = ({ articlesData, pressData, exhibitionsData, awardsData }) => {
           />
         </Upper>
 
-        <AboutMobile>
+        <AboutMobileStyles>
           <AboutMobile
             press={pressPapers}
             pressOnline={pressOnline}
@@ -161,13 +161,12 @@ const Info = ({ articlesData, pressData, exhibitionsData, awardsData }) => {
             exhibitions={exhibitions}
             awards={awards}
           />
-        </AboutMobile>
+        </AboutMobileStyles>
         <AboutDesktop>
           <Nav>
             <Aside id="aside" ref={sidenavRef}>
               {sectionRefs.map((item) => (
                 <AsideLink
-                  // className={`header_link ${visibleSection === item.section && "selected"}`}
                   key={item.section}
                   type="button"
                   item={item.section}

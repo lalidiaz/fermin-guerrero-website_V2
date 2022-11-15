@@ -1,31 +1,3 @@
-export const links = [
-  {
-    id: 1,
-    url: "/",
-    text: "Fermín Guerrero",
-  },
-  {
-    id: 2,
-    url: "/graphic-design",
-    text: "Graphic Design",
-  },
-  {
-    id: 3,
-    url: "/all",
-    text: "&",
-  },
-  {
-    id: 4,
-    url: "/typeface-design",
-    text: "Typeface Design",
-  },
-  {
-    id: 5,
-    url: "/info",
-    text: "Info",
-  },
-];
-
 export const social = [
   {
     id: 1,

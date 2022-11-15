@@ -21,7 +21,7 @@ export const UpperImg = styled(motion.img)`
   padding: 38px 20px;
   width: 100%;
 `;
-export const AboutMobile = styled.div`
+export const AboutMobileStyles = styled.div`
   display: block;
   padding: 0px 20px 20px;
 
@@ -72,7 +72,7 @@ export const AsideLink = styled.button`
     color: white;
     text-align: left;
     padding-top: 10px;
-    font-size: 20px;
+    font-size: 1.2rem;
     cursor: pointer;
     font-weight: ${(props) => (props.visibleSection === props.item ? "bold" : "regular")};
   }

@@ -9,6 +9,7 @@ import {
   Awards,
 } from "@/components/index";
 
+
 const AboutMobile = ({ press, articles, exhibitions, awards, pressOnline }) => {
   return (
     <>
