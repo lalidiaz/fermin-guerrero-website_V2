@@ -12,4 +12,6 @@ export const TagName = styled.div`
 
 export const TagLink = styled.div`
   margin-right: 8px;
+  cursor: pointer;
+  text-decoration: underline;
 `;

@@ -74,23 +74,11 @@ export const MainImg = styled.div`
 
   @media ${device.laptop} {
     display: flex;
-    background-repeat: no-repeat;
-    background-position: center;
+    width: 100%;
     height: 100vh;
-    position: relative;
-    width: 100vw;
-  }
-`;
-
-export const UpperImg = styled.div`
-  display: none;
-
-  @media ${device.laptop} {
-    background-repeat: no-repeat;
+    background-size: cover;
     background-position: center;
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
+    transition: 0.5s ease-in-out;
+    background-image: url("https://res.cloudinary.com/lali/image/upload/v1643546446/BeyondTheBox_dpyev1.jpg");
   }
 `;

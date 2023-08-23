@@ -1,26 +1,26 @@
 import { Masonry, Layout } from "@/components/index";
 import { client } from "src/lib/cms";
 
-const AllProjects = ({ data }) => {
+const GraphicDesign = ({ data }) => {
+  const graphics = data.filter((item) => item.fields.type === "graphic");
+
   return (
     <Layout
-      title="All Projects"
       name="description"
-      content="Fermín Guerrero's projects."
+      content="Fermín Guerrero's Graphic Design Projects"
     >
-      <Masonry data={data} />
+      <Masonry data={graphics} type="graphic" />
     </Layout>
   );
 };
 
 export async function getStaticProps() {
   const response = await client.getEntries({ content_type: "project" });
-  console.log("response", response);
+
   return {
     props: {
       data: response.items,
     },
   };
 }
-
-export default AllProjects;
+export default GraphicDesign;

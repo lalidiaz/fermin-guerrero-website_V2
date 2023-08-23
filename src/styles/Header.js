@@ -39,18 +39,18 @@ export const MenuMobile = styled(motion.div)`
   justify-content: space-between;
   z-index: 100;
   padding-top: 10px;
+  height: auto;
 
-  @media ${device.laptop} {
-  }
+  border: 1px solid white;
+  border-radius: 2px;
 `;
 
 export const NavigationMobile = styled.div`
   display: flex;
   flex-direction: column;
   top: 15%;
-
-  @media ${device.laptop} {
-  }
+  height: auto;
+  padding: 2rem 0rem;
 `;
 
 export const Ul = styled.ul`
