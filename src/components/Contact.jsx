@@ -1,6 +1,5 @@
 import { FiClock } from "react-icons/fi";
 import { Time } from "@/components/index";
-import { contactLinks } from "@/utils/links";
 import {
   Container,
   EmailContainer,
@@ -12,7 +11,8 @@ import {
   FollowContent,
 } from "../styles/Contact";
 
-const Contact = () => {
+const Contact = ({ email, location, instagram, twitter, linkedin }) => {
+  console.log("email", email);
   return (
     <Container>
       <EmailContainer>
@@ -21,12 +21,13 @@ const Contact = () => {
           <a
             target="_blank"
             rel="noreferrer"
-            href="mailto:contact@ferminguerrero.com"
+            href={`mailto:${email}`}
+            style={{ border: "2px solid red" }}
           >
             contact@ferminguerrero.com
           </a>
           <div>
-            <p>Dubai, UAE.</p>
+            <p>{location}</p>
           </div>
           <TimeDisplay>
             <FiClock color="white" size={23} style={{ paddingRight: "5px" }} />
@@ -39,13 +40,21 @@ const Contact = () => {
         <FollowText>Follow</FollowText>
 
         <FollowContent>
-          {contactLinks.map(({ id, name, link }) => (
-            <li key={id}>
-              <a rel="noreferrer" href={link} target="_blank">
-                {name}
-              </a>
-            </li>
-          ))}
+          <li>
+            <a rel="noreferrer" href={instagram} target="_blank">
+              Instagram
+            </a>
+          </li>
+          <li>
+            <a rel="noreferrer" href={twitter} target="_blank">
+              Twitter
+            </a>
+          </li>
+          <li>
+            <a rel="noreferrer" href={linkedin} target="_blank">
+              Linkedin
+            </a>
+          </li>
         </FollowContent>
       </Follow>
     </Container>

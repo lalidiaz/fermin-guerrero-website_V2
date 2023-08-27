@@ -7,50 +7,30 @@ import {
   Media,
 } from "../styles/HoverComponent";
 
-const HoverComponent = ({
-  data,
-  year,
-  description,
-  descriptionTwo,
-  index,
-  link,
-  url,
-  titlePressOnline,
-}) => {
+const HoverComponent = ({ year, children, index, item }) => {
   const [activeIndex, setActiveIndex] = useState(-1);
 
   return (
     <>
-      <HoverContainer id="research">
+      <HoverContainer>
         <Year>{year}</Year>
 
         <Description
           onMouseEnter={() => setActiveIndex(index)}
           onMouseLeave={() => setActiveIndex(-1)}
         >
-          {titlePressOnline && (
-            <a href={url} target="_blank" rel="noreferrer">
-              <u>{titlePressOnline}</u>
-            </a>
-          )}
-          {link && (
-            <a href={url} target="_blank" rel="noreferrer">
-              <u>{link}</u>
-            </a>
-          )}
-          <p>{description}</p>
-          <p>{descriptionTwo}</p>
+          {children}
         </Description>
         <div>
-          {data[activeIndex] && data[activeIndex].image ? (
+          {activeIndex && activeIndex.image && (
             <Media
-              src={data[activeIndex].image}
+              src={activeIndex.image}
               alt="article-image"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             />
-          ) : null}
+          )}
         </div>
       </HoverContainer>
     </>

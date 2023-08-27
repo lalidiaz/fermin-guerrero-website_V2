@@ -1,17 +1,11 @@
 import styled from "styled-components";
 import { HiOutlineChevronDown } from "react-icons/hi";
 
-export const AccordionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-`;
-
 export const AccordionSection = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 20px;
-  margin-bottom: 15px;
+  font-size: 1rem;
+  height: 100%;
 `;
 
 export const AccordionBtn = styled.button`
@@ -40,5 +34,5 @@ export const AccordionContent = styled.div`
   color: white;
   overflow: hidden;
   transition: max-height 0.6s ease;
-  padding: ${(props) => (props.active ? "20px 0px 0px 0px;" : "0px")};
+  padding: ${(props) => (props.active ? "0rem 0rem 10rem 0rem" : "0rem")};
 `;

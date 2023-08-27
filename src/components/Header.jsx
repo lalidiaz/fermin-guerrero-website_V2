@@ -2,7 +2,6 @@ import ActiveLink from "./ActiveLink";
 import { social } from "@/utils/links";
 import Hamburger from "hamburger-react";
 import { useState } from "react";
-import Link from "next/link";
 import {
   HeaderContainer,
   BurgerContainer,
@@ -15,6 +14,7 @@ import {
 
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
+  const [changeHeaderStyle, setChangeHeaderStyle] = useState(false);
 
   const menuVariants = {
     opened: {
@@ -24,6 +24,17 @@ const Header = () => {
       top: "-100vh",
     },
   };
+
+  const changeNavbarColor = () => {
+    if (window.scrollY >= 80) {
+      setChangeHeaderStyle(true);
+    } else {
+      setChangeHeaderStyle(false);
+    }
+  };
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", changeNavbarColor);
+  }
 
   const handleClickHome = () => {
     setOpen(false);
@@ -41,7 +52,7 @@ const Header = () => {
 
   return (
     <>
-      <HeaderContainer>
+      <HeaderContainer changeHeaderStyle={changeHeaderStyle}>
         <BurgerContainer>
           <Hamburger
             toggled={isOpen}

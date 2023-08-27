@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { device } from "./device";
 import { motion } from "framer-motion";
+import { Link } from "react-scroll";
 
 export const Wrapper = styled(motion.div)`
   line-height: 1.4;
@@ -65,7 +66,7 @@ export const Aside = styled.aside`
     z-index: 10;
   }
 `;
-export const AsideLink = styled.button`
+export const AsideLink = styled(Link)`
   @media ${device.laptop} {
     border: none;
     background: transparent;
@@ -74,7 +75,8 @@ export const AsideLink = styled.button`
     padding-top: 10px;
     font-size: 1.2rem;
     cursor: pointer;
-    font-weight: ${(props) => (props.visibleSection === props.item ? "bold" : "regular")};
+    font-weight: ${(props) =>
+      props.visibleSection === props.item ? "bold" : "regular"};
   }
 `;
 export const SectionsWrapper = styled.div`
@@ -84,8 +86,5 @@ export const SectionsWrapper = styled.div`
   }
 `;
 export const SectionInfo = styled.section`
-  @media ${device.laptop} {
-    padding-top: ${(props) =>
-      props.id === "contact" ? "120px" : props.id === "about" ? "50px" : " 100px"};
-  }
+  padding: 3rem 0rem;
 `;

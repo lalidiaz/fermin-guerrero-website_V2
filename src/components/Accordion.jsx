@@ -1,5 +1,10 @@
 import { useState, useRef } from "react";
-import { AccordionSection, AccordionBtn, AccordionContent, Chevron } from "@/styles/Accordion";
+import {
+  AccordionSection,
+  AccordionBtn,
+  AccordionContent,
+  Chevron,
+} from "@/styles/Accordion";
 
 const Accordion = (props) => {
   const [active, setActive] = useState("");
@@ -9,16 +14,23 @@ const Accordion = (props) => {
 
   const toggle = () => {
     setActive(active === "" ? "active" : "");
-    setHeightState(active === "active" ? "0px" : `${content.current.scrollHeight}px`);
+    setHeightState(
+      active === "active" ? "0px" : `${content.current.scrollHeight}px`
+    );
   };
 
+  console.log("setHeight", setHeight);
   return (
     <AccordionSection>
       <AccordionBtn active={active} onClick={toggle}>
         {props.title}
         <Chevron active={active} width={30} color="white" />
       </AccordionBtn>
-      <AccordionContent ref={content} active={active} style={{ maxHeight: `${setHeight}` }}>
+      <AccordionContent
+        ref={content}
+        active={active}
+        style={{ maxHeight: `${setHeight}` }}
+      >
         <div>{props.content}</div>
       </AccordionContent>
     </AccordionSection>

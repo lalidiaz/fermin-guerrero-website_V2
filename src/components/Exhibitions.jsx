@@ -1,19 +1,18 @@
 import { Container, Year, Title, Country } from "@/styles/Exhibitions";
 
 const Exhibitions = ({ data }) => {
-  return (
-    <>
-      {data.map((item, index) => (
-        <Container key={index}>
-          <Year>{item.year}</Year>
-          <Title>
-            <p>{item.title}</p>
-          </Title>
-          <Country>{item.country}</Country>
-        </Container>
-      ))}
-    </>
-  );
+  const getExhibitions = data.map((item) => (
+    <Container key={item.fields.id}>
+      <Year>{item.fields.year}</Year>
+      <Title>
+        <p>{item.fields.title}</p>
+      </Title>
+      <Country>
+        {item.fields.city}, {item.fields.country}
+      </Country>
+    </Container>
+  ));
+  return <>{getExhibitions}</>;
 };
 
 export default Exhibitions;

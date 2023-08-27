@@ -49,6 +49,8 @@ export const FollowContent = styled.ul`
   padding-left: 3px;
   font-size: 1rem;
 
+  border: 2px solid red;
+
   @media ${device.laptop} {
     font-size: 1.1rem;
     padding: 10px 0px;

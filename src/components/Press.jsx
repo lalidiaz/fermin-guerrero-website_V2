@@ -1,26 +1,45 @@
-import { HoverComponent } from "@/components/index";
-import { Title, PressContainer } from "@/styles/Press";
+import { HoverComponent, RichText } from "@/components/index";
+import { Title } from "@/styles/Press";
 
-const Press = ({ data, title }) => {
+const Press = ({ data }) => {
+  const paperPress = data.filter((item) => item.fields.online === false);
+  const paperOnline = data.filter((item) => item.fields.online === true);
+
+  const displayPaperPress = paperPress.map((item) => (
+    <HoverComponent
+      item={item.fields}
+      year={item.fields.year}
+      key={item.fields.id}
+      index={item.fields}
+      url={item.fields.image}
+      link={item.fields.link}
+    >
+      <RichText texts={item.fields.description} />
+    </HoverComponent>
+  ));
+
+  const displayPaperOnline = paperOnline.map((item) => (
+    <HoverComponent
+      item={item.fields}
+      year={item.fields.year}
+      key={item.fields.id}
+      index={item.fields}
+      url={item.fields.image}
+      link={item.fields.link}
+    >
+      <a href={item.fields.link} target="_blank" rel="noreferrer">
+        {item.fields.title}
+      </a>
+    </HoverComponent>
+  ));
+
   return (
-    <PressContainer>
-      <Title>{title}</Title>
-
-      {data.map((item, index) => {
-        const { description, descriptionTwo, year } = item;
-
-        return (
-          <HoverComponent
-            data={data}
-            year={year}
-            description={description}
-            descriptionTwo={descriptionTwo}
-            key={item}
-            index={index}
-          />
-        );
-      })}
-    </PressContainer>
+    <>
+      <Title>Print (Selected):</Title>
+      {displayPaperPress}
+      <Title>Print Online (Selected):</Title>
+      {displayPaperOnline}
+    </>
   );
 };
 export default Press;

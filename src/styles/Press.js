@@ -1,12 +1,6 @@
 import styled from "styled-components";
 import { device } from "../styles/device";
 
-export const PressContainer = styled.div`
-  @media ${device.laptop} {
-    padding: inherit;
-  }
-`;
-
 export const Title = styled.p`
   padding-bottom: 20px;
   font-weight: bold;

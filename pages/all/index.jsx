@@ -15,7 +15,7 @@ const AllProjects = ({ data }) => {
 
 export async function getStaticProps() {
   const response = await client.getEntries({ content_type: "project" });
-  console.log("response", response);
+
   return {
     props: {
       data: response.items,

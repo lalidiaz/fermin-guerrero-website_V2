@@ -1,19 +1,17 @@
 import { Container, Year, Title, Prize } from "../styles/Awards";
 
 const Awards = ({ data }) => {
-  return (
-    <>
-      {data.map((item, index) => (
-        <Container key={index}>
-          <Year>{item.year}</Year>
-          <Title>
-            <p>{item.title}</p>
-          </Title>
+  const getAwards = data.map((item) => (
+    <Container key={item.fields.id}>
+      <Year>{item.fields.year}</Year>
+      <Title>
+        <p>{item.fields.title}</p>
+      </Title>
 
-          <Prize>{item.prize}</Prize>
-        </Container>
-      ))}
-    </>
-  );
+      <Prize>{item.fields.prize}</Prize>
+    </Container>
+  ));
+
+  return <div>{getAwards}</div>;
 };
 export default Awards;

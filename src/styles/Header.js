@@ -4,6 +4,15 @@ import { motion } from "framer-motion";
 
 export const HeaderContainer = styled(motion.header)`
   width: 100%;
+  z-index: 10000;
+  height: auto;
+  min-height: 2.8rem;
+  background-color: ${(props) => (props.changeHeaderStyle ? "black" : "none")};
+  border-bottom: ${(props) =>
+    props.changeHeaderStyle ? "1px solid white" : "none"};
+  position: fixed;
+  top: 0;
+  transition: 0.8s all ease;
 `;
 
 export const BurgerContainer = styled.div`

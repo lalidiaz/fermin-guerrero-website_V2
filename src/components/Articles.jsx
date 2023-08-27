@@ -1,25 +1,20 @@
-import { HoverComponent } from "@/components/index";
+import { HoverComponent, RichText } from "@/components/index";
 
 const Articles = ({ data }) => {
-  return (
-    <>
-      {data.map((item, index) => {
-        const { linkDescription, url, year, description, description2 } = item;
-        return (
-          <HoverComponent
-            link={linkDescription}
-            url={url}
-            data={data}
-            year={year}
-            description={description}
-            descriptionTwo={description2}
-            key={item}
-            index={index}
-          />
-        );
-      })}
-    </>
-  );
+  const getArticles = data.map((item) => (
+    <HoverComponent
+      item={item}
+      year={item.fields.year}
+      key={item.id}
+      link={item.fields.url}
+      url={item.fields.image}
+      index={item.fields}
+    >
+      <RichText texts={item.fields.description} />
+    </HoverComponent>
+  ));
+
+  return <>{getArticles}</>;
 };
 
 export default Articles;
