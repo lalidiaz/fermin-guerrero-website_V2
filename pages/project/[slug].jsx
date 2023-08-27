@@ -2,6 +2,8 @@ import Head from "next/head";
 import { client } from "src/lib/cms";
 import { useAnimationInView } from "@/hooks/useAnimationInView";
 import { motion } from "framer-motion";
+import styled from "styled-components";
+import { device } from "@/styles/device";
 import {
   ImageGallery,
   CoverImg,
@@ -9,13 +11,6 @@ import {
   AnimateContent,
   RichText,
 } from "@/components/index";
-import {
-  GridContainer,
-  GridName,
-  YearTags,
-  GridDesc,
-  GridImg,
-} from "@/styles/Layout";
 
 const Project = ({ project }) => {
   const [textRef, textAnimation] = useAnimationInView();
@@ -115,3 +110,43 @@ export async function getStaticProps({ params }) {
 }
 
 export default Project;
+
+const GridContainer = styled.div`
+  grid-template-columns: 1fr;
+  padding: 20px;
+
+  @media ${device.laptop} {
+    display: grid;
+    grid-column-gap: 8px;
+    grid-template-columns: 1fr 1fr 2fr;
+    min-height: 100px;
+    padding: 15px 20px;
+    font-weight: regular;
+  }
+`;
+
+const GridName = styled.p`
+  font-weight: bold;
+`;
+
+const YearTags = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 0px;
+
+  @media ${device.laptop} {
+    padding: 0px;
+  }
+`;
+
+const GridDesc = styled.div`
+  line-height: 1.4;
+`;
+
+const GridImg = styled.div`
+  padding: 20px 20px 40px 20px;
+  @media ${device.laptop} {
+    padding: 20px 20px 60px 0px;
+  }
+`;

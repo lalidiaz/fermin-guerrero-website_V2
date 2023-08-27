@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { LoadingWrapper } from "../styles/Loading";
+import styled from "styled-components";
 import {
   DotTransition,
   LoadingDot,
@@ -38,3 +38,11 @@ const Loading = () => {
 };
 
 export default Loading;
+
+const LoadingWrapper = styled.div`
+  padding-top: 20rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

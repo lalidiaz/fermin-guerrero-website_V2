@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { imageVariants } from "@/utils/animations";
-import { MainImg, Video, Img } from "@/styles/CoverImg";
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import { device } from "@/styles/device";
 import { isImage } from "@/utils/helpers";
 
 const CoverImg = ({ src }) => {
@@ -25,3 +27,29 @@ const CoverImg = ({ src }) => {
 };
 
 export default CoverImg;
+
+const MainImg = styled(motion.div)`
+  padding: 38px 20px 0px;
+  background-color: black;
+  min-height: auto;
+
+  @media ${device.laptop} {
+    min-height: 900px;
+  }
+`;
+
+const Video = styled.video`
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  outline-style: none !important;
+`;
+
+const Img = styled.img`
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  outline-style: none;
+`;

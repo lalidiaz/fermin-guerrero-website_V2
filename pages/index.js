@@ -5,14 +5,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/autoplay";
-import { HeroContainer } from "@/styles/Home";
 import { client } from "src/lib/cms";
-import {
-  MainWrapper,
-  MainImg,
-  MobileCarousel,
-  MobileCarouselImg,
-} from "@/styles/Layout";
+import styled from "styled-components";
+import { device } from "@/styles/device";
 
 SwiperCore.use([Autoplay, Pagination]);
 
@@ -97,3 +92,46 @@ export async function getStaticProps() {
 }
 
 export default Home;
+
+const MainWrapper = styled.main`
+  width: 100%;
+  position: relative;
+`;
+
+const HeroContainer = styled.div`
+  height: 100%;
+  width: 100%;
+`;
+
+const MobileCarousel = styled.div`
+  display: block;
+  width: 100%;
+
+  @media ${device.laptop} {
+    display: none;
+  }
+`;
+
+const MobileCarouselImg = styled.img`
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+  @media ${device.laptop} {
+    display: none;
+  }
+`;
+
+const MainImg = styled.div`
+  display: none;
+
+  @media ${device.laptop} {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    transition: 0.5s ease-in-out;
+    background-image: url("https://res.cloudinary.com/lali/image/upload/v1643546446/BeyondTheBox_dpyev1.jpg");
+  }
+`;

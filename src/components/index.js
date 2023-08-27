@@ -11,7 +11,6 @@ export { default as HoverComponent } from "./HoverComponent";
 export { default as AboutMobile } from "./AboutMobile";
 export { default as Exhibitions } from "./Exhibitions";
 export { default as Press } from "./Press";
-export { default as PressOnline } from "./PressOnline";
 export { default as Articles } from "./Articles";
 export { default as Accordion } from "./Accordion";
 export { default as Awards } from "./Awards";

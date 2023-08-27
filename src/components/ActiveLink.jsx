@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { ActiveLinkStyles } from "../styles/ActiveLink";
+import styled from "styled-components";
 
 const ActiveLink = ({ children, href, closeMenu }) => {
   const router = useRouter();
@@ -22,3 +22,9 @@ const ActiveLink = ({ children, href, closeMenu }) => {
 };
 
 export default ActiveLink;
+
+const ActiveLinkStyles = styled.a`
+  color: ${(props) => (props.pathname === props.href ? "white" : "white")};
+  font-weight: ${(props) =>
+    props.pathname === props.href ? "bold" : "regular"};
+`;

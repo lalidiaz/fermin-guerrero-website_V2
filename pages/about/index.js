@@ -1,20 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import { masonryAnimation } from "@/utils/animations";
 import { client } from "src/lib/cms";
+import { useState } from "react";
 import Head from "next/head";
-import {
-  Wrapper,
-  Upper,
-  UpperImg,
-  AboutDesktop,
-  Nav,
-  Aside,
-  AsideLink,
-  SectionsWrapper,
-  SectionInfo,
-  // FIX ME MOBILE
-  AboutMobileStyles,
-} from "@/styles/About";
+import styled from "styled-components";
+import { device } from "@/styles/device";
+import { motion } from "framer-motion";
+import { Link } from "react-scroll";
 import {
   About,
   Contact,
@@ -26,6 +18,8 @@ import {
 } from "@/components/index";
 
 const Info = ({ about, press, exhibitions, awards, articles }) => {
+  const [activeLink, setActiveLink] = useState(null);
+  console.log("activeLink", activeLink);
   const sections = [
     {
       id: "about",
@@ -69,7 +63,7 @@ const Info = ({ about, press, exhibitions, awards, articles }) => {
 
   const getSections = sections.map((item) => (
     <AsideLink
-      activeClass="active"
+      weight={activeLink === item.id ? "bold" : "thin"}
       to={item.id}
       spy={true}
       smooth={true}
@@ -77,6 +71,7 @@ const Info = ({ about, press, exhibitions, awards, articles }) => {
       key={item.id}
       type="button"
       item={item.id}
+      onClick={() => setActiveLink(item.id)}
     >
       {item.name}
     </AsideLink>
@@ -149,3 +144,88 @@ export async function getStaticProps() {
   };
 }
 export default Info;
+
+const Wrapper = styled(motion.div)`
+  line-height: 1.4;
+  padding: 40px 0px 0px;
+
+  @media ${device.laptop} {
+    padding: 0px 0px 60px 0px;
+  }
+`;
+
+const Upper = styled.div`
+  min-height: inherit;
+  @media ${device.laptop} {
+    min-height: 800px;
+  }
+`;
+const UpperImg = styled(motion.img)`
+  padding: 38px 20px;
+  width: 100%;
+`;
+const AboutMobileStyles = styled.div`
+  display: block;
+  padding: 0px 20px 20px;
+
+  p {
+    font-size: 1rem;
+  }
+
+  @media ${device.laptop} {
+    display: none;
+  }
+`;
+const AboutDesktop = styled.div`
+  display: none;
+
+  @media ${device.laptop} {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1;
+    width: 100%;
+    padding: 0px 20px;
+    font-size: 1.1rem;
+  }
+`;
+const Nav = styled.div`
+  @media ${device.laptop} {
+    grid-column: 1/5;
+    height: 100%;
+  }
+`;
+const Aside = styled.aside`
+  @media ${device.laptop} {
+    padding-top: 50px;
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+  }
+`;
+const AsideLink = styled(Link)`
+  @media ${device.laptop} {
+    border: none;
+    background: transparent;
+    color: white;
+    text-align: left;
+    padding-top: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: ${(props) => props.weight};
+  }
+`;
+const SectionsWrapper = styled.div`
+  @media ${device.laptop} {
+    grid-column: 5/12;
+    padding-left: 3px;
+  }
+`;
+const SectionInfo = styled.section`
+  padding: 3rem 0rem;
+`;

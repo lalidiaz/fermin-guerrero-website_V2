@@ -1,5 +1,6 @@
 import { HoverComponent, RichText } from "@/components/index";
-import { Title } from "@/styles/Press";
+import styled from "styled-components";
+import { device } from "@/styles/device";
 
 const Press = ({ data }) => {
   const paperPress = data.filter((item) => item.fields.online === false);
@@ -43,3 +44,36 @@ const Press = ({ data }) => {
   );
 };
 export default Press;
+
+const Title = styled.p`
+  padding-bottom: 20px;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 1rem 0rem 0.5rem 0rem;
+
+  border-bottom: 1px solid white;
+
+  @media ${device.laptop} {
+    font-size: 1.1rem;
+    border-bottom: none;
+  }
+`;
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  padding-bottom: 20px;
+  font-size: 1rem;
+
+  @media ${device.laptop} {
+    font-size: 1.1rem;
+  }
+`;
+
+const Year = styled.p`
+  grid-column: 1/3;
+`;
+
+const PressTitle = styled.div`
+  grid-column: 3/8;
+`;

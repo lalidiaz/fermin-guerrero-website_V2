@@ -1,15 +1,39 @@
 import Link from "next/link";
-import { TagName, TagLink } from "../styles/Tags";
+import styled from "styled-components";
+import { device } from "@/styles/device";
 
 const Tags = ({ tags }) => {
   const showTags =
     tags &&
-    tags.map((tag) => (
-      <Link key={tag} href={`/tag`}>
-        <TagLink>{tag}</TagLink>
-      </Link>
-    ));
+    tags.map((category) => {
+      const transformName = category.replace(" ", "-");
+      const toLower = transformName.toLowerCase();
+
+      return (
+        <Link
+          href={{ pathname: "/category", query: { category: category } }}
+          passHref
+        >
+          <TagLink>{category}</TagLink>
+        </Link>
+      );
+    });
   return <TagName>{showTags}</TagName>;
 };
 
 export default Tags;
+
+const TagName = styled.div`
+  margin-right: 8px;
+
+  @media ${device.laptop} {
+    display: flex;
+    flex-direction: row;
+  }
+`;
+
+const TagLink = styled.div`
+  margin-right: 8px;
+  cursor: pointer;
+  text-decoration: underline;
+`;

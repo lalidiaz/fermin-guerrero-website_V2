@@ -6,12 +6,9 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material";
 import { masonryAnimation } from "@/utils/animations";
 import { isImage } from "@/utils/helpers";
-import {
-  MasonryItem,
-  MasonryVideo,
-  MasonryImg,
-  MasonryText,
-} from "@/styles/Masonry";
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import { device } from "@/styles/device";
 import { useWindowSize } from "@/hooks/useWindowSize";
 
 const Masonry = ({ data }) => {
@@ -63,3 +60,85 @@ const Masonry = ({ data }) => {
 };
 
 export default Masonry;
+
+const MasonryItem = styled(motion.a)`
+  display: block;
+  margin: 0px 0px 8px 0px;
+  padding: 0px 0px 20px 0px;
+
+  &:hover {
+    font-weight: bold;
+  }
+
+  @media ${device.laptop} {
+    padding: 0px 0px 20px 0px;
+
+    &:hover {
+      font-weight: bold;
+    }
+  }
+`;
+
+const MasonryVideo = styled.video`
+  min-height: 300px;
+  background-color: black;
+  width: 100%;
+
+  &:hover {
+    opacity: 1;
+    -webkit-animation: flash 1.5s;
+    animation: flash 1.5s;
+
+    @-webkit-keyframes flash {
+      0% {
+        opacity: 0.4;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @keyframes flash {
+      0% {
+        opacity: 0.4;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+`;
+
+const MasonryImg = styled.img`
+  min-height: 300px;
+  background-color: black;
+  width: 100%;
+
+  &:hover {
+    opacity: 1;
+    -webkit-animation: flash 1.5s;
+    animation: flash 1.5s;
+
+    @-webkit-keyframes flash {
+      0% {
+        opacity: 0.4;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @keyframes flash {
+      0% {
+        opacity: 0.4;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+`;
+
+const MasonryText = styled.p`
+  font-size: 1.1rem;
+  padding-top: 20px;
+  padding-bottom: 25px;
+`;

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { MainWrapper, MasonryWrapper } from "@/styles/Layout";
+import styled from "styled-components";
 
 const Layout = ({ children, title, content, description }) => {
   return (
@@ -16,3 +16,12 @@ const Layout = ({ children, title, content, description }) => {
 };
 
 export default Layout;
+
+const MainWrapper = styled.main`
+  width: 100%;
+  position: relative;
+`;
+
+const MasonryWrapper = styled.div`
+  padding: 40px 20px;
+`;
