@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { device } from "@/styles/device";
+import { v4 as uuidv4 } from "uuid";
 
 const Tags = ({ tags }) => {
   const showTags =
@@ -11,10 +12,11 @@ const Tags = ({ tags }) => {
 
       return (
         <Link
+          key={uuidv4()}
           href={{ pathname: "category", query: { category: category } }}
           passHref
         >
-          <TagLink key={category + index}>{category}</TagLink>
+          <TagLink>{category}</TagLink>
         </Link>
       );
     });
@@ -32,7 +34,7 @@ const TagName = styled.div`
   }
 `;
 
-const TagLink = styled.div`
+const TagLink = styled.a`
   margin-right: 8px;
   cursor: pointer;
   text-decoration: underline;
