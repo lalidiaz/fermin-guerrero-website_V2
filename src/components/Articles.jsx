@@ -5,7 +5,7 @@ const Articles = ({ data }) => {
     <HoverComponent
       item={item}
       year={item.fields.year}
-      key={item.id}
+      key={item.fields.id}
       link={item.fields.url}
       url={item.fields.image}
       index={item.fields}

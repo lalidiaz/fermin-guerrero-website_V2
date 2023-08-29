@@ -36,7 +36,7 @@ const Header = () => {
 
   const getSocialLinks = social.map(({ id, url, text }) => {
     return (
-      <span key={id}>
+      <span key={id + url}>
         <a href={url} target="_blank" rel="noreferrer">
           {text}
         </a>
@@ -46,7 +46,7 @@ const Header = () => {
 
   return (
     <>
-      <HeaderContainer changeHeaderStyle={changeHeaderStyle}>
+      <HeaderContainer changeheaderstyle={changeHeaderStyle.toString()}>
         <BurgerContainer>
           <Hamburger
             toggled={isOpen}
@@ -69,22 +69,18 @@ const Header = () => {
                 </ActiveLink>
               </Li>
               <Li>
-                <ActiveLink
-                  href="/graphic"
-                  passHref
-                  closeMenu={handleClickHome}
-                >
+                <ActiveLink href="graphic" passHref closeMenu={handleClickHome}>
                   Graphic Design
                 </ActiveLink>
               </Li>
               <Li>
-                <ActiveLink href="/all" passHref closeMenu={handleClickHome}>
+                <ActiveLink href="all" passHref closeMenu={handleClickHome}>
                   &
                 </ActiveLink>
               </Li>
               <Li>
                 <ActiveLink
-                  href="/typeface"
+                  href="typeface"
                   passHref
                   closeMenu={handleClickHome}
                 >
@@ -92,7 +88,7 @@ const Header = () => {
                 </ActiveLink>
               </Li>
               <Li>
-                <ActiveLink href="/about" passHref closeMenu={handleClickHome}>
+                <ActiveLink href="about" passHref closeMenu={handleClickHome}>
                   About
                 </ActiveLink>
               </Li>
@@ -111,9 +107,9 @@ const HeaderContainer = styled(motion.header)`
   z-index: 10000;
   height: auto;
   min-height: 2.8rem;
-  background-color: ${(props) => (props.changeHeaderStyle ? "black" : "none")};
+  background-color: ${(props) => (props.changeheaderstyle ? "black" : "none")};
   border-bottom: ${(props) =>
-    props.changeHeaderStyle ? "1px solid white" : "none"};
+    props.changeheaderstyle ? "1px solid white" : "none"};
   position: fixed;
   top: 0;
   transition: 0.8s all ease;

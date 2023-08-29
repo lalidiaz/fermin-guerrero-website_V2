@@ -61,10 +61,10 @@ const Info = ({ about, press, exhibitions, awards, articles }) => {
     },
   ];
 
-  const getSections = sections.map((item) => (
+  const getSections = sections.map((item, index) => (
     <AsideLink
       weight={activeLink === item.id ? "bold" : "thin"}
-      to={item.id}
+      to={item.id + index}
       spy={true}
       smooth={true}
       duration={1000}
@@ -78,7 +78,7 @@ const Info = ({ about, press, exhibitions, awards, articles }) => {
   ));
 
   const getSectionsContent = sections.map((item, index) => (
-    <SectionInfo id={item.id} key={index}>
+    <SectionInfo id={item.id} key={item.id + index}>
       {item.component}
     </SectionInfo>
   ));

@@ -46,7 +46,6 @@ const Project = ({ project }) => {
                   style={{ paddingBorrom: "1rem" }}
                 >
                   <Credits credits={credits} />
-                  {/* <RichText texts={credits} /> */}
                 </AnimateContent>
               )}
               {tags && (

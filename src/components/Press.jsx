@@ -6,12 +6,12 @@ const Press = ({ data }) => {
   const paperPress = data.filter((item) => item.fields.online === false);
   const paperOnline = data.filter((item) => item.fields.online === true);
 
-  const displayPaperPress = paperPress.map((item) => (
+  const displayPaperPress = paperPress.map((item, index) => (
     <HoverComponent
       item={item.fields}
       year={item.fields.year}
       key={item.fields.id}
-      index={item.fields}
+      index={item.fields + index}
       url={item.fields.image}
       link={item.fields.link}
     >
@@ -19,11 +19,11 @@ const Press = ({ data }) => {
     </HoverComponent>
   ));
 
-  const displayPaperOnline = paperOnline.map((item) => (
+  const displayPaperOnline = paperOnline.map((item, index) => (
     <HoverComponent
       item={item.fields}
       year={item.fields.year}
-      key={item.fields.id}
+      key={item.fields.id + index}
       index={item.fields}
       url={item.fields.image}
       link={item.fields.link}

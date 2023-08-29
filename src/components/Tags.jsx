@@ -5,13 +5,14 @@ import { device } from "@/styles/device";
 const Tags = ({ tags }) => {
   const showTags =
     tags &&
-    tags.map((category) => {
+    tags.map((category, index) => {
       const transformName = category.replace(" ", "-");
       const toLower = transformName.toLowerCase();
 
       return (
         <Link
-          href={{ pathname: "/category", query: { category: category } }}
+          key={category + index}
+          href={{ pathname: "category", query: { category: category } }}
           passHref
         >
           <TagLink>{category}</TagLink>

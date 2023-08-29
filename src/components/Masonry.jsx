@@ -17,36 +17,42 @@ const Masonry = ({ data }) => {
 
   const size = useWindowSize();
   const isMobile = size.width <= 480;
- 
-  const displayGallery = data.map((project, i) => (
-    <Link passHref key={i} href={`/project/${project.fields.slug}`}>
-      <MasonryItem
-        variants={masonryAnimation}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        transition={{ duration: 0.6 }}
-      >
-        <ImageListItem
-          key={project.id}
-          style={{ height: "200px", width: "100%" }}
-        >
-          {isImage(project.fields.imageGallery) ? (
-            <MasonryImg
-              src={project.fields.imageGallery}
-              alt={project.fields.name}
-            />
-          ) : (
-            <MasonryVideo preload="none" playsinline autoPlay muted loop>
-              <source src={project.fields.imageGallery} type="video/mp4" />
-            </MasonryVideo>
-          )}
 
-          <MasonryText>{project.fields.name}</MasonryText>
-        </ImageListItem>
-      </MasonryItem>
-    </Link>
-  ));
+  const displayGallery = data.map((project, index) => {
+    return (
+      <Link
+        passHref
+        key={project.fields.id + index}
+        href={`/project/${project.fields.slug}`}
+      >
+        <MasonryItem
+          variants={masonryAnimation}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          transition={{ duration: 0.6 }}
+        >
+          <ImageListItem
+            key={project.fields.id}
+            style={{ height: "200px", width: "100%" }}
+          >
+            {isImage(project.fields.imageGallery) ? (
+              <MasonryImg
+                src={project.fields.imageGallery}
+                alt={project.fields.name}
+              />
+            ) : (
+              <MasonryVideo preload="none" playsinline autoPlay muted loop>
+                <source src={project.fields.imageGallery} type="video/mp4" />
+              </MasonryVideo>
+            )}
+
+            <MasonryText>{project.fields.name}</MasonryText>
+          </ImageListItem>
+        </MasonryItem>
+      </Link>
+    );
+  });
 
   return (
     <ImageList

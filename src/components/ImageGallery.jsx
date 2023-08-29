@@ -24,10 +24,10 @@ const ImageGallery = ({ media }) => {
 
   const getMedia =
     media &&
-    media.map((item) => {
+    media.map((item, index) => {
       return (
         <ImageListItem
-          key={item.fields.id}
+          key={item.fields.id + index}
           cols={item.fields.cols}
           rows={item.fields.rows}
         >

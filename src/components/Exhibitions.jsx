@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { device } from "../styles/device";
 
 const Exhibitions = ({ data }) => {
-  const getExhibitions = data.map((item) => (
-    <Container key={item.fields.id}>
+  const getExhibitions = data.map((item, index) => (
+    <Container key={item.fields.id + index}>
       <Year>{item.fields.year}</Year>
       <Title>
         <p>{item.fields.title}</p>

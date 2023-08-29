@@ -41,6 +41,6 @@ const RichText = ({ texts, type }) => {
       ),
     },
   };
-  return <p>{documentToReactComponents(texts, options)}</p>;
+  return <>{documentToReactComponents(texts, options)}</>;
 };
 export default RichText;

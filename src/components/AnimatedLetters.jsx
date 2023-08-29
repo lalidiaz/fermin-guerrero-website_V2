@@ -46,7 +46,7 @@ const AnimatedLetters = ({ text }) => {
           <motion.span
             ref={ref}
             aria-hidden="true"
-            key={index}
+            key={word + index}
             initial="hidden"
             animate={ctrls}
             variants={wordAnimation}
@@ -57,7 +57,11 @@ const AnimatedLetters = ({ text }) => {
           >
             {word.split("").map((character, index) => {
               return (
-                <motion.span aria-hidden="true" key={index} variants={characterAnimation}>
+                <motion.span
+                  aria-hidden="true"
+                  key={character + index}
+                  variants={characterAnimation}
+                >
                   {character}
                 </motion.span>
               );

@@ -34,8 +34,8 @@ const Home = ({ data }) => {
     };
   }, []);
 
-  const getCarrousel = mobile.map((img, i) => (
-    <div key={i}>
+  const getCarrousel = mobile.map((img, index) => (
+    <div key={img.fields.id + index}>
       <SwiperSlide>
         <MobileCarouselImg
           src={img.fields.image}
