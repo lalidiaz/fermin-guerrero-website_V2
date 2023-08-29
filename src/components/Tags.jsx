@@ -11,11 +11,10 @@ const Tags = ({ tags }) => {
 
       return (
         <Link
-          key={category + index}
           href={{ pathname: "category", query: { category: category } }}
           passHref
         >
-          <TagLink>{category}</TagLink>
+          <TagLink key={category + index}>{category}</TagLink>
         </Link>
       );
     });
