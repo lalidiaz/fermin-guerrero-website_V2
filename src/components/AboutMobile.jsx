@@ -1,6 +1,5 @@
 import {
   Accordion,
-  PressOnline,
   Press,
   Articles,
   Exhibitions,
@@ -9,15 +8,34 @@ import {
   Awards,
 } from "@/components/index";
 
-const AboutMobile = ({ press, articles, exhibitions, awards }) => {
+const AboutMobile = ({
+  about,
+  press,
+  articles,
+  exhibitions,
+  awards,
+  email,
+  location,
+  instagram,
+  twitter,
+  linkedin,
+}) => {
   return (
     <>
-      <Accordion title="About" content={<About />} />
-      <Accordion title="Contact" content={<Contact />} />
+      <Accordion title="About" content={<About data={about.fields.about} />} />
       <Accordion
-        title="Press"
-        content={<Press data={press} key={press[0].id} />}
+        title="Contact"
+        content={
+          <Contact
+            email={email}
+            location={location}
+            instagram={instagram}
+            twitter={twitter}
+            linkedin={linkedin}
+          />
+        }
       />
+      <Accordion title="Press" content={<Press data={press} />} />
       <Accordion
         title="Awards & Distinctions"
         content={<Awards data={awards} />}

@@ -19,3 +19,4 @@ export { default as AnimatedLetters } from "./AnimatedLetters";
 export { default as AnimateContent } from "./AnimateContent";
 export { default as Layout } from "./Layout";
 export { default as RichText } from "./RichText";
+export { default as Credits } from "./Credits";

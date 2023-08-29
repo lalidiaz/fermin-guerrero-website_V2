@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageListItem, ImageList } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { isImage } from "@/utils/helpers";
 
 const stylesImgList = makeStyles({
   imageList: {
@@ -18,68 +19,61 @@ function srcset(image, size, rows = 1, cols = 1) {
   ${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format&dpr=2 2x`;
 }
 
-const ImageGallery = ({ images, videos }) => {
+const ImageGallery = ({ media }) => {
   const classes = stylesImgList();
 
-  const getImages =
-    images &&
-    images.map((img) => (
-      <ImageListItem
-        key={img.fields.id}
-        cols={img.fields.cols}
-        rows={img.fields.rows}
-      >
-        <img
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center",
-          }}
-          src={img.fields.source}
-          alt="graphic-design"
-          srcSet={srcset(
-            img.fields.source,
-            121,
-            img.fields.rows,
-            img.fields.cols
-          )}
-        />
-      </ImageListItem>
-    ));
-
-  const getVideos =
-    videos &&
-    videos.map((video) => (
-      <ImageListItem
-        key={video.fields.id}
-        cols={video.fields.cols}
-        rows={video.fields.rows}
-      >
-        <video
-          autoPlay
-          muted
-          loop
-          playsinline
-          webkit-playsinline
-          controls
-          controlsList="nofullscreen"
-          className="video"
-          poster={video.fields.poster}
+  const getMedia =
+    media &&
+    media.map((item) => {
+      return (
+        <ImageListItem
+          key={item.fields.id}
+          cols={item.fields.cols}
+          rows={item.fields.rows}
         >
-          <source
-            src={video.fields.url}
-            srcSet={srcset(
-              video.fields.url,
-              121,
-              video.fields.rows,
-              video.fields.cols
-            )}
-          />
-        </video>
-      </ImageListItem>
-    ));
-
+          {isImage(item.fields.url) ? (
+            <img
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center",
+              }}
+              src={item.fields.url}
+              alt="graphic-design"
+              srcSet={srcset(
+                item.fields.url,
+                121,
+                item.fields.rows,
+                item.fields.cols
+              )}
+            />
+          ) : (
+            <video
+              autoPlay
+              muted
+              loop
+              playsinline
+              webkit-playsinline
+              controls
+              controlsList="nofullscreen"
+              className="video"
+              poster={item.fields.portada}
+            >
+              <source
+                src={item.fields.url}
+                srcSet={srcset(
+                  item.fields.url,
+                  121,
+                  item.fields.rows,
+                  item.fields.cols
+                )}
+              />
+            </video>
+          )}
+        </ImageListItem>
+      );
+    });
   return (
     <ImageList
       gap={13}
@@ -88,8 +82,7 @@ const ImageGallery = ({ images, videos }) => {
       rowHeight="auto"
       className={classes.imageList}
     >
-      {images && images.length && getImages}
-      {videos && videos.length && getVideos}
+      {media && media.length && getMedia}
     </ImageList>
   );
 };

@@ -10,23 +10,15 @@ import {
   Tags,
   AnimateContent,
   RichText,
+  Credits,
 } from "@/components/index";
 
 const Project = ({ project }) => {
   const [textRef, textAnimation] = useAnimationInView();
   const [imageRef, imageAnimation] = useAnimationInView();
 
-  const {
-    id,
-    name,
-    description,
-    images,
-    videos,
-    mainImage,
-    tags,
-    year,
-    credits,
-  } = project.fields;
+  const { id, name, description, mainImage, tags, year, credits, media } =
+    project.fields;
 
   return (
     <>
@@ -48,8 +40,13 @@ const Project = ({ project }) => {
             </AnimateContent>
             <div>
               {credits && (
-                <AnimateContent delay={0.6} animate={textAnimation}>
-                  <RichText texts={credits} />
+                <AnimateContent
+                  delay={0.6}
+                  animate={textAnimation}
+                  style={{ paddingBorrom: "1rem" }}
+                >
+                  <Credits credits={credits} />
+                  {/* <RichText texts={credits} /> */}
                 </AnimateContent>
               )}
               {tags && (
@@ -68,7 +65,7 @@ const Project = ({ project }) => {
         </GridContainer>
         <GridImg ref={imageRef}>
           <AnimateContent delay={0.4} animate={imageAnimation}>
-            <ImageGallery images={images} videos={videos} />
+            <ImageGallery media={media} />
           </AnimateContent>
         </GridImg>
       </motion.div>

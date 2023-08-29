@@ -15,7 +15,6 @@ const Accordion = (props) => {
     );
   };
 
-  console.log("setHeight", setHeight);
   return (
     <AccordionSection>
       <AccordionBtn active={active} onClick={toggle}>

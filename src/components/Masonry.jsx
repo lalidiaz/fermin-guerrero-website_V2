@@ -17,7 +17,7 @@ const Masonry = ({ data }) => {
 
   const size = useWindowSize();
   const isMobile = size.width <= 480;
-
+ 
   const displayGallery = data.map((project, i) => (
     <Link passHref key={i} href={`/project/${project.fields.slug}`}>
       <MasonryItem
@@ -42,7 +42,7 @@ const Masonry = ({ data }) => {
             </MasonryVideo>
           )}
 
-          <MasonryText>{project.name}</MasonryText>
+          <MasonryText>{project.fields.name}</MasonryText>
         </ImageListItem>
       </MasonryItem>
     </Link>

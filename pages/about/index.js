@@ -19,7 +19,7 @@ import {
 
 const Info = ({ about, press, exhibitions, awards, articles }) => {
   const [activeLink, setActiveLink] = useState(null);
-  console.log("activeLink", activeLink);
+
   const sections = [
     {
       id: "about",
@@ -108,10 +108,16 @@ const Info = ({ about, press, exhibitions, awards, articles }) => {
 
         <AboutMobileStyles>
           <AboutMobile
+            about={about}
             press={press}
             articles={articles}
             exhibitions={exhibitions}
             awards={awards}
+            email={about.fields.email}
+            location={about.fields.location}
+            instagram={about.fields.instagram}
+            twitter={about.fields.twitter}
+            linkedin={about.fields.linkedin}
           />
         </AboutMobileStyles>
         <AboutDesktop>
@@ -227,5 +233,5 @@ const SectionsWrapper = styled.div`
   }
 `;
 const SectionInfo = styled.section`
-  padding: 3rem 0rem;
+  padding: 4rem 0rem 0rem 0rem;
 `;

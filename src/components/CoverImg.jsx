@@ -34,7 +34,8 @@ const MainImg = styled(motion.div)`
   min-height: auto;
 
   @media ${device.laptop} {
-    min-height: 900px;
+    // min-height: 900px;
+    height: auto;
   }
 `;
 
