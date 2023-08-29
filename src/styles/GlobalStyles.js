@@ -41,4 +41,9 @@ export const GlobalStyles = createGlobalStyle`
         width:100%;
       }
     }
+
+
+    bold {
+      font-weight:bold;
+    }
  `;

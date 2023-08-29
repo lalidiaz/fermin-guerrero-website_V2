@@ -1,14 +1,16 @@
 import { Masonry, Layout } from "@/components/index";
 import { client } from "src/lib/cms";
 
-const AllProjects = ({ data }) => {
+const TypefaceDesign = ({ data }) => {
+  const typefaces = data.filter((item) => item.fields.type === "typeface");
+
   return (
     <Layout
-      title="All Projects"
       name="description"
-      content="Fermín Guerrero's projects."
+      title="Typeface Design"
+      content="Fermín Guerrero's typefaces"
     >
-      <Masonry data={data} />
+      <Masonry data={typefaces} type="typeface" />
     </Layout>
   );
 };
@@ -23,4 +25,4 @@ export async function getStaticProps() {
   };
 }
 
-export default AllProjects;
+export default TypefaceDesign;

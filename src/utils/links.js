@@ -15,17 +15,3 @@ export const social = [
     text: "Linkedin",
   },
 ];
-
-export const contactLinks = [
-  {
-    id: 1,
-    name: "Instagram",
-    link: "https://www.instagram.com/ferminguerrero_design/",
-  },
-  { id: 2, name: "Twitter", link: "https://twitter.com/fermin_guerrero" },
-  {
-    id: 3,
-    name: "Linkedin",
-    link: "https://www.linkedin.com/in/fermin-guerrero-616237173/",
-  },
-];

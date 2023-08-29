@@ -1,20 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
-import Head from "next/head";
-import { useRef, useEffect, useState } from "react";
-import { getArticlesData, getExhibitionsData, getPressData, getAwardsData } from "@/utils/helpers";
 import { masonryAnimation } from "@/utils/animations";
-import {
-  Wrapper,
-  Upper,
-  UpperImg,
-  AboutDesktop,
-  Nav,
-  Aside,
-  AsideLink,
-  SectionsWrapper,
-  SectionInfo,
-  AboutMobileStyles,
-} from "@/styles/About";
+import { client } from "src/lib/cms";
+import { useState } from "react";
+import Head from "next/head";
+import styled from "styled-components";
+import { device } from "@/styles/device";
+import { motion } from "framer-motion";
+import { Link } from "react-scroll";
 import {
   About,
   Contact,
@@ -22,113 +14,74 @@ import {
   Awards,
   Articles,
   Exhibitions,
-  PressOnline,
   AboutMobile,
 } from "@/components/index";
 
-const getDimensions = (ele) => {
-  const { height } = ele.getBoundingClientRect();
-  const offsetTop = ele.offsetTop;
-  const offsetBottom = offsetTop + height;
+const Info = ({ about, press, exhibitions, awards, articles }) => {
+  const [activeLink, setActiveLink] = useState(null);
 
-  return {
-    height,
-    offsetTop,
-    offsetBottom,
-  };
-};
-
-const scrollTo = (ele) => {
-  ele.scrollIntoView({
-    behavior: "smooth",
-    block: "start",
-  });
-};
-
-const Info = ({ articlesData, pressData, exhibitionsData, awardsData }) => {
-  const [visibleSection, setVisibleSection] = useState();
-  const sidenavRef = useRef(null);
-  const aboutRef = useRef(null);
-  const contactRef = useRef(null);
-  const awardsRef = useRef(null);
-  const articlesRef = useRef(null);
-  const exhibitionsRef = useRef(null);
-  const pressRef = useRef(null);
-
-  const getObjects = (data) => {
-    return Object.values(data).map((element) => element);
-  };
-
-  const articles = getObjects(articlesData);
-  const exhibitions = getObjects(exhibitionsData);
-  const awards = getObjects(awardsData);
-  const pressPapers = pressData.papers;
-  const pressOnline = pressData.online;
-
-  const sectionRefs = [
-    { section: "about", ref: aboutRef, name: "About" },
-    { section: "contact", ref: contactRef, name: "Contact" },
-    { section: "press", ref: pressRef, name: "Press" },
-    { section: "awards", ref: awardsRef, name: "Awards & Distinctions" },
-    { section: "articles", ref: articlesRef, name: "Research & Articles" },
-    { section: "exhibitions", ref: exhibitionsRef, name: "Exhibitions" },
-  ];
-
-  const sectionsInfo = [
-    { component: <About />, id: "about", ref: aboutRef },
-    { component: <Contact />, id: "contact", ref: contactRef },
+  const sections = [
     {
-      component: [
-        <Press data={pressPapers} title="Print (Selected):" key={pressPapers[2].id} />,
-        <PressOnline data={pressOnline} title="Print Online (Selected):" key={pressOnline[4].id} />,
-      ],
+      id: "about",
+      name: "About",
+      component: <About data={about.fields.about} />,
+    },
+    {
+      id: "contact",
+      name: "Contact",
+      component: (
+        <Contact
+          email={about.fields.email}
+          location={about.fields.location}
+          instagram={about.fields.instagram}
+          twitter={about.fields.twitter}
+          linkedin={about.fields.linkedin}
+        />
+      ),
+    },
+    {
       id: "press",
-      ref: pressRef,
+      name: "Press",
+      component: <Press data={press} />,
     },
     {
-      component: <Awards data={awards} />,
       id: "awards",
-      ref: awardsRef,
+      name: "Awards & Distinctions",
+      component: <Awards data={awards} />,
     },
     {
+      id: "articles",
+      name: "Research & Articles",
       component: <Articles data={articles} />,
-      id: "articles",
-      ref: articlesRef,
     },
     {
+      id: "exhibitions",
+      name: "Exhibitions",
       component: <Exhibitions data={exhibitions} />,
-      id: "articles",
-      ref: exhibitionsRef,
     },
   ];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const { height: headerHeight } = getDimensions(sidenavRef.current);
-      const scrollPosition = window.scrollY + headerHeight;
+  const getSections = sections.map((item) => (
+    <AsideLink
+      weight={activeLink === item.id ? "bold" : "thin"}
+      to={item.id}
+      spy={true}
+      smooth={true}
+      duration={1000}
+      key={item.id}
+      type="button"
+      item={item.id}
+      onClick={() => setActiveLink(item.id)}
+    >
+      {item.name}
+    </AsideLink>
+  ));
 
-      const selected = sectionRefs.find(({ section, ref }) => {
-        const ele = ref.current;
-        if (ele) {
-          const { offsetBottom, offsetTop } = getDimensions(ele);
-          return scrollPosition > offsetTop && scrollPosition < offsetBottom;
-        }
-      });
-
-      if (selected && selected.section !== visibleSection) {
-        setVisibleSection(selected.section);
-      } else if (!selected && visibleSection) {
-        setVisibleSection(undefined);
-      }
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visibleSection]);
+  const getSectionsContent = sections.map((item, index) => (
+    <SectionInfo id={item.id} key={index}>
+      {item.component}
+    </SectionInfo>
+  ));
 
   return (
     <>
@@ -148,47 +101,31 @@ const Info = ({ articlesData, pressData, exhibitionsData, awardsData }) => {
             animate="animate"
             exit="exit"
             transition={{ duration: 0.6 }}
-            src="https://res.cloudinary.com/lali/image/upload/v1643735965/aboutmepicture_e0nbsk.jpg"
+            src={about.fields.image}
             alt="image-info-graphic-designer"
           />
         </Upper>
 
         <AboutMobileStyles>
           <AboutMobile
-            press={pressPapers}
-            pressOnline={pressOnline}
+            about={about}
+            press={press}
             articles={articles}
             exhibitions={exhibitions}
             awards={awards}
+            email={about.fields.email}
+            location={about.fields.location}
+            instagram={about.fields.instagram}
+            twitter={about.fields.twitter}
+            linkedin={about.fields.linkedin}
           />
         </AboutMobileStyles>
         <AboutDesktop>
           <Nav>
-            <Aside id="aside" ref={sidenavRef}>
-              {sectionRefs.map((item) => (
-                <AsideLink
-                  key={item.section}
-                  type="button"
-                  item={item.section}
-                  visibleSection={visibleSection}
-                  onClick={() => {
-                    scrollTo(item.ref.current);
-                  }}
-                >
-                  {item.name}
-                </AsideLink>
-              ))}
-            </Aside>
+            <Aside id="aside">{getSections}</Aside>
           </Nav>
 
-          <SectionsWrapper>
-            {sectionsInfo.map((item, index) => (
-              <SectionInfo id={item.id} ref={item.ref} key={index}>
-                {item.id !== "press" && item.component}
-                {item.id === "press" && item.component.map((comp) => comp)}
-              </SectionInfo>
-            ))}
-          </SectionsWrapper>
+          <SectionsWrapper>{getSectionsContent}</SectionsWrapper>
         </AboutDesktop>
       </Wrapper>
     </>
@@ -196,18 +133,105 @@ const Info = ({ articlesData, pressData, exhibitionsData, awardsData }) => {
 };
 
 export async function getStaticProps() {
-  const articlesData = await getArticlesData();
-  const pressData = await getPressData();
-  const exhibitionsData = await getExhibitionsData();
-  const awardsData = await getAwardsData();
+  const about = await client.getEntries({ content_type: "about" });
+  const press = await client.getEntries({ content_type: "press" });
+  const exhibitions = await client.getEntries({ content_type: "exhibition" });
+  const awards = await client.getEntries({ content_type: "awards" });
+  const articles = await client.getEntries({ content_type: "article" });
 
   return {
     props: {
-      articlesData,
-      pressData,
-      exhibitionsData,
-      awardsData,
+      about: about.items[0],
+      press: press.items,
+      exhibitions: exhibitions.items,
+      awards: awards.items,
+      articles: articles.items,
     },
   };
 }
 export default Info;
+
+const Wrapper = styled(motion.div)`
+  line-height: 1.4;
+  padding: 40px 0px 0px;
+
+  @media ${device.laptop} {
+    padding: 0px 0px 60px 0px;
+  }
+`;
+
+const Upper = styled.div`
+  min-height: inherit;
+  @media ${device.laptop} {
+    min-height: 800px;
+  }
+`;
+const UpperImg = styled(motion.img)`
+  padding: 38px 20px;
+  width: 100%;
+`;
+const AboutMobileStyles = styled.div`
+  display: block;
+  padding: 0px 20px 20px;
+
+  p {
+    font-size: 1rem;
+  }
+
+  @media ${device.laptop} {
+    display: none;
+  }
+`;
+const AboutDesktop = styled.div`
+  display: none;
+
+  @media ${device.laptop} {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1;
+    width: 100%;
+    padding: 0px 20px;
+    font-size: 1.1rem;
+  }
+`;
+const Nav = styled.div`
+  @media ${device.laptop} {
+    grid-column: 1/5;
+    height: 100%;
+  }
+`;
+const Aside = styled.aside`
+  @media ${device.laptop} {
+    padding-top: 50px;
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+  }
+`;
+const AsideLink = styled(Link)`
+  @media ${device.laptop} {
+    border: none;
+    background: transparent;
+    color: white;
+    text-align: left;
+    padding-top: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: ${(props) => props.weight};
+  }
+`;
+const SectionsWrapper = styled.div`
+  @media ${device.laptop} {
+    grid-column: 5/12;
+    padding-left: 3px;
+  }
+`;
+const SectionInfo = styled.section`
+  padding: 4rem 0rem 0rem 0rem;
+`;
