@@ -16,7 +16,7 @@ const Tags = ({ tags }) => {
           href={{ pathname: "category", query: { category: category } }}
           passHref
         >
-          <TagLink>{category}</TagLink>
+          <TagLink key={uuidv4()}>{category}</TagLink>
         </Link>
       );
     });
