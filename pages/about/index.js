@@ -79,7 +79,7 @@ const Info = ({ about, press, exhibitions, awards, articles }) => {
   ));
 
   const getSectionsContent = sections.map((item) => (
-    <SectionInfo id={item.id} key={uuidv4()}>
+    <SectionInfo id={item.id} key={item}>
       {item.component}
     </SectionInfo>
   ));

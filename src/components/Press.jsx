@@ -1,6 +1,7 @@
 import { HoverComponent, RichText } from "@/components/index";
 import styled from "styled-components";
 import { device } from "@/styles/device";
+import { v4 as uuidv4 } from "uuid";
 
 const Press = ({ data }) => {
   const paperPress = data.filter((item) => item.fields.online === false);
@@ -15,7 +16,7 @@ const Press = ({ data }) => {
       url={item.fields.image}
       link={item.fields.link}
     >
-      <RichText texts={item.fields.description} key={uuidv4()} />
+      <RichText texts={item.fields.description} key={item.fields.id} />
     </HoverComponent>
   ));
 

@@ -3,6 +3,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { validateURL } from "@/utils/helpers";
 import Link from "next/link";
 
+
 const RichText = ({ texts, type }) => {
   const Bold = ({ children }) => <span className="bold">{children}</span>;
 

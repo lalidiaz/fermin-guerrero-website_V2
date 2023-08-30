@@ -1,4 +1,5 @@
 import { HoverComponent, RichText } from "@/components/index";
+import { v4 as uuidv4 } from "uuid";
 
 const Articles = ({ data }) => {
   const getArticles = data.map((item) => (
