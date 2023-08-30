@@ -1,7 +1,7 @@
 module.exports = {
   reactStrictMode: true,
   trailingSlash: true,
-
+  target: "serverless",
   images: {
     domains: ["res.cloudinary.com"],
   },
