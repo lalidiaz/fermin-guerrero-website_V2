@@ -11,13 +11,14 @@ const Tags = ({ tags }) => {
       const toLower = transformName.toLowerCase();
 
       return (
-        <Link
-          key={uuidv4()}
-          href={{ pathname: "/category", query: { category: category } }}
-          passHref
-        >
-          <TagLink key={uuidv4()}>{category}</TagLink>
-        </Link>
+        <div key={uuidv4()}>
+          <Link
+            href={{ pathname: "/category", query: { category: category } }}
+            passHref
+          >
+            <TagLink>{category}</TagLink>
+          </Link>
+        </div>
       );
     });
   return <TagName>{showTags}</TagName>;
