@@ -37,8 +37,9 @@ const Home = ({ data }) => {
 
   const getCarrousel = mobile.map((img) => (
     <div key={uuidv4()}>
-      <SwiperSlide>
+      <SwiperSlide key={uuidv4()}>
         <MobileCarouselImg
+          key={uuidv4()}
           src={img.fields.image}
           alt={`graphic-design-img-${img.fields.image}`}
         />

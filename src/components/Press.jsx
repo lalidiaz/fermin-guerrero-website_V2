@@ -15,7 +15,7 @@ const Press = ({ data }) => {
       url={item.fields.image}
       link={item.fields.link}
     >
-      <RichText texts={item.fields.description} />
+      <RichText texts={item.fields.description} key={uuidv4()} />
     </HoverComponent>
   ));
 
@@ -28,7 +28,12 @@ const Press = ({ data }) => {
       url={item.fields.image}
       link={item.fields.link}
     >
-      <a href={item.fields.link} target="_blank" rel="noreferrer">
+      <a
+        href={item.fields.link}
+        target="_blank"
+        rel="noreferrer"
+        key={uuidv4()}
+      >
         {item.fields.title}
       </a>
     </HoverComponent>

@@ -4,12 +4,12 @@ import { v4 as uuidv4 } from "uuid";
 const Awards = ({ data }) => {
   const getAwards = data.map((item) => (
     <Container key={uuidv4()}>
-      <Year>{item.fields.year}</Year>
-      <Title>
+      <Year key={uuidv4()}>{item.fields.year}</Year>
+      <Title key={uuidv4()}>
         <p>{item.fields.title}</p>
       </Title>
 
-      <Prize>{item.fields.prize}</Prize>
+      <Prize key={uuidv4()}>{item.fields.prize}</Prize>
     </Container>
   ));
 

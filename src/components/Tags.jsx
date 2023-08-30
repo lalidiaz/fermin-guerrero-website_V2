@@ -13,13 +13,13 @@ const Tags = ({ tags }) => {
           const toLower = transformName.toLowerCase();
 
           return (
-            <React.Fragment key={category + index}>
+            <React.Fragment key={uuidv4()}>
               <Link
-                key={category}
+                key={uuidv4()}
                 href={{ pathname: "/category", query: { category: category } }}
                 passHref
               >
-                <TagLink key={toLower}>{category}</TagLink>
+                <TagLink key={uuidv4()}>{category}</TagLink>
               </Link>
             </React.Fragment>
           );

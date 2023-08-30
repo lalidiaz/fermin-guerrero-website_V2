@@ -38,7 +38,7 @@ const Header = () => {
   const getSocialLinks = social.map(({ url, text }) => {
     return (
       <span key={uuidv4()}>
-        <a href={url} target="_blank" rel="noreferrer">
+        <a key={uuidv4()} href={url} target="_blank" rel="noreferrer">
           {text}
         </a>
       </span>
@@ -47,7 +47,7 @@ const Header = () => {
 
   return (
     <>
-      <HeaderContainer changeheaderstyle={changeHeaderStyle}>
+      <HeaderContainer changeheaderstyle={changeHeaderStyle ? 1 : 0}>
         <BurgerContainer>
           <Hamburger
             toggled={isOpen}

@@ -10,7 +10,7 @@ const Articles = ({ data }) => {
       url={item.fields.image}
       index={item.fields}
     >
-      <RichText texts={item.fields.description} />
+      <RichText texts={item.fields.description} key={uuidv4()} />
     </HoverComponent>
   ));
 

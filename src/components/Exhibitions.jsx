@@ -5,11 +5,11 @@ import { v4 as uuidv4 } from "uuid";
 const Exhibitions = ({ data }) => {
   const getExhibitions = data.map((item, index) => (
     <Container key={uuidv4()}>
-      <Year>{item.fields.year}</Year>
-      <Title>
-        <p>{item.fields.title}</p>
+      <Year key={uuidv4()}>{item.fields.year}</Year>
+      <Title key={uuidv4()}>
+        <p key={uuidv4()}>{item.fields.title}</p>
       </Title>
-      <Country>
+      <Country key={uuidv4()}>
         {item.fields.city}, {item.fields.country}
       </Country>
     </Container>

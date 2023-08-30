@@ -78,7 +78,7 @@ const Info = ({ about, press, exhibitions, awards, articles }) => {
     </AsideLink>
   ));
 
-  const getSectionsContent = sections.map((item, index) => (
+  const getSectionsContent = sections.map((item) => (
     <SectionInfo id={item.id} key={uuidv4()}>
       {item.component}
     </SectionInfo>

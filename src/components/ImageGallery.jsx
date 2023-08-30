@@ -34,6 +34,7 @@ const ImageGallery = ({ media }) => {
         >
           {isImage(item.fields.url) ? (
             <img
+              key={uuidv4()}
               style={{
                 width: "100%",
                 height: "100%",
@@ -51,6 +52,7 @@ const ImageGallery = ({ media }) => {
             />
           ) : (
             <video
+              key={uuidv4()}
               autoPlay
               muted
               loop
@@ -62,6 +64,7 @@ const ImageGallery = ({ media }) => {
               poster={item.fields.portada}
             >
               <source
+                key={uuidv4()}
                 src={item.fields.url}
                 srcSet={srcset(
                   item.fields.url,

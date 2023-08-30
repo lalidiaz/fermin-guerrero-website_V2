@@ -23,6 +23,7 @@ const Masonry = ({ data }) => {
     return (
       <Link passHref key={uuidv4()} href={`/project/${project.fields.slug}`}>
         <MasonryItem
+          key={uuidv4()}
           variants={masonryAnimation}
           initial="initial"
           animate="animate"

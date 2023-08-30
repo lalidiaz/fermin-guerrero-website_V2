@@ -1,7 +1,6 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "react/jsx-key": "off",
     "react/no-unknown-property": "off"
   }
 }
