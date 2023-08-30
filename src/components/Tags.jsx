@@ -5,25 +5,27 @@ import { device } from "@/styles/device";
 import { v4 as uuidv4 } from "uuid";
 
 const Tags = ({ tags }) => {
-  const showTags =
-    tags &&
-    tags.map((category) => {
-      const transformName = category.replace(" ", "-");
-      const toLower = transformName.toLowerCase();
+  return (
+    <TagName>
+      {tags &&
+        tags.map((category, index) => {
+          const transformName = category.replace(" ", "-");
+          const toLower = transformName.toLowerCase();
 
-      return (
-        <React.Fragment key={uuidv4()}>
-          <Link
-            key={category}
-            href={{ pathname: "/category", query: { category: category } }}
-            passHref
-          >
-            <TagLink key={toLower}>{category}</TagLink>
-          </Link>
-        </React.Fragment>
-      );
-    });
-  return <TagName>{showTags}</TagName>;
+          return (
+            <React.Fragment key={category + index}>
+              <Link
+                key={category}
+                href={{ pathname: "/category", query: { category: category } }}
+                passHref
+              >
+                <TagLink key={toLower}>{category}</TagLink>
+              </Link>
+            </React.Fragment>
+          );
+        })}
+    </TagName>
+  );
 };
 
 export default Tags;
