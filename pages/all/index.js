@@ -2,6 +2,7 @@ import { Masonry, Layout } from "@/components/index";
 import { client } from "src/lib/cms";
 
 const AllProjects = ({ data }) => {
+ 
   return (
     <Layout
       title="All Projects"

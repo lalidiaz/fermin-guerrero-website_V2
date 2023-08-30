@@ -8,6 +8,7 @@ import "swiper/css/autoplay";
 import { client } from "src/lib/cms";
 import styled from "styled-components";
 import { device } from "@/styles/device";
+import { v4 as uuidv4 } from "uuid";
 
 SwiperCore.use([Autoplay, Pagination]);
 
@@ -34,8 +35,8 @@ const Home = ({ data }) => {
     };
   }, []);
 
-  const getCarrousel = mobile.map((img, index) => (
-    <div key={img.fields.id + index}>
+  const getCarrousel = mobile.map((img) => (
+    <div key={uuidv4()}>
       <SwiperSlide>
         <MobileCarouselImg
           src={img.fields.image}

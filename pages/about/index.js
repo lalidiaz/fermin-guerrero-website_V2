@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { device } from "@/styles/device";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
+import { v4 as uuidv4 } from "uuid";
 import {
   About,
   Contact,
@@ -64,7 +65,7 @@ const Info = ({ about, press, exhibitions, awards, articles }) => {
   const getSections = sections.map((item, index) => (
     <AsideLink
       weight={activeLink === item.id ? "bold" : "thin"}
-      to={item.id + index}
+      to={item.id}
       spy={true}
       smooth={true}
       duration={1000}
@@ -78,7 +79,7 @@ const Info = ({ about, press, exhibitions, awards, articles }) => {
   ));
 
   const getSectionsContent = sections.map((item, index) => (
-    <SectionInfo id={item.id} key={item.id + index}>
+    <SectionInfo id={item.id} key={uuidv4()}>
       {item.component}
     </SectionInfo>
   ));

@@ -6,14 +6,14 @@ import { v4 as uuidv4 } from "uuid";
 const Tags = ({ tags }) => {
   const showTags =
     tags &&
-    tags.map((category, index) => {
+    tags.map((category) => {
       const transformName = category.replace(" ", "-");
       const toLower = transformName.toLowerCase();
 
       return (
         <Link
           key={uuidv4()}
-          href={{ pathname: "category", query: { category: category } }}
+          href={{ pathname: "/category", query: { category: category } }}
           passHref
         >
           <TagLink key={uuidv4()}>{category}</TagLink>

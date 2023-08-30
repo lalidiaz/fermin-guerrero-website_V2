@@ -10,6 +10,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { device } from "@/styles/device";
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { v4 as uuidv4 } from "uuid";
 
 const Masonry = ({ data }) => {
   const theme = useTheme();
@@ -20,11 +21,7 @@ const Masonry = ({ data }) => {
 
   const displayGallery = data.map((project, index) => {
     return (
-      <Link
-        passHref
-        key={project.fields.id + index}
-        href={`/project/${project.fields.slug}`}
-      >
+      <Link passHref key={uuidv4()} href={`/project/${project.fields.slug}`}>
         <MasonryItem
           variants={masonryAnimation}
           initial="initial"

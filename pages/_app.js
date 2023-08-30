@@ -10,12 +10,14 @@ const App = ({ Component, pageProps }) => {
   };
 
   return (
-    <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
+    <>
       <GlobalStyles />
-      <Header />
-      <Component {...pageProps} />
+      <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
+        <Header />
+        <Component {...pageProps} />
+      </AnimatePresence>
       <Footer />
-    </AnimatePresence>
+    </>
   );
 };
 

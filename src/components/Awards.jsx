@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 
 const Awards = ({ data }) => {
-  const getAwards = data.map((item, index) => (
-    <Container key={item.fields.id + index}>
+  const getAwards = data.map((item) => (
+    <Container key={uuidv4()}>
       <Year>{item.fields.year}</Year>
       <Title>
         <p>{item.fields.title}</p>

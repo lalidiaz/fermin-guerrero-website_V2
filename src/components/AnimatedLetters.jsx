@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { v4 as uuidv4 } from "uuid";
 
 const AnimatedLetters = ({ text }) => {
   const ctrls = useAnimation();
@@ -41,12 +42,12 @@ const AnimatedLetters = ({ text }) => {
 
   return (
     <motion.h2>
-      {text.split(" ").map((word, index) => {
+      {text.split(" ").map((word) => {
         return (
           <motion.span
             ref={ref}
             aria-hidden="true"
-            key={word + index}
+            key={uuidv4()}
             initial="hidden"
             animate={ctrls}
             variants={wordAnimation}
@@ -55,11 +56,11 @@ const AnimatedLetters = ({ text }) => {
               staggerChildren: 0.05,
             }}
           >
-            {word.split("").map((character, index) => {
+            {word.split("").map((character) => {
               return (
                 <motion.span
                   aria-hidden="true"
-                  key={character + index}
+                  key={uuidv4()}
                   variants={characterAnimation}
                 >
                   {character}

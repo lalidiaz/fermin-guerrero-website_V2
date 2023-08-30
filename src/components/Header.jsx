@@ -5,6 +5,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { device } from "../styles/device";
 import { motion } from "framer-motion";
+import { v4 as uuidv4 } from "uuid";
 
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
@@ -34,9 +35,9 @@ const Header = () => {
     setOpen(false);
   };
 
-  const getSocialLinks = social.map(({ id, url, text }) => {
+  const getSocialLinks = social.map(({ url, text }) => {
     return (
-      <span key={id + url}>
+      <span key={uuidv4()}>
         <a href={url} target="_blank" rel="noreferrer">
           {text}
         </a>
@@ -46,7 +47,7 @@ const Header = () => {
 
   return (
     <>
-      <HeaderContainer changeheaderstyle={changeHeaderStyle.toString()}>
+      <HeaderContainer changeheaderstyle={changeHeaderStyle}>
         <BurgerContainer>
           <Hamburger
             toggled={isOpen}
@@ -69,18 +70,22 @@ const Header = () => {
                 </ActiveLink>
               </Li>
               <Li>
-                <ActiveLink href="graphic" passHref closeMenu={handleClickHome}>
+                <ActiveLink
+                  href="/graphic"
+                  passHref
+                  closeMenu={handleClickHome}
+                >
                   Graphic Design
                 </ActiveLink>
               </Li>
               <Li>
-                <ActiveLink href="all" passHref closeMenu={handleClickHome}>
+                <ActiveLink href="/all" passHref closeMenu={handleClickHome}>
                   &
                 </ActiveLink>
               </Li>
               <Li>
                 <ActiveLink
-                  href="typeface"
+                  href="/typeface"
                   passHref
                   closeMenu={handleClickHome}
                 >
@@ -88,7 +93,7 @@ const Header = () => {
                 </ActiveLink>
               </Li>
               <Li>
-                <ActiveLink href="about" passHref closeMenu={handleClickHome}>
+                <ActiveLink href="/about" passHref closeMenu={handleClickHome}>
                   About
                 </ActiveLink>
               </Li>

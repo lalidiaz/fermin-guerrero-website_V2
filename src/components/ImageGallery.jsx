@@ -2,6 +2,7 @@
 import { ImageListItem, ImageList } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { isImage } from "@/utils/helpers";
+import { v4 as uuidv4 } from "uuid";
 
 const stylesImgList = makeStyles({
   imageList: {
@@ -24,10 +25,10 @@ const ImageGallery = ({ media }) => {
 
   const getMedia =
     media &&
-    media.map((item, index) => {
+    media.map((item) => {
       return (
         <ImageListItem
-          key={item.fields.id + index}
+          key={uuidv4()}
           cols={item.fields.cols}
           rows={item.fields.rows}
         >

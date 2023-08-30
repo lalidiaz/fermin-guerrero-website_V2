@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { device } from "../styles/device";
+import { v4 as uuidv4 } from "uuid";
 
 const Exhibitions = ({ data }) => {
   const getExhibitions = data.map((item, index) => (
-    <Container key={item.fields.id + index}>
+    <Container key={uuidv4()}>
       <Year>{item.fields.year}</Year>
       <Title>
         <p>{item.fields.title}</p>
