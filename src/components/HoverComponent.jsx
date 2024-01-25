@@ -44,7 +44,6 @@ const HoverContainer = styled.section`
   @media ${device.laptop} {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    padding: 0px 0px 50px 0px;
   }
 `;
 

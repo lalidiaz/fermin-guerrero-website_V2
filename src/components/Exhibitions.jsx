@@ -3,7 +3,9 @@ import { device } from "../styles/device";
 import { v4 as uuidv4 } from "uuid";
 
 const Exhibitions = ({ data }) => {
-  const getExhibitions = data.map((item, index) => (
+  let exhibitionsSorted = data.sort((a, b) => b.fields.year - a.fields.year);
+
+  const getExhibitions = exhibitionsSorted.map((item) => (
     <Container key={uuidv4()}>
       <Year key={uuidv4()}>{item.fields.year}</Year>
       <Title key={uuidv4()}>

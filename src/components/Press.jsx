@@ -2,51 +2,61 @@ import { HoverComponent, RichText } from "@/components/index";
 import styled from "styled-components";
 import { device } from "@/styles/device";
 import { v4 as uuidv4 } from "uuid";
+import { sortByYear } from "../utils/helpers";
 
-const Press = ({ data }) => {
-  const paperPress = data.filter((item) => item.fields.online === false);
-  const paperOnline = data.filter((item) => item.fields.online === true);
+const Press = ({ paperOnline, paperPress }) => {
+  const pressOnlineSorted =
+    paperOnline && paperOnline.length && sortByYear(paperOnline);
 
-  const displayPaperPress = paperPress.map((item) => (
-    <HoverComponent
-      item={item.fields}
-      year={item.fields.year}
-      key={item.fields.id}
-      index={item.fields}
-      url={item.fields.image}
-      link={item.fields.link}
-    >
-      <RichText texts={item.fields.description} key={item.fields.id} />
-    </HoverComponent>
-  ));
+  const pressPaperSorted =
+    paperPress && paperPress.length && sortByYear(paperPress);
 
-  const displayPaperOnline = paperOnline.map((item, index) => (
-    <HoverComponent
-      item={item.fields}
-      year={item.fields.year}
-      key={item.fields.id}
-      index={item.fields}
-      url={item.fields.image}
-      link={item.fields.link}
-    >
-      <a
-        href={item.fields.link}
-        target="_blank"
-        rel="noreferrer"
-        key={uuidv4()}
+  const displayPaperPress =
+    pressPaperSorted &&
+    pressPaperSorted.length &&
+    pressPaperSorted.map((item) => (
+      <HoverComponent
+        item={item.fields}
+        year={item.fields.year}
+        key={item.fields.id}
+        index={item.fields}
+        url={item.fields.image}
+        link={item.fields.link}
       >
-        {item.fields.title}
-      </a>
-    </HoverComponent>
-  ));
+        <RichText texts={item.fields.description} key={item.fields.id} />
+      </HoverComponent>
+    ));
+
+  const displayPaperOnline =
+    pressOnlineSorted &&
+    pressOnlineSorted.length &&
+    pressOnlineSorted.map((item) => (
+      <HoverComponent
+        item={item.fields}
+        year={item.fields.year}
+        key={item.fields.id}
+        index={item.fields}
+        url={item.fields.image}
+        link={item.fields.link}
+      >
+        <a
+          href={item.fields.link}
+          target="_blank"
+          rel="noreferrer"
+          key={uuidv4()}
+        >
+          {item.fields.title}
+        </a>
+      </HoverComponent>
+    ));
 
   return (
-    <>
+    <Container>
       <Title>Print (Selected):</Title>
       {displayPaperPress}
       <Title>Print Online (Selected):</Title>
       {displayPaperOnline}
-    </>
+    </Container>
   );
 };
 export default Press;
@@ -65,21 +75,4 @@ const Title = styled.p`
   }
 `;
 
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  padding-bottom: 20px;
-  font-size: 1rem;
-
-  @media ${device.laptop} {
-    font-size: 1.1rem;
-  }
-`;
-
-const Year = styled.p`
-  grid-column: 1/3;
-`;
-
-const PressTitle = styled.div`
-  grid-column: 3/8;
-`;
+const Container = styled.div``;

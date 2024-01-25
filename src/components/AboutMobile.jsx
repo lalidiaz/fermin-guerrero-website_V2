@@ -10,7 +10,8 @@ import {
 
 const AboutMobile = ({
   about,
-  press,
+  paperOnline,
+  paperPress,
   articles,
   exhibitions,
   awards,
@@ -35,7 +36,10 @@ const AboutMobile = ({
           />
         }
       />
-      <Accordion title="Press" content={<Press data={press} />} />
+      <Accordion
+        title="Press"
+        content={<Press paperOnline={paperOnline} paperPress={paperPress} />}
+      />
       <Accordion
         title="Awards & Distinctions"
         content={<Awards data={awards} />}

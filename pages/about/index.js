@@ -7,7 +7,6 @@ import styled from "styled-components";
 import { device } from "@/styles/device";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
-import { v4 as uuidv4 } from "uuid";
 import {
   About,
   Contact,
@@ -20,6 +19,9 @@ import {
 
 const Info = ({ about, press, exhibitions, awards, articles }) => {
   const [activeLink, setActiveLink] = useState(null);
+
+  const paperPress = press.filter((item) => item.fields.online === false);
+  const paperOnline = press.filter((item) => item.fields.online === true);
 
   const sections = [
     {
@@ -43,7 +45,7 @@ const Info = ({ about, press, exhibitions, awards, articles }) => {
     {
       id: "press",
       name: "Press",
-      component: <Press data={press} />,
+      component: <Press paperOnline={paperOnline} paperPress={paperPress} />,
     },
     {
       id: "awards",
@@ -110,7 +112,8 @@ const Info = ({ about, press, exhibitions, awards, articles }) => {
         <AboutMobileStyles>
           <AboutMobile
             about={about}
-            press={press}
+            paperOnline={paperOnline}
+            paperPress={paperPress}
             articles={articles}
             exhibitions={exhibitions}
             awards={awards}

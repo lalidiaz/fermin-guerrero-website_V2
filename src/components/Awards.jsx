@@ -1,15 +1,25 @@
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
+import { device } from "../styles/device";
 
 const Awards = ({ data }) => {
-  const getAwards = data.map((item) => (
+  let awardsSorted = data.sort((a, b) => b.fields.year - a.fields.year);
+
+  const getAwards = awardsSorted.map((item) => (
     <Container key={uuidv4()}>
-      <Year key={uuidv4()}>{item.fields.year}</Year>
+      <Year key={uuidv4()}>
+        <p>{item.fields.year}</p>
+      </Year>
       <Title key={uuidv4()}>
         <p>{item.fields.title}</p>
       </Title>
+      <Project>
+        <p>{item.fields.project}</p>
+      </Project>
 
-      <Prize key={uuidv4()}>{item.fields.prize}</Prize>
+      <Prize key={uuidv4()}>
+        <p>{item.fields.prize}</p>
+      </Prize>
     </Container>
   ));
 
@@ -17,10 +27,16 @@ const Awards = ({ data }) => {
 };
 export default Awards;
 
+const Project = styled.div``;
+
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  padding-bottom: 20px;
+  padding: 0rem 0rem 1rem 0rem;
+
+  @media ${device.laptop} {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    padding-bottom: 20px;
+  }
 `;
 
 const Year = styled.p`
