@@ -35,10 +35,11 @@ const Project = ({ project }) => {
           </AnimateContent>
 
           <YearTags>
-            <AnimateContent delay={0.5} animate={textAnimation}>
-              <p>{year}</p>
-            </AnimateContent>
             <div>
+              <AnimateContent delay={0.5} animate={textAnimation}>
+                <p style={{ paddingBottom: "1.5rem" }}>{year}</p>
+              </AnimateContent>
+
               {credits && (
                 <AnimateContent
                   delay={0.6}
@@ -48,6 +49,8 @@ const Project = ({ project }) => {
                   <Credits credits={credits} />
                 </AnimateContent>
               )}
+            </div>
+            <div>
               {tags && (
                 <AnimateContent delay={0.7} animate={textAnimation}>
                   <Tags tags={tags} />
