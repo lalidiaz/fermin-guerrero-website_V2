@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { masonryAnimation } from "@/utils/animations";
 import { client } from "src/lib/cms";
 import { useState } from "react";
@@ -17,85 +16,105 @@ import {
   AboutMobile,
 } from "@/components/index";
 
+const createSections = (
+  about,
+  paperOnline,
+  paperPress,
+  awards,
+  articles,
+  exhibitions
+) => [
+  {
+    id: "about",
+    name: "About",
+    component: <About data={about.fields.about} />,
+  },
+  {
+    id: "contact",
+    name: "Contact",
+    component: (
+      <Contact
+        email={about.fields.email}
+        location={about.fields.location}
+        instagram={about.fields.instagram}
+        twitter={about.fields.twitter}
+        linkedin={about.fields.linkedin}
+      />
+    ),
+  },
+  {
+    id: "press",
+    name: "Press",
+    component: <Press paperOnline={paperOnline} paperPress={paperPress} />,
+  },
+  {
+    id: "awards",
+    name: "Awards & Distinctions",
+    component: <Awards data={awards} />,
+  },
+  {
+    id: "articles",
+    name: "Research & Articles",
+    component: <Articles data={articles} />,
+  },
+  {
+    id: "exhibitions",
+    name: "Exhibitions",
+    component: <Exhibitions data={exhibitions} />,
+  },
+];
+
+const SEO = () => (
+  <Head>
+    <title>About</title>
+    <meta
+      name="description"
+      content="Fermín Guerrero's graphic designer and typeface designer information, contact, press, articles."
+    />
+  </Head>
+);
+
 const Info = ({ about, press, exhibitions, awards, articles }) => {
   const [activeLink, setActiveLink] = useState(null);
 
-  const paperPress = press.filter((item) => item.fields.online === false);
-  const paperOnline = press.filter((item) => item.fields.online === true);
+  const paperPress = press.filter((item) => !item.fields.online);
+  const paperOnline = press.filter((item) => item.fields.online);
 
-  const sections = [
-    {
-      id: "about",
-      name: "About",
-      component: <About data={about.fields.about} />,
-    },
-    {
-      id: "contact",
-      name: "Contact",
-      component: (
-        <Contact
-          email={about.fields.email}
-          location={about.fields.location}
-          instagram={about.fields.instagram}
-          twitter={about.fields.twitter}
-          linkedin={about.fields.linkedin}
-        />
-      ),
-    },
-    {
-      id: "press",
-      name: "Press",
-      component: <Press paperOnline={paperOnline} paperPress={paperPress} />,
-    },
-    {
-      id: "awards",
-      name: "Awards & Distinctions",
-      component: <Awards data={awards} />,
-    },
-    {
-      id: "articles",
-      name: "Research & Articles",
-      component: <Articles data={articles} />,
-    },
-    {
-      id: "exhibitions",
-      name: "Exhibitions",
-      component: <Exhibitions data={exhibitions} />,
-    },
-  ];
+  const sections = createSections(
+    about,
+    paperOnline,
+    paperPress,
+    awards,
+    articles,
+    exhibitions
+  );
 
-  const getSections = sections.map((item, index) => (
-    <AsideLink
-      weight={activeLink === item.id ? "bold" : "thin"}
-      to={item.id}
-      spy={true}
-      smooth={true}
-      duration={1000}
-      key={item.id}
-      type="button"
-      item={item.id}
-      onClick={() => setActiveLink(item.id)}
-    >
-      {item.name}
-    </AsideLink>
-  ));
+  const renderNavLinks = () =>
+    sections.map((item) => (
+      <AsideLink
+        key={item.id}
+        weight={activeLink === item.id ? "bold" : "thin"}
+        to={item.id}
+        spy={true}
+        smooth={true}
+        duration={1000}
+        type="button"
+        item={item.id}
+        onClick={() => setActiveLink(item.id)}
+      >
+        {item.name}
+      </AsideLink>
+    ));
 
-  const getSectionsContent = sections.map((item) => (
-    <SectionInfo id={item.id} key={item}>
-      {item.component}
-    </SectionInfo>
-  ));
-
+  const renderSections = () =>
+    sections.map((item) => (
+      <SectionInfo key={item.id} id={item.id}>
+        {item.component}
+      </SectionInfo>
+    ));
   return (
     <>
-      <Head>
-        <title>About</title>
-        <meta
-          name="description"
-          content="Fermín Guerrero's graphic designer and typeface designer information, contact, press, articles."
-        />
-      </Head>
-
+      <SEO />
       <Wrapper initial="exit" animate="enter" exit="exit">
         <Upper>
           <UpperImg
@@ -124,12 +143,12 @@ const Info = ({ about, press, exhibitions, awards, articles }) => {
             linkedin={about.fields.linkedin}
           />
         </AboutMobileStyles>
+
         <AboutDesktop>
           <Nav>
-            <Aside id="aside">{getSections}</Aside>
+            <Aside id="aside">{renderNavLinks()}</Aside>
           </Nav>
-
-          <SectionsWrapper>{getSectionsContent}</SectionsWrapper>
+          <SectionsWrapper>{renderSections()}</SectionsWrapper>
         </AboutDesktop>
       </Wrapper>
     </>
@@ -137,23 +156,30 @@ const Info = ({ about, press, exhibitions, awards, articles }) => {
 };
 
 export async function getStaticProps() {
-  const about = await client.getEntries({ content_type: "about" });
-  const press = await client.getEntries({ content_type: "press" });
-  const exhibitions = await client.getEntries({ content_type: "exhibition" });
-  const awards = await client.getEntries({ content_type: "awards" });
-  const articles = await client.getEntries({ content_type: "article" });
-
-  return {
-    props: {
-      about: about.items[0],
-      press: press.items,
-      exhibitions: exhibitions.items,
-      awards: awards.items,
-      articles: articles.items,
-    },
-  };
+  try {
+    const [about, press, exhibitions, awards, articles] = await Promise.all([
+      client.getEntries({ content_type: "about" }),
+      client.getEntries({ content_type: "press" }),
+      client.getEntries({ content_type: "exhibition" }),
+      client.getEntries({ content_type: "awards" }),
+      client.getEntries({ content_type: "article" }),
+    ]);
+    return {
+      props: {
+        about: about.items[0],
+        press: press.items,
+        exhibitions: exhibitions.items,
+        awards: awards.items,
+        articles: articles.items,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return {
+      notFound: true,
+    };
+  }
 }
-export default Info;
 
 const Wrapper = styled(motion.div)`
   line-height: 1.4;
@@ -239,3 +265,5 @@ const SectionsWrapper = styled.div`
 const SectionInfo = styled.section`
   padding: 4rem 0rem 0rem 0rem;
 `;
+
+export default Info;

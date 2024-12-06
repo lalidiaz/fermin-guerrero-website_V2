@@ -1,17 +1,12 @@
-import Head from "next/head";
 import { client } from "src/lib/cms";
 import { useAnimationInView } from "@/hooks/useAnimationInView";
 import { motion } from "framer-motion";
-import styled from "styled-components";
-import { device } from "@/styles/device";
+import { CoverImg } from "@/components/index";
 import {
-  ImageGallery,
-  CoverImg,
-  Tags,
-  AnimateContent,
-  RichText,
-  Credits,
-} from "@/components/index";
+  ProjectMeta,
+  ProjectHeader,
+  ProjectGallery,
+} from "@/components/ProjectDetail";
 
 const Project = ({ project }) => {
   const [textRef, textAnimation] = useAnimationInView();
@@ -22,77 +17,72 @@ const Project = ({ project }) => {
 
   return (
     <>
-      <Head>
-        <title>{name}</title>
-        {/* FIX ME: description[0] ? */}
-        <meta name="description" content={description[0]} />
-      </Head>
+      <ProjectMeta name={name} description={description} />
+
       <motion.div key={id} initial="exit" animate="enter" exit="exit">
         <CoverImg src={mainImage} />
-        <GridContainer ref={textRef}>
-          <AnimateContent delay={0.4} animate={textAnimation}>
-            <GridName>{name}</GridName>
-          </AnimateContent>
 
-          <YearTags>
-            <div>
-              <AnimateContent delay={0.5} animate={textAnimation}>
-                <p style={{ paddingBottom: "1.5rem" }}>{year}</p>
-              </AnimateContent>
+        <div ref={textRef}>
+          <ProjectHeader
+            name={name}
+            year={year}
+            credits={credits}
+            tags={tags}
+            description={description}
+            textAnimation={textAnimation}
+          />
+        </div>
 
-              {credits && (
-                <AnimateContent
-                  delay={0.6}
-                  animate={textAnimation}
-                  style={{ paddingBorrom: "1rem" }}
-                >
-                  <Credits credits={credits} />
-                </AnimateContent>
-              )}
-            </div>
-            <div>
-              {tags && (
-                <AnimateContent delay={0.7} animate={textAnimation}>
-                  <Tags tags={tags} />
-                </AnimateContent>
-              )}
-            </div>
-          </YearTags>
-
-          <AnimateContent delay={0.6} animate={textAnimation}>
-            <GridDesc>
-              <RichText texts={description} />
-            </GridDesc>
-          </AnimateContent>
-        </GridContainer>
-        <GridImg ref={imageRef}>
-          <AnimateContent delay={0.4} animate={imageAnimation}>
-            <ImageGallery media={media} />
-          </AnimateContent>
-        </GridImg>
+        <div ref={imageRef}>
+          <ProjectGallery media={media} imageAnimation={imageAnimation} />
+        </div>
       </motion.div>
     </>
   );
 };
 
 export async function getStaticPaths() {
-  const response = await client.getEntries({ content_type: "project" });
-  const paths = response.items.map((item) => ({
-    params: { slug: item.fields.slug },
-  }));
+  try {
+    const response = await client.getEntries({ content_type: "project" });
+    const paths = response.items.map((item) => ({
+      params: { slug: item.fields.slug },
+    }));
 
-  return { paths, fallback: false };
+    return { paths, fallback: false };
+  } catch (error) {
+    console.error("Error generating paths:", error);
+    return {
+      paths: [],
+      fallback: false,
+    };
+  }
 }
 
 export async function getStaticProps({ params }) {
-  const { slug } = params;
+  try {
+    const { slug } = params;
 
-  const response = await client.getEntries({
-    content_type: "project",
-    "fields.slug": slug,
-  });
+    const response = await client.getEntries({
+      content_type: "project",
+      "fields.slug": slug,
+    });
 
-  if (!response?.items?.length) {
+    if (!response?.items?.length) {
+      return {
+        redirect: {
+          destination: "/all",
+          permanent: false,
+        },
+      };
+    }
+
+    return {
+      props: {
+        project: response.items[0],
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching project:", error, "Slug:", params?.slug);
     return {
       redirect: {
         destination: "/all",
@@ -100,52 +90,6 @@ export async function getStaticProps({ params }) {
       },
     };
   }
-
-  return {
-    props: {
-      project: response.items[0],
-    },
-  };
 }
 
 export default Project;
-
-const GridContainer = styled.div`
-  grid-template-columns: 1fr;
-  padding: 20px;
-
-  @media ${device.laptop} {
-    display: grid;
-    grid-column-gap: 8px;
-    grid-template-columns: 1fr 1fr 2fr;
-    min-height: 100px;
-    padding: 15px 20px;
-    font-weight: regular;
-  }
-`;
-
-const GridName = styled.p`
-  font-weight: bold;
-`;
-
-const YearTags = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 10px 0px;
-
-  @media ${device.laptop} {
-    padding: 0px;
-  }
-`;
-
-const GridDesc = styled.div`
-  line-height: 1.4;
-`;
-
-const GridImg = styled.div`
-  padding: 20px 20px 40px 20px;
-  @media ${device.laptop} {
-    padding: 20px 20px 60px 20px;
-  }
-`;

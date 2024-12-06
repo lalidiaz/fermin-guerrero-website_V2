@@ -13,9 +13,9 @@ export const imageVariants = {
 };
 
 export const masonryAnimation = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0 },
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -20 },
 };
 
 export const LoadingDot = {
@@ -34,29 +34,18 @@ export const LoadingContainer = {
 };
 
 export const ContainerVariants = {
-  initial: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-  animate: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
+  initial: { transition: { staggerChildren: 0.2 } },
+  animate: { transition: { staggerChildren: 0.2 } },
 };
 
 export const DotVariants = {
-  initial: {
-    y: "0%",
-  },
-  animate: {
-    y: "100%",
-  },
+  initial: { y: "0%" },
+  animate: { y: "100%" },
 };
 
 export const DotTransition = {
   duration: 0.5,
-  yoyo: Infinity,
+  repeat: Infinity,
+  repeatType: "reverse",
   ease: "easeInOut",
 };

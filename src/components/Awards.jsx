@@ -1,36 +1,28 @@
 import styled from "styled-components";
-import { v4 as uuidv4 } from "uuid";
+import { memo } from "react";
 import { device } from "../styles/device";
 
-const Awards = ({ data }) => {
-  let awardsSorted = data.sort((a, b) => b.fields.year - a.fields.year);
+const sortByYear = (a, b) => b.fields.year - a.fields.year;
 
-  const getAwards = awardsSorted.map((item) => (
-    <Container key={uuidv4()}>
-      <Year key={uuidv4()}>
-        <p>{item.fields.year}</p>
-      </Year>
-      <Title key={uuidv4()}>
-        <p>{item.fields.title}</p>
-      </Title>
-      <Project>
-        <p>{item.fields.project}</p>
-      </Project>
+const Awards = memo(({ data }) => {
+  const awardsSorted = [...data].sort(sortByYear);
 
-      <Prize key={uuidv4()}>
-        <p>{item.fields.prize}</p>
-      </Prize>
-    </Container>
-  ));
-
-  return <div>{getAwards}</div>;
-};
-export default Awards;
-
-const Project = styled.div``;
+  return (
+    <div>
+      {awardsSorted.map((item) => (
+        <Container key={item.fields.year + item.fields.title}>
+          <Year>{item.fields.year}</Year>
+          <Title>{item.fields.title}</Title>
+          <div>{item.fields.project}</div>
+          <Prize>{item.fields.prize}</Prize>
+        </Container>
+      ))}
+    </div>
+  );
+});
 
 const Container = styled.div`
-  padding: 0rem 0rem 1rem 0rem;
+  padding: 0 0 1rem;
 
   @media ${device.laptop} {
     display: grid;
@@ -50,3 +42,5 @@ const Title = styled.div`
 const Prize = styled.p`
   grid-column: 9/11;
 `;
+
+export default Awards;

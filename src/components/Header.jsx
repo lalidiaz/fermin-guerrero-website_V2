@@ -1,49 +1,48 @@
 import ActiveLink from "./ActiveLink";
 import { social } from "@/utils/links";
 import Hamburger from "hamburger-react";
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import styled from "styled-components";
 import { device } from "../styles/device";
 import { motion } from "framer-motion";
-import { v4 as uuidv4 } from "uuid";
+
+const navigationLinks = [
+  { href: "/", text: "Fermín Guerrero", column: "1/5" },
+  { href: "/graphic", text: "Graphic Design", column: "5/7" },
+  { href: "/all", text: "&", column: "7" },
+  { href: "/typeface", text: "Typeface Design", column: "8/10" },
+  { href: "/about", text: "About", column: "12" },
+];
 
 const Header = () => {
   const [isOpen, setOpen] = useState(false);
   const [changeHeaderStyle, setChangeHeaderStyle] = useState(false);
 
   const menuVariants = {
-    opened: {
-      top: 0,
-    },
-    closed: {
-      top: "-100vh",
-    },
+    opened: { top: 0 },
+    closed: { top: "-100vh" },
   };
 
-  const changeHeaderColor = () => {
-    if (window.scrollY >= 80) {
-      setChangeHeaderStyle(true);
-    } else {
-      setChangeHeaderStyle(false);
-    }
-  };
-  if (typeof window !== "undefined") {
+  useEffect(() => {
+    const changeHeaderColor = () => {
+      setChangeHeaderStyle(window.scrollY >= 80);
+    };
+
     window.addEventListener("scroll", changeHeaderColor);
-  }
+    return () => window.removeEventListener("scroll", changeHeaderColor);
+  }, []);
 
-  const handleClickHome = () => {
-    setOpen(false);
-  };
-
-  const getSocialLinks = social.map(({ url, text }) => {
-    return (
-      <span key={uuidv4()}>
-        <a key={uuidv4()} href={url} target="_blank" rel="noreferrer">
-          {text}
-        </a>
-      </span>
-    );
-  });
+  const getSocialLinks = useMemo(
+    () =>
+      social.map(({ url, text }) => (
+        <span key={`social-${text}`}>
+          <a href={url} target="_blank" rel="noreferrer">
+            {text}
+          </a>
+        </span>
+      )),
+    [social]
+  );
 
   return (
     <>
@@ -64,39 +63,17 @@ const Header = () => {
         >
           <NavigationMobile>
             <Ul>
-              <Li>
-                <ActiveLink href="/" passHref closeMenu={handleClickHome}>
-                  Fermín Guerrero
-                </ActiveLink>
-              </Li>
-              <Li>
-                <ActiveLink
-                  href="/graphic"
-                  passHref
-                  closeMenu={handleClickHome}
-                >
-                  Graphic Design
-                </ActiveLink>
-              </Li>
-              <Li>
-                <ActiveLink href="/all" passHref closeMenu={handleClickHome}>
-                  &
-                </ActiveLink>
-              </Li>
-              <Li>
-                <ActiveLink
-                  href="/typeface"
-                  passHref
-                  closeMenu={handleClickHome}
-                >
-                  Typeface Design
-                </ActiveLink>
-              </Li>
-              <Li>
-                <ActiveLink href="/about" passHref closeMenu={handleClickHome}>
-                  About
-                </ActiveLink>
-              </Li>
+              {navigationLinks.map(({ href, text, column }) => (
+                <Li key={href} $column={column}>
+                  <ActiveLink
+                    href={href}
+                    passHref
+                    closeMenu={() => setOpen(false)}
+                  >
+                    {text}
+                  </ActiveLink>
+                </Li>
+              ))}
             </Ul>
           </NavigationMobile>
           <SocialMedia>{getSocialLinks}</SocialMedia>
@@ -105,65 +82,56 @@ const Header = () => {
     </>
   );
 };
-export default Header;
 
 const HeaderContainer = styled(motion.header)`
+  --header-height: 2.8rem;
+  --transition-duration: 0.8s;
+
   width: 100%;
   z-index: 10000;
   height: auto;
-  min-height: 2.8rem;
+  min-height: var(--header-height);
   background-color: ${(props) => (props.changeheaderstyle ? "black" : "none")};
   border-bottom: ${(props) =>
     props.changeheaderstyle ? "1px solid white" : "none"};
   position: fixed;
   top: 0;
-  transition: 0.8s all ease;
+  transition: var(--transition-duration) all ease;
 `;
 
 const BurgerContainer = styled.div`
   display: flex;
   flex-direction: row-reverse;
-  font-size: 1.1rem;
   align-items: center;
   justify-content: space-between;
   position: fixed;
-  padding: 10px;
   width: 100%;
-  height: auto;
-  padding: 0px 8px 0px 20px;
+  padding: 0 8px 0 20px;
   z-index: 101;
 
   @media ${device.laptop} {
     display: none;
-    padding: 0px;
   }
 `;
 
 const MenuMobile = styled(motion.div)`
   background-color: black;
   color: white;
-  font-size: 1rem;
-  height: 60vh;
+  height: auto;
   width: 100vw;
   position: fixed;
-  top: 0;
-  z-index: 1;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  z-index: 100;
   padding-top: 10px;
-  height: auto;
-
   border-radius: 2px;
 `;
 
 const NavigationMobile = styled.div`
   display: flex;
   flex-direction: column;
-  top: 15%;
-  height: auto;
-  padding: 2rem 0rem;
+  padding: 2rem 0;
 `;
 
 const Ul = styled.ul`
@@ -172,18 +140,15 @@ const Ul = styled.ul`
   @media ${device.laptop} {
     width: 100%;
     height: auto;
-    align-items: center;
-    justify-content: center;
-    padding: 3px 20px 5px 20px;
+    padding: 3px 20px 5px;
     mix-blend-mode: difference;
     position: fixed;
     top: 0;
     z-index: 1;
     font-size: 1.1rem;
-    outline: none;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 1;
+    grid-template-rows: 1fr;
     color: white;
   }
 `;
@@ -191,51 +156,33 @@ const Ul = styled.ul`
 const Li = styled.li`
   display: block;
   border-bottom: 1px solid white;
-  margin-left: 20px;
-  margin-right: 20px;
-  padding: 8px 0px;
+  margin: 0 20px;
+  padding: 8px 0;
 
   @media ${device.laptop} {
     border-bottom: none;
-    &:nth-child(1) {
-      grid-column: 1/5;
-      margin-left: 0px;
-      margin-right: 0px;
-    }
-    &:nth-child(2) {
-      grid-column: 5/7;
-      margin-left: 0px;
-      margin-right: 0px;
-    }
-    &:nth-child(3) {
-      grid-column: 7;
-      margin-left: 0px;
-      margin-right: 0px;
-    }
-    &:nth-child(4) {
-      grid-column: 8/10;
-      margin-left: 0px;
-      margin-right: 0px;
-    }
-    &:nth-child(5) {
-      grid-column: 12;
-      margin-right: 0;
-      text-align: right;
-    }
+    margin: 0;
+    grid-column: ${(props) => props.$column};
+    text-align: ${(props) => (props.$column === "12" ? "right" : "left")};
   }
 `;
 
 const SocialMedia = styled.div`
   padding-bottom: 30px;
+
   a {
     padding-left: 20px;
     text-decoration: underline;
-  }
-  a:selected {
-    color: white;
+
+    &:hover {
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
   }
 
   @media ${device.laptop} {
     display: none;
   }
 `;
+
+export default Header;

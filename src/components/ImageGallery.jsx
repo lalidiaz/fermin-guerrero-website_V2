@@ -2,82 +2,69 @@
 import { ImageListItem, ImageList } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { isImage } from "@/utils/helpers";
-import { v4 as uuidv4 } from "uuid";
 
-const stylesImgList = makeStyles({
+const useStyles = makeStyles({
   imageList: {
     width: "100%",
     height: "100%",
-    ["@media (max-width:480px)"]: {
+    "@media (max-width:480px)": {
       display: "flex",
       flexDirection: "column",
     },
   },
+  media: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: "center",
+  },
+  video: {
+    width: "100%",
+    height: "100%",
+  },
 });
 
-function srcset(image, size, rows = 1, cols = 1) {
-  return `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format 1x,
-  ${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format&dpr=2 2x`;
-}
+const getSrcSet = (image, size, rows = 1, cols = 1) => {
+  const dimensions = `w=${size * cols}&h=${size * rows}`;
+  const baseUrl = `${image}?${dimensions}&fit=crop&auto=format`;
+  return `${baseUrl} 1x, ${baseUrl}&dpr=2 2x`;
+};
 
-const ImageGallery = ({ media }) => {
-  const classes = stylesImgList();
+const MediaItem = ({ item }) => {
+  const classes = useStyles();
+  const { url, cols, rows, portada } = item.fields;
 
-  const getMedia =
-    media &&
-    media.map((item) => {
-      return (
-        <ImageListItem
-          key={uuidv4()}
-          cols={item.fields.cols}
-          rows={item.fields.rows}
-        >
-          {isImage(item.fields.url) ? (
-            <img
-              key={uuidv4()}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center",
-              }}
-              src={item.fields.url}
-              alt="graphic-design"
-              srcSet={srcset(
-                item.fields.url,
-                121,
-                item.fields.rows,
-                item.fields.cols
-              )}
-            />
-          ) : (
-            <video
-              key={uuidv4()}
-              autoPlay
-              muted
-              loop
-              playsinline
-              webkit-playsinline
-              controls
-              controlsList="nofullscreen"
-              className="video"
-              poster={item.fields.portada}
-            >
-              <source
-                key={uuidv4()}
-                src={item.fields.url}
-                srcSet={srcset(
-                  item.fields.url,
-                  121,
-                  item.fields.rows,
-                  item.fields.cols
-                )}
-              />
-            </video>
-          )}
-        </ImageListItem>
-      );
-    });
+  if (isImage(url)) {
+    return (
+      <img
+        className={classes.media}
+        src={url}
+        alt="graphic-design"
+        srcSet={getSrcSet(url, 121, rows, cols)}
+        loading="lazy"
+      />
+    );
+  }
+
+  return (
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      controls
+      controlsList="nofullscreen"
+      className={classes.video}
+      poster={portada}
+    >
+      <source src={url} type="video/mp4" />
+    </video>
+  );
+};
+
+const ImageGallery = ({ media = [] }) => {
+  const classes = useStyles();
+
   return (
     <ImageList
       gap={13}
@@ -86,7 +73,15 @@ const ImageGallery = ({ media }) => {
       rowHeight="auto"
       className={classes.imageList}
     >
-      {media && media.length && getMedia}
+      {media.map((item) => (
+        <ImageListItem
+          key={item.fields.url}
+          cols={item.fields.cols}
+          rows={item.fields.rows}
+        >
+          <MediaItem item={item} />
+        </ImageListItem>
+      ))}
     </ImageList>
   );
 };

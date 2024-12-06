@@ -2,105 +2,85 @@ import { FiClock } from "react-icons/fi";
 import { Time } from "@/components/index";
 import styled from "styled-components";
 import { device } from "@/styles/device";
+import { memo } from "react";
 
-const Contact = ({ email, location, instagram, twitter, linkedin }) => {
+const Contact = memo(({ email, location, instagram, twitter, linkedin }) => {
   return (
     <Container>
-      <EmailContainer>
-        <EmailTitle>Email</EmailTitle>
-        <EmailContent>
-          <a target="_blank" rel="noreferrer" href={`mailto:${email}`}>
-            contact@ferminguerrero.com
+      <Section>
+        <Title>Email</Title>
+        <Content>
+          <a href={`mailto:${email}`} target="_blank" rel="noreferrer">
+            {email}
           </a>
-          <div>
-            <p>{location}</p>
-          </div>
-          <TimeDisplay>
-            <FiClock color="white" size={23} style={{ paddingRight: "5px" }} />
+          <Location>{location}</Location>
+          <Clock>
+            <FiClock color="white" size={23} style={{ marginRight: "5px" }} />
             <Time />
-          </TimeDisplay>
-        </EmailContent>
-      </EmailContainer>
+          </Clock>
+        </Content>
+      </Section>
 
-      <Follow>
-        <FollowText>Follow</FollowText>
-
-        <FollowContent>
-          <li>
-            <a rel="noreferrer" href={instagram} target="_blank">
-              Instagram
-            </a>
-          </li>
-          <li>
-            <a rel="noreferrer" href={twitter} target="_blank">
-              Twitter
-            </a>
-          </li>
-          <li>
-            <a rel="noreferrer" href={linkedin} target="_blank">
-              Linkedin
-            </a>
-          </li>
-        </FollowContent>
-      </Follow>
+      <Section>
+        <Title>Follow</Title>
+        <SocialLinks>
+          {[
+            { href: instagram, label: "Instagram" },
+            { href: twitter, label: "Twitter" },
+            { href: linkedin, label: "LinkedIn" },
+          ].map(({ href, label }) => (
+            <li key={label}>
+              <a href={href} target="_blank" rel="noreferrer">
+                {label}
+              </a>
+            </li>
+          ))}
+        </SocialLinks>
+      </Section>
     </Container>
   );
-};
-export default Contact;
+});
 
 const Container = styled.div`
   display: grid;
+  gap: 1rem;
 `;
 
-const EmailContainer = styled.div`
-  font-size: 1rem;
+const Section = styled.div`
   display: grid;
   grid-template-columns: repeat(8, 1fr);
+  font-size: 1rem;
 
   @media ${device.laptop} {
     font-size: 1.1rem;
   }
 `;
 
-const EmailTitle = styled.p`
+const Title = styled.p`
   grid-column: 1/3;
 `;
 
-const EmailContent = styled.div`
+const Content = styled.div`
   grid-column: 3/8;
-  padding: 0rem 0rem 1rem 0rem;
-
-  @media ${device.laptop} {
-  }
+  padding-bottom: 1rem;
 `;
 
-const TimeDisplay = styled.div`
+const Clock = styled.div`
   display: flex;
   align-items: center;
-  grid-column: 8/12;
 `;
 
-const Follow = styled.div`
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
+const Location = styled.p`
+  margin: 0.5rem 0;
 `;
 
-const FollowText = styled.p`
-  grid-column: 1/3;
-
-  @media ${device.laptop} {
-    font-size: 1.1rem;
-    padding: 10px 0px;
-  }
-`;
-
-const FollowContent = styled.ul`
+const SocialLinks = styled.ul`
   grid-column: 3/8;
   padding-left: 3px;
-  font-size: 1rem;
 
   @media ${device.laptop} {
-    font-size: 1.1rem;
-    padding: 10px 0px;
+    padding: 0.625rem 0;
   }
 `;
+
+export default Contact;

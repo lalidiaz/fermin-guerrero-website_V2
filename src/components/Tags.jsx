@@ -1,46 +1,70 @@
 import Link from "next/link";
-import React from "react";
 import styled from "styled-components";
 import { device } from "@/styles/device";
-import { v4 as uuidv4 } from "uuid";
 
-const Tags = ({ tags }) => {
+const Tags = ({ tags = [] }) => {
+  if (!tags?.length) return null;
+
   return (
-    <TagName>
-      {tags &&
-        tags.map((category, index) => {
-          const transformName = category.replace(" ", "-");
-          const toLower = transformName.toLowerCase();
+    <TagsContainer role="navigation" aria-label="Categories">
+      {tags.map((category) => {
+        const normalizedCategory = category
+          .trim()
+          .toLowerCase()
+          .replace(/\s+/g, "-");
 
-          return (
-            <React.Fragment key={uuidv4()}>
-              <Link
-                key={uuidv4()}
-                href={{ pathname: "/category", query: { category: category } }}
-                passHref
-              >
-                <TagLink key={uuidv4()}>{category}</TagLink>
-              </Link>
-            </React.Fragment>
-          );
-        })}
-    </TagName>
+        return (
+          <Link
+            key={normalizedCategory}
+            href={{
+              pathname: `/category/${category}`,
+            }}
+            passHref
+            legacyBehavior
+          >
+            <TagLink>
+              <span aria-label={`View ${category} category`}>{category}</span>
+            </TagLink>
+          </Link>
+        );
+      })}
+    </TagsContainer>
   );
 };
 
-export default Tags;
-
-const TagName = styled.div`
-  margin-right: 8px;
+const TagsContainer = styled.nav`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: -4px;
+  padding: 4px;
 
   @media ${device.laptop} {
-    display: flex;
-    flex-direction: row;
+    gap: 16px;
   }
 `;
 
 const TagLink = styled.a`
-  margin-right: 8px;
-  cursor: pointer;
-  text-decoration: underline;
+  position: relative;
+  padding: 4px 0px;
+  font-size: 0.875rem;
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover,
+  &:focus {
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
 `;
+export default Tags;

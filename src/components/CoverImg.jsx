@@ -1,56 +1,49 @@
-/* eslint-disable @next/next/no-img-element */
-import { imageVariants } from "@/utils/animations";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { device } from "@/styles/device";
 import { isImage } from "@/utils/helpers";
+import { imageVariants } from "@/utils/animations";
+import { memo } from "react";
 
-const CoverImg = ({ src }) => {
+const CoverImg = memo(({ src, alt = "graphic-design" }) => {
   return (
-    <MainImg variants={imageVariants}>
+    <Container variants={imageVariants}>
       {!isImage(src) ? (
-        <Video
+        <StyledVideo
           loop
-          autoPlay
           muted
-          playsinline
-          webkit-playsinline
+          autoPlay
+          playsInline
           controlsList="nofullscreen"
         >
           <source src={src} type="video/mp4" />
-        </Video>
+        </StyledVideo>
       ) : (
-        <Img alt="graphic-design" src={src} />
+        <StyledImage alt={alt} src={src} />
       )}
-    </MainImg>
+    </Container>
   );
-};
+});
 
-export default CoverImg;
-
-const MainImg = styled(motion.div)`
-  padding: 38px 20px 0px;
-  background-color: black;
-  min-height: auto;
-
-  @media ${device.laptop} {
-    // min-height: 900px;
-    height: auto;
-  }
-`;
-
-const Video = styled.video`
-  width: 100% !important;
-  height: auto !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  outline-style: none !important;
-`;
-
-const Img = styled.img`
+const commonStyles = `
   width: 100%;
   height: auto;
   object-fit: cover;
   object-position: center;
-  outline-style: none;
+  outline: none;
 `;
+
+const Container = styled(motion.div)`
+  padding: 2.375rem 1.25rem 0;
+  background-color: black;
+  min-height: auto;
+`;
+
+const StyledVideo = styled.video`
+  ${commonStyles}
+`;
+
+const StyledImage = styled.img`
+  ${commonStyles}
+`;
+
+export default CoverImg;

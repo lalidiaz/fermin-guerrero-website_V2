@@ -1,30 +1,34 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
-const ActiveLink = ({ children, href, closeMenu }) => {
+const ActiveLink = ({ children, href, onNavigate }) => {
   const router = useRouter();
 
   const handleClick = (e) => {
     e.preventDefault();
     router.push(href);
-    closeMenu();
+    onNavigate?.();
   };
 
   return (
-    <ActiveLinkStyles
-      pathname={router.pathname}
+    <StyledLink
       href={href}
       onClick={handleClick}
+      isActive={router.pathname === href}
     >
       {children}
-    </ActiveLinkStyles>
+    </StyledLink>
   );
 };
 
-export default ActiveLink;
+const StyledLink = styled.a`
+  color: white;
+  font-weight: ${({ isActive }) => (isActive ? "bold" : "regular")};
+  text-decoration: none;
 
-const ActiveLinkStyles = styled.a`
-  color: ${(props) => (props.pathname === props.href ? "white" : "white")};
-  font-weight: ${(props) =>
-    props.pathname === props.href ? "bold" : "regular"};
+  &:hover {
+    opacity: 0.8;
+  }
 `;
+
+export default ActiveLink;

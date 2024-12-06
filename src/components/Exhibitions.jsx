@@ -1,17 +1,21 @@
 import styled from "styled-components";
 import { device } from "../styles/device";
 import { v4 as uuidv4 } from "uuid";
+import { useMemo } from "react";
 
 const Exhibitions = ({ data }) => {
-  let exhibitionsSorted = data.sort((a, b) => b.fields.year - a.fields.year);
+  const exhibitionsSorted = useMemo(
+    () => data.sort((a, b) => b.fields.year - a.fields.year),
+    [data]
+  );
 
   const getExhibitions = exhibitionsSorted.map((item) => (
     <Container key={uuidv4()}>
-      <Year key={uuidv4()}>{item.fields.year}</Year>
-      <Title key={uuidv4()}>
-        <p key={uuidv4()}>{item.fields.title}</p>
+      <Year>{item.fields.year}</Year>
+      <Title>
+        <p>{item.fields.title}</p>
       </Title>
-      <Country key={uuidv4()}>
+      <Country>
         {item.fields.city}, {item.fields.country}
       </Country>
     </Container>

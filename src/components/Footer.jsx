@@ -2,58 +2,59 @@ import styled from "styled-components";
 import { device } from "../styles/device";
 
 const Footer = () => {
+  const socialLinks = [
+    {
+      name: "Twitter",
+      url: "https://twitter.com/fermin_guerrero",
+      column: 6,
+    },
+    {
+      name: "Linkedin",
+      url: "https://www.linkedin.com/in/fermin-guerrero-616237173/",
+      column: 5,
+    },
+    {
+      name: "Instagram",
+      url: "https://www.instagram.com/ferminguerrero_design/",
+      column: 4,
+    },
+  ];
+
   return (
     <FooterContainer>
       <Copyright>
         <Name>
-          ©2024 <span>&#8212; </span> Fermín Guerrero
+          ©{new Date().getFullYear()} <span>&#8212; </span> Fermín Guerrero
         </Name>
       </Copyright>
 
       <FooterLinks>
-        <Twitter>
-          <a
-            rel="noreferrer"
-            href="https://twitter.com/fermin_guerrero"
-            target="_blank"
+        {socialLinks.map((link, index) => (
+          <SocialLink
+            key={link.name}
+            row={index + 1}
+            laptopColumn={link.column}
           >
-            <u>Twitter</u>
-          </a>
-        </Twitter>
-
-        <Linkedin>
-          <a
-            rel="noreferrer"
-            href="https://www.linkedin.com/in/fermin-guerrero-616237173/"
-            target="_blank"
-          >
-            <u>Linkedin</u>
-          </a>
-        </Linkedin>
-
-        <Instagram>
-          <a
-            rel="noreferrer"
-            href="https://www.instagram.com/ferminguerrero_design/"
-            target="_blank"
-          >
-            <u>Instagram</u>
-          </a>
-        </Instagram>
+            <a href={link.url} target="_blank" rel="noreferrer">
+              <u>{link.name}</u>
+            </a>
+          </SocialLink>
+        ))}
       </FooterLinks>
     </FooterContainer>
   );
 };
 
-export default Footer;
-
 const FooterContainer = styled.footer`
+  --footer-padding: 20px;
+  --border-color: white;
+
   position: inherit;
-  grid-template-columns: repeat(2, 1fr);
   display: grid;
-  padding: 20px 20px 0px 20px;
+  grid-template-columns: repeat(2, 1fr);
+  padding: var(--footer-padding) var(--footer-padding) 0;
   height: auto;
-  border-top: 1px solid white;
+  border-top: 1px solid var(--border-color);
 
   @media ${device.laptop} {
     position: fixed;
@@ -61,13 +62,10 @@ const FooterContainer = styled.footer`
     left: 0;
     right: 0;
     background-color: black;
-    display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 3;
-    border-top: 1px solid white;
-    padding-top: 5px;
+    grid-template-rows: 1fr;
+    padding: 10px var(--footer-padding);
     font-size: 16px;
-    padding: 10px 20px;
   }
 `;
 
@@ -97,37 +95,26 @@ const FooterLinks = styled.div`
     grid-row: 1;
     height: auto;
   }
-`;
 
-const Twitter = styled.div`
-  grid-column: 2;
-  grid-row: 1;
+  a {
+    color: inherit;
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
 
-  @media ${device.laptop} {
-    text-align: right;
-    grid-column: 6;
-    grid-row: 1;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 `;
 
-const Linkedin = styled.div`
+const SocialLink = styled.div`
   grid-column: 2;
-  grid-row: 2;
+  grid-row: ${(props) => props.row};
 
   @media ${device.laptop} {
     text-align: right;
-    grid-column: 5;
+    grid-column: ${(props) => props.laptopColumn};
     grid-row: 1;
   }
 `;
-
-const Instagram = styled.div`
-  grid-column: 2;
-  grid-row: 3;
-
-  @media ${device.laptop} {
-    text-align: right;
-    grid-column: 4;
-    grid-row: 1;
-  }
-`;
+export default Footer;

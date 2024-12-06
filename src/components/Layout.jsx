@@ -1,27 +1,32 @@
 import Head from "next/head";
 import styled from "styled-components";
 
-const Layout = ({ children, title, content, description }) => {
+const Layout = ({ children, title, description, content }) => {
+  const metaTitle = `${title} | Fermín Guerrero`;
+
   return (
     <>
       <Head>
-        <title>{title}</title>
-        <meta name={description} content={content} />
+        <title>{metaTitle}</title>
+        <meta name="description" content={description} />
+        {content && <meta name="keywords" content={content} />}
       </Head>
       <MainWrapper>
-        <MasonryWrapper>{children}</MasonryWrapper>
+        <ContentWrapper>{children}</ContentWrapper>
       </MainWrapper>
     </>
   );
 };
-
-export default Layout;
 
 const MainWrapper = styled.main`
   width: 100%;
   position: relative;
 `;
 
-const MasonryWrapper = styled.div`
-  padding: 40px 20px;
+const ContentWrapper = styled.div`
+  padding: 2.5rem 1.25rem;
+  max-width: 1440px;
+  margin: 0 auto;
 `;
+
+export default Layout;

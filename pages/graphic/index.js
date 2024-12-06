@@ -6,6 +6,7 @@ const GraphicDesign = ({ data }) => {
 
   return (
     <Layout
+      title="Graphic Design"
       name="description"
       content="Fermín Guerrero's Graphic Design Projects"
     >
@@ -15,12 +16,19 @@ const GraphicDesign = ({ data }) => {
 };
 
 export async function getStaticProps() {
-  const response = await client.getEntries({ content_type: "project" });
+  try {
+    const response = await client.getEntries({ content_type: "project" });
 
-  return {
-    props: {
-      data: response.items,
-    },
-  };
+    return {
+      props: {
+        data: response.items || [],
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching projects:", error);
+    return {
+      notFound: true,
+    };
+  }
 }
 export default GraphicDesign;
