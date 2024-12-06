@@ -200,18 +200,22 @@ const Li = styled.li`
     &:nth-child(1) {
       grid-column: 1/5;
       margin-left: 0px;
+      margin-right: 0px;
     }
     &:nth-child(2) {
       grid-column: 5/7;
-      padding-left: 3px;
+      margin-left: 0px;
+      margin-right: 0px;
     }
     &:nth-child(3) {
       grid-column: 7;
-      padding-left: 6.5px;
+      margin-left: 0px;
+      margin-right: 0px;
     }
     &:nth-child(4) {
       grid-column: 8/10;
-      padding-left: 6.5px;
+      margin-left: 0px;
+      margin-right: 0px;
     }
     &:nth-child(5) {
       grid-column: 12;

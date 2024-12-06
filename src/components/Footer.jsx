@@ -6,7 +6,7 @@ const Footer = () => {
     <FooterContainer>
       <Copyright>
         <Name>
-          ©2021 <span>&#8212; </span> Fermín Guerrero
+          ©2024 <span>&#8212; </span> Fermín Guerrero
         </Name>
       </Copyright>
 
