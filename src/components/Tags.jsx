@@ -16,9 +16,7 @@ const Tags = ({ tags = [] }) => {
         return (
           <Link
             key={normalizedCategory}
-            href={{
-              pathname: `/category/${category}`,
-            }}
+            href={{ pathname: "/category", query: { category: category } }}
             passHref
             legacyBehavior
           >
